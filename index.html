@@ -1,0 +1,1002 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Exercise Glossary</title>
+  <link rel="stylesheet" href="site.css">
+</head>
+<body>
+  <main class="index">
+    <div class="index-header">
+      <h1>Exercise Glossary</h1>
+      <p class="total">187 exercises</p>
+    </div>
+    <div class="controls">
+      <div class="search-field">
+        <label for="search">Search</label>
+        <input type="search" id="search" placeholder="Search exercises&hellip;" autocomplete="off">
+      </div>
+      <fieldset class="filter-group">
+        <legend>Equipment</legend>
+        <label class="chip"><input type="checkbox" data-group="equipment" value="bands"> bands</label>
+        <label class="chip"><input type="checkbox" data-group="equipment" value="barbell"> barbell</label>
+        <label class="chip"><input type="checkbox" data-group="equipment" value="body-only"> body-only</label>
+        <label class="chip"><input type="checkbox" data-group="equipment" value="cable"> cable</label>
+        <label class="chip"><input type="checkbox" data-group="equipment" value="dumbbell"> dumbbell</label>
+        <label class="chip"><input type="checkbox" data-group="equipment" value="e-z-curl-bar"> e-z-curl-bar</label>
+        <label class="chip"><input type="checkbox" data-group="equipment" value="foam-roll"> foam-roll</label>
+        <label class="chip"><input type="checkbox" data-group="equipment" value="kettlebell"> kettlebell</label>
+        <label class="chip"><input type="checkbox" data-group="equipment" value="machine"> machine</label>
+        <label class="chip"><input type="checkbox" data-group="equipment" value="other"> other</label>
+        <label class="chip"><input type="checkbox" data-group="equipment" value="unspecified"> unspecified</label>
+      </fieldset>
+      <fieldset class="filter-group">
+        <legend>Body part</legend>
+        <label class="chip"><input type="checkbox" data-group="muscles" value="abdominals"> abdominals</label>
+        <label class="chip"><input type="checkbox" data-group="muscles" value="abductors"> abductors</label>
+        <label class="chip"><input type="checkbox" data-group="muscles" value="adductors"> adductors</label>
+        <label class="chip"><input type="checkbox" data-group="muscles" value="biceps"> biceps</label>
+        <label class="chip"><input type="checkbox" data-group="muscles" value="calves"> calves</label>
+        <label class="chip"><input type="checkbox" data-group="muscles" value="chest"> chest</label>
+        <label class="chip"><input type="checkbox" data-group="muscles" value="forearms"> forearms</label>
+        <label class="chip"><input type="checkbox" data-group="muscles" value="glutes"> glutes</label>
+        <label class="chip"><input type="checkbox" data-group="muscles" value="hamstrings"> hamstrings</label>
+        <label class="chip"><input type="checkbox" data-group="muscles" value="lats"> lats</label>
+        <label class="chip"><input type="checkbox" data-group="muscles" value="lower-back"> lower back</label>
+        <label class="chip"><input type="checkbox" data-group="muscles" value="middle-back"> middle back</label>
+        <label class="chip"><input type="checkbox" data-group="muscles" value="quadriceps"> quadriceps</label>
+        <label class="chip"><input type="checkbox" data-group="muscles" value="shoulders"> shoulders</label>
+        <label class="chip"><input type="checkbox" data-group="muscles" value="traps"> traps</label>
+        <label class="chip"><input type="checkbox" data-group="muscles" value="triceps"> triceps</label>
+      </fieldset>
+      <p class="result-count" id="result-count" aria-live="polite">Showing 187 of 187</p>
+    </div>
+    <div class="empty-state" id="empty-state" hidden>
+      <p>No exercises match your filters.</p>
+      <button type="button" id="clear-all">Clear all</button>
+    </div>
+    <ul class="index-grid">
+      <li><a class="card" href="exercises/cur-back-extension.html" data-variant="cur-back-extension" data-search="45° back extension" data-equipment="other" data-muscles="lower-back">
+        <img src="images/cur-back-extension/0.jpg" alt="45° back extension" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">45° back extension</span>
+      </a></li>
+      <li><a class="card" href="exercises/90-90-hamstring.html" data-variant="90-90-hamstring" data-search="90/90 hamstring" data-equipment="body-only" data-muscles="hamstrings">
+        <img src="images/90-90-hamstring/0.jpg" alt="90/90 Hamstring" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">90/90 Hamstring</span>
+      </a></li>
+      <li><a class="card" href="exercises/adductor-groin.html" data-variant="adductor-groin" data-search="adductor/groin" data-equipment="unspecified" data-muscles="adductors">
+        <img src="images/adductor-groin/0.jpg" alt="Adductor/Groin" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Adductor/Groin</span>
+      </a></li>
+      <li><a class="card" href="exercises/alternating-floor-press.html" data-variant="alternating-floor-press" data-search="alternating floor press" data-equipment="kettlebell" data-muscles="chest">
+        <img src="images/alternating-floor-press/0.jpg" alt="Alternating Floor Press" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Alternating Floor Press</span>
+      </a></li>
+      <li><a class="card" href="exercises/alternating-kettlebell-press.html" data-variant="alternating-kettlebell-press" data-search="alternating kettlebell press" data-equipment="kettlebell" data-muscles="shoulders">
+        <img src="images/alternating-kettlebell-press/0.jpg" alt="Alternating Kettlebell Press" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Alternating Kettlebell Press</span>
+      </a></li>
+      <li><a class="card" href="exercises/alternating-kettlebell-row.html" data-variant="alternating-kettlebell-row" data-search="alternating kettlebell row" data-equipment="kettlebell" data-muscles="middle-back">
+        <img src="images/alternating-kettlebell-row/0.jpg" alt="Alternating Kettlebell Row" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Alternating Kettlebell Row</span>
+      </a></li>
+      <li><a class="card" href="exercises/ankle-circles.html" data-variant="ankle-circles" data-search="ankle circles" data-equipment="unspecified" data-muscles="calves">
+        <img src="images/ankle-circles/0.jpg" alt="Ankle Circles" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Ankle Circles</span>
+      </a></li>
+      <li><a class="card" href="exercises/arnold-dumbbell-press.html" data-variant="arnold-dumbbell-press" data-search="arnold dumbbell press" data-equipment="dumbbell" data-muscles="shoulders">
+        <img src="images/arnold-dumbbell-press/0.jpg" alt="Arnold Dumbbell Press" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Arnold Dumbbell Press</span>
+      </a></li>
+      <li><a class="card" href="exercises/cur-b-stance-rdl.html" data-variant="cur-b-stance-rdl" data-search="b-stance romanian deadlift" data-equipment="dumbbell" data-muscles="hamstrings">
+        <img src="images/cur-b-stance-rdl/0.jpg" alt="B-stance Romanian deadlift" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">B-stance Romanian deadlift</span>
+      </a></li>
+      <li><a class="card" href="exercises/back-flyes-with-bands.html" data-variant="back-flyes-with-bands" data-search="back flies - with bands" data-equipment="bands" data-muscles="shoulders">
+        <img src="images/back-flyes-with-bands/0.jpg" alt="Back Flies - With Bands" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Back Flies - With Bands</span>
+      </a></li>
+      <li><a class="card" href="exercises/band-assisted-pull-up.html" data-variant="band-assisted-pull-up" data-search="band assisted pull-up" data-equipment="other" data-muscles="lats">
+        <img src="images/band-assisted-pull-up/0.jpg" alt="Band Assisted Pull-Up" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Band Assisted Pull-Up</span>
+      </a></li>
+      <li><a class="card" href="exercises/band-good-morning.html" data-variant="band-good-morning" data-search="band good morning" data-equipment="bands" data-muscles="hamstrings">
+        <img src="images/band-good-morning/0.jpg" alt="Band Good Morning" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Band Good Morning</span>
+      </a></li>
+      <li><a class="card" href="exercises/band-pull-apart.html" data-variant="band-pull-apart" data-search="band pull apart" data-equipment="bands" data-muscles="shoulders">
+        <img src="images/band-pull-apart/0.jpg" alt="Band Pull Apart" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Band Pull Apart</span>
+      </a></li>
+      <li><a class="card" href="exercises/band-skull-crusher.html" data-variant="band-skull-crusher" data-search="band skull crusher" data-equipment="bands" data-muscles="triceps">
+        <img src="images/band-skull-crusher/0.jpg" alt="Band Skull Crusher" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Band Skull Crusher</span>
+      </a></li>
+      <li><a class="card" href="exercises/barbell-bench-press-medium-grip.html" data-variant="barbell-bench-press-medium-grip" data-search="barbell bench press - medium grip" data-equipment="barbell" data-muscles="chest">
+        <img src="images/barbell-bench-press-medium-grip/0.jpg" alt="Barbell Bench Press - Medium Grip" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Barbell Bench Press - Medium Grip</span>
+      </a></li>
+      <li><a class="card" href="exercises/barbell-curl.html" data-variant="barbell-curl" data-search="barbell curl" data-equipment="barbell" data-muscles="biceps">
+        <img src="images/barbell-curl/0.jpg" alt="Barbell Curl" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Barbell Curl</span>
+      </a></li>
+      <li><a class="card" href="exercises/barbell-deadlift.html" data-variant="barbell-deadlift" data-search="barbell deadlift" data-equipment="barbell" data-muscles="lower-back">
+        <img src="images/barbell-deadlift/0.jpg" alt="Barbell Deadlift" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Barbell Deadlift</span>
+      </a></li>
+      <li><a class="card" href="exercises/barbell-hack-squat.html" data-variant="barbell-hack-squat" data-search="barbell hack squat" data-equipment="barbell" data-muscles="quadriceps">
+        <img src="images/barbell-hack-squat/0.jpg" alt="Barbell Hack Squat" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Barbell Hack Squat</span>
+      </a></li>
+      <li><a class="card" href="exercises/barbell-incline-bench-press-medium-grip.html" data-variant="barbell-incline-bench-press-medium-grip" data-search="barbell incline bench press - medium grip" data-equipment="barbell" data-muscles="chest">
+        <img src="images/barbell-incline-bench-press-medium-grip/0.jpg" alt="Barbell Incline Bench Press - Medium Grip" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Barbell Incline Bench Press - Medium Grip</span>
+      </a></li>
+      <li><a class="card" href="exercises/barbell-rear-delt-row.html" data-variant="barbell-rear-delt-row" data-search="barbell rear delt row" data-equipment="barbell" data-muscles="shoulders">
+        <img src="images/barbell-rear-delt-row/0.jpg" alt="Barbell Rear Delt Row" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Barbell Rear Delt Row</span>
+      </a></li>
+      <li><a class="card" href="exercises/barbell-squat.html" data-variant="barbell-squat" data-search="barbell squat" data-equipment="barbell" data-muscles="quadriceps">
+        <img src="images/barbell-squat/0.jpg" alt="Barbell Squat" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Barbell Squat</span>
+      </a></li>
+      <li><a class="card" href="exercises/barbell-walking-lunge.html" data-variant="barbell-walking-lunge" data-search="barbell walking lunge" data-equipment="barbell" data-muscles="quadriceps">
+        <img src="images/barbell-walking-lunge/0.jpg" alt="Barbell Walking Lunge" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Barbell Walking Lunge</span>
+      </a></li>
+      <li><a class="card" href="exercises/bent-over-barbell-row.html" data-variant="bent-over-barbell-row" data-search="bent over barbell row" data-equipment="barbell" data-muscles="middle-back">
+        <img src="images/bent-over-barbell-row/0.jpg" alt="Bent Over Barbell Row" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Bent Over Barbell Row</span>
+      </a></li>
+      <li><a class="card" href="exercises/bent-over-dumbbell-rear-delt-raise-with-head-on-bench.html" data-variant="bent-over-dumbbell-rear-delt-raise-with-head-on-bench" data-search="bent over dumbbell rear delt raise with head on bench" data-equipment="dumbbell" data-muscles="shoulders">
+        <img src="images/bent-over-dumbbell-rear-delt-raise-with-head-on-bench/0.jpg" alt="Bent Over Dumbbell Rear Delt Raise With Head On Bench" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Bent Over Dumbbell Rear Delt Raise With Head On Bench</span>
+      </a></li>
+      <li><a class="card" href="exercises/bent-over-two-dumbbell-row.html" data-variant="bent-over-two-dumbbell-row" data-search="bent over two-dumbbell row" data-equipment="dumbbell" data-muscles="middle-back">
+        <img src="images/bent-over-two-dumbbell-row/0.jpg" alt="Bent Over Two-Dumbbell Row" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Bent Over Two-Dumbbell Row</span>
+      </a></li>
+      <li><a class="card" href="exercises/bent-over-two-dumbbell-row-with-palms-in.html" data-variant="bent-over-two-dumbbell-row-with-palms-in" data-search="bent over two-dumbbell row with palms in" data-equipment="dumbbell" data-muscles="middle-back">
+        <img src="images/bent-over-two-dumbbell-row-with-palms-in/0.jpg" alt="Bent Over Two-Dumbbell Row With Palms In" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Bent Over Two-Dumbbell Row With Palms In</span>
+      </a></li>
+      <li><a class="card" href="exercises/bodyweight-squat.html" data-variant="bodyweight-squat" data-search="bodyweight squat" data-equipment="body-only" data-muscles="quadriceps">
+        <img src="images/bodyweight-squat/0.jpg" alt="Bodyweight Squat" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Bodyweight Squat</span>
+      </a></li>
+      <li><a class="card" href="exercises/bodyweight-walking-lunge.html" data-variant="bodyweight-walking-lunge" data-search="bodyweight walking lunge" data-equipment="unspecified" data-muscles="quadriceps">
+        <img src="images/bodyweight-walking-lunge/0.jpg" alt="Bodyweight Walking Lunge" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Bodyweight Walking Lunge</span>
+      </a></li>
+      <li><a class="card" href="exercises/cur-bulgarian-split-squat.html" data-variant="cur-bulgarian-split-squat" data-search="bulgarian split squat" data-equipment="dumbbell" data-muscles="quadriceps">
+        <img src="images/cur-bulgarian-split-squat/0.jpg" alt="Bulgarian split squat" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Bulgarian split squat</span>
+      </a></li>
+      <li><a class="card" href="exercises/butt-lift-bridge.html" data-variant="butt-lift-bridge" data-search="butt lift (bridge)" data-equipment="body-only" data-muscles="glutes">
+        <img src="images/butt-lift-bridge/0.jpg" alt="Butt Lift (Bridge)" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Butt Lift (Bridge)</span>
+      </a></li>
+      <li><a class="card" href="exercises/butterfly.html" data-variant="butterfly" data-search="butterfly" data-equipment="machine" data-muscles="chest">
+        <img src="images/butterfly/0.jpg" alt="Butterfly" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Butterfly</span>
+      </a></li>
+      <li><a class="card" href="exercises/cable-crossover.html" data-variant="cable-crossover" data-search="cable crossover" data-equipment="cable" data-muscles="chest">
+        <img src="images/cable-crossover/0.jpg" alt="Cable Crossover" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Cable Crossover</span>
+      </a></li>
+      <li><a class="card" href="exercises/cur-cable-crunch.html" data-variant="cur-cable-crunch" data-search="cable crunch" data-equipment="cable" data-muscles="abdominals">
+        <img src="images/cur-cable-crunch/0.jpg" alt="Cable crunch" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Cable crunch</span>
+      </a></li>
+      <li><a class="card" href="exercises/cable-hammer-curls-rope-attachment.html" data-variant="cable-hammer-curls-rope-attachment" data-search="cable hammer curls - rope attachment" data-equipment="cable" data-muscles="biceps">
+        <img src="images/cable-hammer-curls-rope-attachment/0.jpg" alt="Cable Hammer Curls - Rope Attachment" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Cable Hammer Curls - Rope Attachment</span>
+      </a></li>
+      <li><a class="card" href="exercises/cur-cable-kickback.html" data-variant="cur-cable-kickback" data-search="cable kickback" data-equipment="cable" data-muscles="glutes">
+        <img src="images/cur-cable-kickback/0.jpg" alt="Cable kickback" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Cable kickback</span>
+      </a></li>
+      <li><a class="card" href="exercises/cur-cable-lateral-raise.html" data-variant="cur-cable-lateral-raise" data-search="cable lateral raise" data-equipment="cable" data-muscles="shoulders">
+        <img src="images/cur-cable-lateral-raise/0.jpg" alt="Cable lateral raise" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Cable lateral raise</span>
+      </a></li>
+      <li><a class="card" href="exercises/cable-preacher-curl.html" data-variant="cable-preacher-curl" data-search="cable preacher curl" data-equipment="cable" data-muscles="biceps">
+        <img src="images/cable-preacher-curl/0.jpg" alt="Cable Preacher Curl" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Cable Preacher Curl</span>
+      </a></li>
+      <li><a class="card" href="exercises/cable-rear-delt-fly.html" data-variant="cable-rear-delt-fly" data-search="cable rear delt fly" data-equipment="cable" data-muscles="shoulders">
+        <img src="images/cable-rear-delt-fly/0.jpg" alt="Cable Rear Delt Fly" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Cable Rear Delt Fly</span>
+      </a></li>
+      <li><a class="card" href="exercises/cable-reverse-crunch.html" data-variant="cable-reverse-crunch" data-search="cable reverse crunch" data-equipment="cable" data-muscles="abdominals">
+        <img src="images/cable-reverse-crunch/0.jpg" alt="Cable Reverse Crunch" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Cable Reverse Crunch</span>
+      </a></li>
+      <li><a class="card" href="exercises/cable-rope-overhead-triceps-extension.html" data-variant="cable-rope-overhead-triceps-extension" data-search="cable rope overhead triceps extension" data-equipment="cable" data-muscles="triceps">
+        <img src="images/cable-rope-overhead-triceps-extension/0.jpg" alt="Cable Rope Overhead Triceps Extension" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Cable Rope Overhead Triceps Extension</span>
+      </a></li>
+      <li><a class="card" href="exercises/cable-rope-rear-delt-rows.html" data-variant="cable-rope-rear-delt-rows" data-search="cable rope rear-delt rows" data-equipment="cable" data-muscles="shoulders">
+        <img src="images/cable-rope-rear-delt-rows/0.jpg" alt="Cable Rope Rear-Delt Rows" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Cable Rope Rear-Delt Rows</span>
+      </a></li>
+      <li><a class="card" href="exercises/cable-seated-lateral-raise.html" data-variant="cable-seated-lateral-raise" data-search="cable seated lateral raise" data-equipment="cable" data-muscles="shoulders">
+        <img src="images/cable-seated-lateral-raise/0.jpg" alt="Cable Seated Lateral Raise" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Cable Seated Lateral Raise</span>
+      </a></li>
+      <li><a class="card" href="exercises/calf-press-on-the-leg-press-machine.html" data-variant="calf-press-on-the-leg-press-machine" data-search="calf press on the leg press machine" data-equipment="machine" data-muscles="calves">
+        <img src="images/calf-press-on-the-leg-press-machine/0.jpg" alt="Calf Press On The Leg Press Machine" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Calf Press On The Leg Press Machine</span>
+      </a></li>
+      <li><a class="card" href="exercises/calf-stretch-hands-against-wall.html" data-variant="calf-stretch-hands-against-wall" data-search="calf stretch hands against wall" data-equipment="unspecified" data-muscles="calves">
+        <img src="images/calf-stretch-hands-against-wall/0.jpg" alt="Calf Stretch Hands Against Wall" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Calf Stretch Hands Against Wall</span>
+      </a></li>
+      <li><a class="card" href="exercises/cat-stretch.html" data-variant="cat-stretch" data-search="cat stretch" data-equipment="unspecified" data-muscles="lower-back">
+        <img src="images/cat-stretch/0.jpg" alt="Cat Stretch" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Cat Stretch</span>
+      </a></li>
+      <li><a class="card" href="exercises/chest-and-front-of-shoulder-stretch.html" data-variant="chest-and-front-of-shoulder-stretch" data-search="chest and front of shoulder stretch" data-equipment="other" data-muscles="chest">
+        <img src="images/chest-and-front-of-shoulder-stretch/0.jpg" alt="Chest And Front Of Shoulder Stretch" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Chest And Front Of Shoulder Stretch</span>
+      </a></li>
+      <li><a class="card" href="exercises/cur-chest-supported-row.html" data-variant="cur-chest-supported-row" data-search="chest-supported row" data-equipment="machine" data-muscles="middle-back">
+        <img src="images/cur-chest-supported-row/0.jpg" alt="Chest-supported row" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Chest-supported row</span>
+      </a></li>
+      <li><a class="card" href="exercises/chin-up.html" data-variant="chin-up" data-search="chin-up" data-equipment="body-only" data-muscles="lats">
+        <img src="images/chin-up/0.jpg" alt="Chin-Up" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Chin-Up</span>
+      </a></li>
+      <li><a class="card" href="exercises/close-grip-barbell-bench-press.html" data-variant="close-grip-barbell-bench-press" data-search="close-grip barbell bench press" data-equipment="barbell" data-muscles="triceps">
+        <img src="images/close-grip-barbell-bench-press/0.jpg" alt="Close-Grip Barbell Bench Press" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Close-Grip Barbell Bench Press</span>
+      </a></li>
+      <li><a class="card" href="exercises/close-grip-front-lat-pulldown.html" data-variant="close-grip-front-lat-pulldown" data-search="close-grip front lat pulldown" data-equipment="cable" data-muscles="lats">
+        <img src="images/close-grip-front-lat-pulldown/0.jpg" alt="Close-Grip Front Lat Pulldown" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Close-Grip Front Lat Pulldown</span>
+      </a></li>
+      <li><a class="card" href="exercises/cross-over-with-bands.html" data-variant="cross-over-with-bands" data-search="cross over - with bands" data-equipment="bands" data-muscles="chest">
+        <img src="images/cross-over-with-bands/0.jpg" alt="Cross Over - With Bands" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Cross Over - With Bands</span>
+      </a></li>
+      <li><a class="card" href="exercises/dead-bug.html" data-variant="dead-bug" data-search="dead bug" data-equipment="body-only" data-muscles="abdominals">
+        <img src="images/dead-bug/0.jpg" alt="Dead Bug" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Dead Bug</span>
+      </a></li>
+      <li><a class="card" href="exercises/dips-chest-version.html" data-variant="dips-chest-version" data-search="dips - chest version" data-equipment="other" data-muscles="chest">
+        <img src="images/dips-chest-version/0.jpg" alt="Dips - Chest Version" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Dips - Chest Version</span>
+      </a></li>
+      <li><a class="card" href="exercises/donkey-calf-raises.html" data-variant="donkey-calf-raises" data-search="donkey calf raises" data-equipment="other" data-muscles="calves">
+        <img src="images/donkey-calf-raises/0.jpg" alt="Donkey Calf Raises" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Donkey Calf Raises</span>
+      </a></li>
+      <li><a class="card" href="exercises/dumbbell-flyes.html" data-variant="dumbbell-flyes" data-search="dumbbell flies" data-equipment="dumbbell" data-muscles="chest">
+        <img src="images/dumbbell-flyes/0.jpg" alt="Dumbbell Flies" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Dumbbell Flies</span>
+      </a></li>
+      <li><a class="card" href="exercises/dumbbell-floor-press.html" data-variant="dumbbell-floor-press" data-search="dumbbell floor press" data-equipment="dumbbell" data-muscles="triceps">
+        <img src="images/dumbbell-floor-press/0.jpg" alt="Dumbbell Floor Press" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Dumbbell Floor Press</span>
+      </a></li>
+      <li><a class="card" href="exercises/dumbbell-incline-row.html" data-variant="dumbbell-incline-row" data-search="dumbbell incline row" data-equipment="dumbbell" data-muscles="middle-back">
+        <img src="images/dumbbell-incline-row/0.jpg" alt="Dumbbell Incline Row" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Dumbbell Incline Row</span>
+      </a></li>
+      <li><a class="card" href="exercises/cur-dumbbell-lateral-raise.html" data-variant="cur-dumbbell-lateral-raise" data-search="dumbbell lateral raise" data-equipment="dumbbell" data-muscles="shoulders">
+        <img src="images/cur-dumbbell-lateral-raise/0.jpg" alt="Dumbbell lateral raise" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Dumbbell lateral raise</span>
+      </a></li>
+      <li><a class="card" href="exercises/dumbbell-lunges.html" data-variant="dumbbell-lunges" data-search="dumbbell lunges" data-equipment="dumbbell" data-muscles="quadriceps">
+        <img src="images/dumbbell-lunges/0.jpg" alt="Dumbbell Lunges" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Dumbbell Lunges</span>
+      </a></li>
+      <li><a class="card" href="exercises/dumbbell-rear-lunge.html" data-variant="dumbbell-rear-lunge" data-search="dumbbell rear lunge" data-equipment="dumbbell" data-muscles="quadriceps">
+        <img src="images/dumbbell-rear-lunge/0.jpg" alt="Dumbbell Rear Lunge" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Dumbbell Rear Lunge</span>
+      </a></li>
+      <li><a class="card" href="exercises/dumbbell-seated-one-leg-calf-raise.html" data-variant="dumbbell-seated-one-leg-calf-raise" data-search="dumbbell seated one-leg calf raise" data-equipment="dumbbell" data-muscles="calves">
+        <img src="images/dumbbell-seated-one-leg-calf-raise/0.jpg" alt="Dumbbell Seated One-Leg Calf Raise" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Dumbbell Seated One-Leg Calf Raise</span>
+      </a></li>
+      <li><a class="card" href="exercises/dumbbell-shrug.html" data-variant="dumbbell-shrug" data-search="dumbbell shrug" data-equipment="dumbbell" data-muscles="traps">
+        <img src="images/dumbbell-shrug/0.jpg" alt="Dumbbell Shrug" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Dumbbell Shrug</span>
+      </a></li>
+      <li><a class="card" href="exercises/external-rotation.html" data-variant="external-rotation" data-search="external rotation" data-equipment="dumbbell" data-muscles="shoulders">
+        <img src="images/external-rotation/0.jpg" alt="External Rotation" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">External Rotation</span>
+      </a></li>
+      <li><a class="card" href="exercises/external-rotation-with-band.html" data-variant="external-rotation-with-band" data-search="external rotation with band" data-equipment="bands" data-muscles="shoulders">
+        <img src="images/external-rotation-with-band/0.jpg" alt="External Rotation with Band" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">External Rotation with Band</span>
+      </a></li>
+      <li><a class="card" href="exercises/external-rotation-with-cable.html" data-variant="external-rotation-with-cable" data-search="external rotation with cable" data-equipment="cable" data-muscles="shoulders">
+        <img src="images/external-rotation-with-cable/0.jpg" alt="External Rotation with Cable" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">External Rotation with Cable</span>
+      </a></li>
+      <li><a class="card" href="exercises/ez-bar-curl.html" data-variant="ez-bar-curl" data-search="ez-bar curl" data-equipment="e-z-curl-bar" data-muscles="biceps">
+        <img src="images/ez-bar-curl/0.jpg" alt="EZ-Bar Curl" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">EZ-Bar Curl</span>
+      </a></li>
+      <li><a class="card" href="exercises/ez-bar-skullcrusher.html" data-variant="ez-bar-skullcrusher" data-search="ez-bar skullcrusher" data-equipment="e-z-curl-bar" data-muscles="triceps">
+        <img src="images/ez-bar-skullcrusher/0.jpg" alt="EZ-Bar Skullcrusher" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">EZ-Bar Skullcrusher</span>
+      </a></li>
+      <li><a class="card" href="exercises/face-pull.html" data-variant="face-pull" data-search="face pull" data-equipment="cable" data-muscles="shoulders">
+        <img src="images/face-pull/0.jpg" alt="Face Pull" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Face Pull</span>
+      </a></li>
+      <li><a class="card" href="exercises/farmers-walk.html" data-variant="farmers-walk" data-search="farmer&#39;s walk" data-equipment="other" data-muscles="forearms">
+        <img src="images/farmers-walk/0.jpg" alt="Farmer&#39;s Walk" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Farmer&#39;s Walk</span>
+      </a></li>
+      <li><a class="card" href="exercises/cur-flat-dumbbell-press.html" data-variant="cur-flat-dumbbell-press" data-search="flat dumbbell press" data-equipment="dumbbell" data-muscles="chest">
+        <img src="images/cur-flat-dumbbell-press/0.jpg" alt="Flat dumbbell press" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Flat dumbbell press</span>
+      </a></li>
+      <li><a class="card" href="exercises/floor-press.html" data-variant="floor-press" data-search="floor press" data-equipment="barbell" data-muscles="triceps">
+        <img src="images/floor-press/0.jpg" alt="Floor Press" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Floor Press</span>
+      </a></li>
+      <li><a class="card" href="exercises/freehand-jump-squat.html" data-variant="freehand-jump-squat" data-search="freehand jump squat" data-equipment="body-only" data-muscles="quadriceps">
+        <img src="images/freehand-jump-squat/0.jpg" alt="Freehand Jump Squat" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Freehand Jump Squat</span>
+      </a></li>
+      <li><a class="card" href="exercises/front-barbell-squat.html" data-variant="front-barbell-squat" data-search="front barbell squat" data-equipment="barbell" data-muscles="quadriceps">
+        <img src="images/front-barbell-squat/0.jpg" alt="Front Barbell Squat" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Front Barbell Squat</span>
+      </a></li>
+      <li><a class="card" href="exercises/front-squats-with-two-kettlebells.html" data-variant="front-squats-with-two-kettlebells" data-search="front squats with two kettlebells" data-equipment="kettlebell" data-muscles="quadriceps">
+        <img src="images/front-squats-with-two-kettlebells/0.jpg" alt="Front Squats With Two Kettlebells" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Front Squats With Two Kettlebells</span>
+      </a></li>
+      <li><a class="card" href="exercises/goblet-squat.html" data-variant="goblet-squat" data-search="goblet squat" data-equipment="kettlebell" data-muscles="quadriceps">
+        <img src="images/goblet-squat/0.jpg" alt="Goblet Squat" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Goblet Squat</span>
+      </a></li>
+      <li><a class="card" href="exercises/cur-hack-squat.html" data-variant="cur-hack-squat" data-search="hack squat" data-equipment="machine" data-muscles="quadriceps">
+        <img src="images/cur-hack-squat/0.jpg" alt="Hack squat" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Hack squat</span>
+      </a></li>
+      <li><a class="card" href="exercises/cur-hammer-curl.html" data-variant="cur-hammer-curl" data-search="hammer curl" data-equipment="dumbbell" data-muscles="biceps">
+        <img src="images/cur-hammer-curl/0.jpg" alt="Hammer curl" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Hammer curl</span>
+      </a></li>
+      <li><a class="card" href="exercises/hammer-curls.html" data-variant="hammer-curls" data-search="hammer curls" data-equipment="dumbbell" data-muscles="biceps">
+        <img src="images/hammer-curls/0.jpg" alt="Hammer Curls" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Hammer Curls</span>
+      </a></li>
+      <li><a class="card" href="exercises/hamstring-smr.html" data-variant="hamstring-smr" data-search="hamstring-smr" data-equipment="foam-roll" data-muscles="hamstrings">
+        <img src="images/hamstring-smr/0.jpg" alt="Hamstring-SMR" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Hamstring-SMR</span>
+      </a></li>
+      <li><a class="card" href="exercises/cur-hanging-knee-raise.html" data-variant="cur-hanging-knee-raise" data-search="hanging knee raise" data-equipment="body-only" data-muscles="abdominals">
+        <img src="images/cur-hanging-knee-raise/0.jpg" alt="Hanging knee raise" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Hanging knee raise</span>
+      </a></li>
+      <li><a class="card" href="exercises/cur-heel-elevated-dumbbell-squat.html" data-variant="cur-heel-elevated-dumbbell-squat" data-search="heel-elevated dumbbell squat" data-equipment="dumbbell" data-muscles="quadriceps">
+        <img src="images/cur-heel-elevated-dumbbell-squat/0.jpg" alt="Heel-elevated dumbbell squat" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Heel-elevated dumbbell squat</span>
+      </a></li>
+      <li><a class="card" href="exercises/cur-hip-abduction.html" data-variant="cur-hip-abduction" data-search="hip abduction machine" data-equipment="machine" data-muscles="abductors">
+        <img src="images/cur-hip-abduction/0.jpg" alt="Hip abduction machine" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Hip abduction machine</span>
+      </a></li>
+      <li><a class="card" href="exercises/hip-lift-with-band.html" data-variant="hip-lift-with-band" data-search="hip lift with band" data-equipment="bands" data-muscles="glutes">
+        <img src="images/hip-lift-with-band/0.jpg" alt="Hip Lift with Band" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Hip Lift with Band</span>
+      </a></li>
+      <li><a class="card" href="exercises/cur-hip-thrust.html" data-variant="cur-hip-thrust" data-search="hip thrust" data-equipment="barbell" data-muscles="glutes">
+        <img src="images/cur-hip-thrust/0.jpg" alt="Hip thrust" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Hip thrust</span>
+      </a></li>
+      <li><a class="card" href="exercises/hyperextensions-back-extensions.html" data-variant="hyperextensions-back-extensions" data-search="hyperextensions (back extensions)" data-equipment="other" data-muscles="lower-back">
+        <img src="images/hyperextensions-back-extensions/0.jpg" alt="Hyperextensions (Back Extensions)" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Hyperextensions (Back Extensions)</span>
+      </a></li>
+      <li><a class="card" href="exercises/hyperextensions-with-no-hyperextension-bench.html" data-variant="hyperextensions-with-no-hyperextension-bench" data-search="hyperextensions with no hyperextension bench" data-equipment="body-only" data-muscles="lower-back">
+        <img src="images/hyperextensions-with-no-hyperextension-bench/0.jpg" alt="Hyperextensions With No Hyperextension Bench" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Hyperextensions With No Hyperextension Bench</span>
+      </a></li>
+      <li><a class="card" href="exercises/incline-cable-flye.html" data-variant="incline-cable-flye" data-search="incline cable fly" data-equipment="cable" data-muscles="chest">
+        <img src="images/incline-cable-flye/0.jpg" alt="Incline Cable Fly" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Incline Cable Fly</span>
+      </a></li>
+      <li><a class="card" href="exercises/cur-incline-dumbbell-curl.html" data-variant="cur-incline-dumbbell-curl" data-search="incline dumbbell curl" data-equipment="dumbbell" data-muscles="biceps">
+        <img src="images/cur-incline-dumbbell-curl/0.jpg" alt="Incline dumbbell curl" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Incline dumbbell curl</span>
+      </a></li>
+      <li><a class="card" href="exercises/incline-dumbbell-flyes.html" data-variant="incline-dumbbell-flyes" data-search="incline dumbbell flies" data-equipment="dumbbell" data-muscles="chest">
+        <img src="images/incline-dumbbell-flyes/0.jpg" alt="Incline Dumbbell Flies" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Incline Dumbbell Flies</span>
+      </a></li>
+      <li><a class="card" href="exercises/cur-incline-dumbbell-press.html" data-variant="cur-incline-dumbbell-press" data-search="incline dumbbell press" data-equipment="dumbbell" data-muscles="chest">
+        <img src="images/cur-incline-dumbbell-press/0.jpg" alt="Incline dumbbell press" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Incline dumbbell press</span>
+      </a></li>
+      <li><a class="card" href="exercises/incline-dumbbell-press.html" data-variant="incline-dumbbell-press" data-search="incline dumbbell press" data-equipment="dumbbell" data-muscles="chest">
+        <img src="images/incline-dumbbell-press/0.jpg" alt="Incline Dumbbell Press" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Incline Dumbbell Press</span>
+      </a></li>
+      <li><a class="card" href="exercises/cur-incline-press.html" data-variant="cur-incline-press" data-search="incline press, plate-loaded or barbell" data-equipment="machine barbell" data-muscles="chest">
+        <img src="images/cur-incline-press/0.jpg" alt="Incline press, plate-loaded or barbell" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Incline press, plate-loaded or barbell</span>
+      </a></li>
+      <li><a class="card" href="exercises/inverted-row.html" data-variant="inverted-row" data-search="inverted row" data-equipment="unspecified" data-muscles="middle-back">
+        <img src="images/inverted-row/0.jpg" alt="Inverted Row" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Inverted Row</span>
+      </a></li>
+      <li><a class="card" href="exercises/it-band-and-glute-stretch.html" data-variant="it-band-and-glute-stretch" data-search="it band and glute stretch" data-equipment="other" data-muscles="abductors">
+        <img src="images/it-band-and-glute-stretch/0.jpg" alt="IT Band and Glute Stretch" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">IT Band and Glute Stretch</span>
+      </a></li>
+      <li><a class="card" href="exercises/kettlebell-one-legged-deadlift.html" data-variant="kettlebell-one-legged-deadlift" data-search="kettlebell one-legged deadlift" data-equipment="kettlebell" data-muscles="hamstrings">
+        <img src="images/kettlebell-one-legged-deadlift/0.jpg" alt="Kettlebell One-Legged Deadlift" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Kettlebell One-Legged Deadlift</span>
+      </a></li>
+      <li><a class="card" href="exercises/kettlebell-seated-press.html" data-variant="kettlebell-seated-press" data-search="kettlebell seated press" data-equipment="kettlebell" data-muscles="shoulders">
+        <img src="images/kettlebell-seated-press/0.jpg" alt="Kettlebell Seated Press" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Kettlebell Seated Press</span>
+      </a></li>
+      <li><a class="card" href="exercises/kettlebell-turkish-get-up-squat-style.html" data-variant="kettlebell-turkish-get-up-squat-style" data-search="kettlebell turkish get-up (squat style)" data-equipment="kettlebell" data-muscles="shoulders">
+        <img src="images/kettlebell-turkish-get-up-squat-style/0.jpg" alt="Kettlebell Turkish Get-Up (Squat style)" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Kettlebell Turkish Get-Up (Squat style)</span>
+      </a></li>
+      <li><a class="card" href="exercises/kneeling-hip-flexor.html" data-variant="kneeling-hip-flexor" data-search="kneeling hip flexor" data-equipment="unspecified" data-muscles="quadriceps">
+        <img src="images/kneeling-hip-flexor/0.jpg" alt="Kneeling Hip Flexor" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Kneeling Hip Flexor</span>
+      </a></li>
+      <li><a class="card" href="exercises/lateral-bound.html" data-variant="lateral-bound" data-search="lateral bound" data-equipment="body-only" data-muscles="adductors">
+        <img src="images/lateral-bound/0.jpg" alt="Lateral Bound" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Lateral Bound</span>
+      </a></li>
+      <li><a class="card" href="exercises/latissimus-dorsi-smr.html" data-variant="latissimus-dorsi-smr" data-search="latissimus dorsi-smr" data-equipment="foam-roll" data-muscles="lats">
+        <img src="images/latissimus-dorsi-smr/0.jpg" alt="Latissimus Dorsi-SMR" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Latissimus Dorsi-SMR</span>
+      </a></li>
+      <li><a class="card" href="exercises/leg-extensions.html" data-variant="leg-extensions" data-search="leg extensions" data-equipment="machine" data-muscles="quadriceps">
+        <img src="images/leg-extensions/0.jpg" alt="Leg Extensions" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Leg Extensions</span>
+      </a></li>
+      <li><a class="card" href="exercises/cur-leg-press.html" data-variant="cur-leg-press" data-search="leg press" data-equipment="machine" data-muscles="quadriceps">
+        <img src="images/cur-leg-press/0.jpg" alt="Leg press" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Leg press</span>
+      </a></li>
+      <li><a class="card" href="exercises/leg-press.html" data-variant="leg-press" data-search="leg press" data-equipment="machine" data-muscles="quadriceps">
+        <img src="images/leg-press/0.jpg" alt="Leg Press" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Leg Press</span>
+      </a></li>
+      <li><a class="card" href="exercises/leverage-shoulder-press.html" data-variant="leverage-shoulder-press" data-search="leverage shoulder press" data-equipment="machine" data-muscles="shoulders">
+        <img src="images/leverage-shoulder-press/0.jpg" alt="Leverage Shoulder Press" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Leverage Shoulder Press</span>
+      </a></li>
+      <li><a class="card" href="exercises/low-cable-crossover.html" data-variant="low-cable-crossover" data-search="low cable crossover" data-equipment="cable" data-muscles="chest">
+        <img src="images/low-cable-crossover/0.jpg" alt="Low Cable Crossover" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Low Cable Crossover</span>
+      </a></li>
+      <li><a class="card" href="exercises/cur-lying-leg-curl.html" data-variant="cur-lying-leg-curl" data-search="lying leg curl" data-equipment="machine" data-muscles="hamstrings">
+        <img src="images/cur-lying-leg-curl/0.jpg" alt="Lying leg curl" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Lying leg curl</span>
+      </a></li>
+      <li><a class="card" href="exercises/lying-leg-curls.html" data-variant="lying-leg-curls" data-search="lying leg curls" data-equipment="machine" data-muscles="hamstrings">
+        <img src="images/lying-leg-curls/0.jpg" alt="Lying Leg Curls" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Lying Leg Curls</span>
+      </a></li>
+      <li><a class="card" href="exercises/lying-t-bar-row.html" data-variant="lying-t-bar-row" data-search="lying t-bar row" data-equipment="machine" data-muscles="middle-back">
+        <img src="images/lying-t-bar-row/0.jpg" alt="Lying T-Bar Row" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Lying T-Bar Row</span>
+      </a></li>
+      <li><a class="card" href="exercises/cur-machine-chest-press.html" data-variant="cur-machine-chest-press" data-search="machine chest press" data-equipment="machine" data-muscles="chest">
+        <img src="images/cur-machine-chest-press/0.jpg" alt="Machine chest press" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Machine chest press</span>
+      </a></li>
+      <li><a class="card" href="exercises/leverage-incline-chest-press.html" data-variant="leverage-incline-chest-press" data-search="machine incline press" data-equipment="machine" data-muscles="chest">
+        <img src="images/leverage-incline-chest-press/0.jpg" alt="Machine Incline Press" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Machine Incline Press</span>
+      </a></li>
+      <li><a class="card" href="exercises/monster-walk.html" data-variant="monster-walk" data-search="monster walk" data-equipment="bands" data-muscles="abductors">
+        <img src="images/monster-walk/0.jpg" alt="Monster Walk" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Monster Walk</span>
+      </a></li>
+      <li><a class="card" href="exercises/mountain-climbers.html" data-variant="mountain-climbers" data-search="mountain climbers" data-equipment="unspecified" data-muscles="quadriceps">
+        <img src="images/mountain-climbers/0.jpg" alt="Mountain Climbers" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Mountain Climbers</span>
+      </a></li>
+      <li><a class="card" href="exercises/narrow-stance-hack-squats.html" data-variant="narrow-stance-hack-squats" data-search="narrow stance hack squats" data-equipment="machine" data-muscles="quadriceps">
+        <img src="images/narrow-stance-hack-squats/0.jpg" alt="Narrow Stance Hack Squats" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Narrow Stance Hack Squats</span>
+      </a></li>
+      <li><a class="card" href="exercises/natural-glute-ham-raise.html" data-variant="natural-glute-ham-raise" data-search="natural glute ham raise" data-equipment="body-only" data-muscles="hamstrings">
+        <img src="images/natural-glute-ham-raise/0.jpg" alt="Natural Glute Ham Raise" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Natural Glute Ham Raise</span>
+      </a></li>
+      <li><a class="card" href="exercises/cur-neutral-grip-pulldown.html" data-variant="cur-neutral-grip-pulldown" data-search="neutral-grip pulldown" data-equipment="cable" data-muscles="lats">
+        <img src="images/cur-neutral-grip-pulldown/0.jpg" alt="Neutral-grip pulldown" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Neutral-grip pulldown</span>
+      </a></li>
+      <li><a class="card" href="exercises/one-arm-dumbbell-row.html" data-variant="one-arm-dumbbell-row" data-search="one-arm dumbbell row" data-equipment="dumbbell" data-muscles="middle-back">
+        <img src="images/one-arm-dumbbell-row/0.jpg" alt="One-Arm Dumbbell Row" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">One-Arm Dumbbell Row</span>
+      </a></li>
+      <li><a class="card" href="exercises/one-arm-kettlebell-row.html" data-variant="one-arm-kettlebell-row" data-search="one-arm kettlebell row" data-equipment="kettlebell" data-muscles="middle-back">
+        <img src="images/one-arm-kettlebell-row/0.jpg" alt="One-Arm Kettlebell Row" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">One-Arm Kettlebell Row</span>
+      </a></li>
+      <li><a class="card" href="exercises/cur-overhead-cable-triceps-extension.html" data-variant="cur-overhead-cable-triceps-extension" data-search="overhead cable triceps extension" data-equipment="cable" data-muscles="triceps">
+        <img src="images/cur-overhead-cable-triceps-extension/0.jpg" alt="Overhead cable triceps extension" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Overhead cable triceps extension</span>
+      </a></li>
+      <li><a class="card" href="exercises/overhead-stretch.html" data-variant="overhead-stretch" data-search="overhead stretch" data-equipment="unspecified" data-muscles="abdominals">
+        <img src="images/overhead-stretch/0.jpg" alt="Overhead Stretch" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Overhead Stretch</span>
+      </a></li>
+      <li><a class="card" href="exercises/pallof-press.html" data-variant="pallof-press" data-search="pallof press" data-equipment="cable" data-muscles="abdominals">
+        <img src="images/pallof-press/0.jpg" alt="Pallof Press" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Pallof Press</span>
+      </a></li>
+      <li><a class="card" href="exercises/plank.html" data-variant="plank" data-search="plank" data-equipment="body-only" data-muscles="abdominals">
+        <img src="images/plank/0.jpg" alt="Plank" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Plank</span>
+      </a></li>
+      <li><a class="card" href="exercises/plie-dumbbell-squat.html" data-variant="plie-dumbbell-squat" data-search="plie dumbbell squat" data-equipment="dumbbell" data-muscles="quadriceps">
+        <img src="images/plie-dumbbell-squat/0.jpg" alt="Plie Dumbbell Squat" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Plie Dumbbell Squat</span>
+      </a></li>
+      <li><a class="card" href="exercises/pullups.html" data-variant="pullups" data-search="pullups" data-equipment="body-only" data-muscles="lats">
+        <img src="images/pullups/0.jpg" alt="Pullups" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Pullups</span>
+      </a></li>
+      <li><a class="card" href="exercises/push-up-wide.html" data-variant="push-up-wide" data-search="push-up wide" data-equipment="body-only" data-muscles="chest">
+        <img src="images/push-up-wide/0.jpg" alt="Push-Up Wide" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Push-Up Wide</span>
+      </a></li>
+      <li><a class="card" href="exercises/push-ups-close-triceps-position.html" data-variant="push-ups-close-triceps-position" data-search="push-ups - close triceps position" data-equipment="body-only" data-muscles="triceps">
+        <img src="images/push-ups-close-triceps-position/0.jpg" alt="Push-Ups - Close Triceps Position" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Push-Ups - Close Triceps Position</span>
+      </a></li>
+      <li><a class="card" href="exercises/pushups.html" data-variant="pushups" data-search="pushups" data-equipment="body-only" data-muscles="chest">
+        <img src="images/pushups/0.jpg" alt="Pushups" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Pushups</span>
+      </a></li>
+      <li><a class="card" href="exercises/cur-rear-delt-fly.html" data-variant="cur-rear-delt-fly" data-search="rear-delt fly, machine or cable" data-equipment="machine cable" data-muscles="shoulders">
+        <img src="images/cur-rear-delt-fly/0.jpg" alt="Rear-delt fly, machine or cable" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Rear-delt fly, machine or cable</span>
+      </a></li>
+      <li><a class="card" href="exercises/reverse-grip-bent-over-rows.html" data-variant="reverse-grip-bent-over-rows" data-search="reverse grip bent-over rows" data-equipment="barbell" data-muscles="middle-back">
+        <img src="images/reverse-grip-bent-over-rows/0.jpg" alt="Reverse Grip Bent-Over Rows" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Reverse Grip Bent-Over Rows</span>
+      </a></li>
+      <li><a class="card" href="exercises/cur-romanian-deadlift.html" data-variant="cur-romanian-deadlift" data-search="romanian deadlift" data-equipment="barbell" data-muscles="hamstrings">
+        <img src="images/cur-romanian-deadlift/0.jpg" alt="Romanian deadlift" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Romanian deadlift</span>
+      </a></li>
+      <li><a class="card" href="exercises/round-the-world-shoulder-stretch.html" data-variant="round-the-world-shoulder-stretch" data-search="round the world shoulder stretch" data-equipment="other" data-muscles="shoulders">
+        <img src="images/round-the-world-shoulder-stretch/0.jpg" alt="Round The World Shoulder Stretch" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Round The World Shoulder Stretch</span>
+      </a></li>
+      <li><a class="card" href="exercises/scapular-pull-up.html" data-variant="scapular-pull-up" data-search="scapular pull-up" data-equipment="unspecified" data-muscles="traps">
+        <img src="images/scapular-pull-up/0.jpg" alt="Scapular Pull-Up" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Scapular Pull-Up</span>
+      </a></li>
+      <li><a class="card" href="exercises/cur-scapular-push-up.html" data-variant="cur-scapular-push-up" data-search="scapular push-up" data-equipment="body-only" data-muscles="">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Scapular push-up</span>
+      </a></li>
+      <li><a class="card" href="exercises/seated-band-hamstring-curl.html" data-variant="seated-band-hamstring-curl" data-search="seated band hamstring curl" data-equipment="other" data-muscles="hamstrings">
+        <img src="images/seated-band-hamstring-curl/0.jpg" alt="Seated Band Hamstring Curl" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Seated Band Hamstring Curl</span>
+      </a></li>
+      <li><a class="card" href="exercises/seated-barbell-military-press.html" data-variant="seated-barbell-military-press" data-search="seated barbell military press" data-equipment="barbell" data-muscles="shoulders">
+        <img src="images/seated-barbell-military-press/0.jpg" alt="Seated Barbell Military Press" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Seated Barbell Military Press</span>
+      </a></li>
+      <li><a class="card" href="exercises/seated-bent-over-rear-delt-raise.html" data-variant="seated-bent-over-rear-delt-raise" data-search="seated bent-over rear delt raise" data-equipment="dumbbell" data-muscles="shoulders">
+        <img src="images/seated-bent-over-rear-delt-raise/0.jpg" alt="Seated Bent-Over Rear Delt Raise" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Seated Bent-Over Rear Delt Raise</span>
+      </a></li>
+      <li><a class="card" href="exercises/seated-cable-rows.html" data-variant="seated-cable-rows" data-search="seated cable rows" data-equipment="cable" data-muscles="middle-back">
+        <img src="images/seated-cable-rows/0.jpg" alt="Seated Cable Rows" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Seated Cable Rows</span>
+      </a></li>
+      <li><a class="card" href="exercises/cur-seated-calf-raise.html" data-variant="cur-seated-calf-raise" data-search="seated calf raise" data-equipment="machine" data-muscles="calves">
+        <img src="images/cur-seated-calf-raise/0.jpg" alt="Seated calf raise" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Seated calf raise</span>
+      </a></li>
+      <li><a class="card" href="exercises/seated-dumbbell-palms-up-wrist-curl.html" data-variant="seated-dumbbell-palms-up-wrist-curl" data-search="seated dumbbell palms-up wrist curl" data-equipment="dumbbell" data-muscles="forearms">
+        <img src="images/seated-dumbbell-palms-up-wrist-curl/0.jpg" alt="Seated Dumbbell Palms-Up Wrist Curl" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Seated Dumbbell Palms-Up Wrist Curl</span>
+      </a></li>
+      <li><a class="card" href="exercises/seated-dumbbell-press.html" data-variant="seated-dumbbell-press" data-search="seated dumbbell press" data-equipment="dumbbell" data-muscles="shoulders">
+        <img src="images/seated-dumbbell-press/0.jpg" alt="Seated Dumbbell Press" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Seated Dumbbell Press</span>
+      </a></li>
+      <li><a class="card" href="exercises/seated-floor-hamstring-stretch.html" data-variant="seated-floor-hamstring-stretch" data-search="seated floor hamstring stretch" data-equipment="unspecified" data-muscles="hamstrings">
+        <img src="images/seated-floor-hamstring-stretch/0.jpg" alt="Seated Floor Hamstring Stretch" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Seated Floor Hamstring Stretch</span>
+      </a></li>
+      <li><a class="card" href="exercises/cur-seated-leg-curl.html" data-variant="cur-seated-leg-curl" data-search="seated leg curl" data-equipment="machine" data-muscles="hamstrings">
+        <img src="images/cur-seated-leg-curl/0.jpg" alt="Seated leg curl" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Seated leg curl</span>
+      </a></li>
+      <li><a class="card" href="exercises/cur-seated-shoulder-press.html" data-variant="cur-seated-shoulder-press" data-search="seated shoulder press" data-equipment="machine" data-muscles="shoulders">
+        <img src="images/cur-seated-shoulder-press/0.jpg" alt="Seated shoulder press" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Seated shoulder press</span>
+      </a></li>
+      <li><a class="card" href="exercises/shoulder-press-with-bands.html" data-variant="shoulder-press-with-bands" data-search="shoulder press - with bands" data-equipment="bands" data-muscles="shoulders">
+        <img src="images/shoulder-press-with-bands/0.jpg" alt="Shoulder Press - With Bands" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Shoulder Press - With Bands</span>
+      </a></li>
+      <li><a class="card" href="exercises/shoulder-stretch.html" data-variant="shoulder-stretch" data-search="shoulder stretch" data-equipment="unspecified" data-muscles="shoulders">
+        <img src="images/shoulder-stretch/0.jpg" alt="Shoulder Stretch" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Shoulder Stretch</span>
+      </a></li>
+      <li><a class="card" href="exercises/side-bridge.html" data-variant="side-bridge" data-search="side bridge" data-equipment="body-only" data-muscles="abdominals">
+        <img src="images/side-bridge/0.jpg" alt="Side Bridge" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Side Bridge</span>
+      </a></li>
+      <li><a class="card" href="exercises/side-lateral-raise.html" data-variant="side-lateral-raise" data-search="side lateral raise" data-equipment="dumbbell" data-muscles="shoulders">
+        <img src="images/side-lateral-raise/0.jpg" alt="Side Lateral Raise" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Side Lateral Raise</span>
+      </a></li>
+      <li><a class="card" href="exercises/single-leg-glute-bridge.html" data-variant="single-leg-glute-bridge" data-search="single leg glute bridge" data-equipment="body-only" data-muscles="glutes">
+        <img src="images/single-leg-glute-bridge/0.jpg" alt="Single Leg Glute Bridge" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Single Leg Glute Bridge</span>
+      </a></li>
+      <li><a class="card" href="exercises/cur-single-arm-chest-supported-row.html" data-variant="cur-single-arm-chest-supported-row" data-search="single-arm chest-supported row" data-equipment="machine" data-muscles="middle-back">
+        <img src="images/cur-single-arm-chest-supported-row/0.jpg" alt="Single-arm chest-supported row" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Single-arm chest-supported row</span>
+      </a></li>
+      <li><a class="card" href="exercises/single-leg-leg-extension.html" data-variant="single-leg-leg-extension" data-search="single-leg leg extension" data-equipment="machine" data-muscles="quadriceps">
+        <img src="images/single-leg-leg-extension/0.jpg" alt="Single-Leg Leg Extension" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Single-Leg Leg Extension</span>
+      </a></li>
+      <li><a class="card" href="exercises/smith-machine-bench-press.html" data-variant="smith-machine-bench-press" data-search="smith machine bench press" data-equipment="machine" data-muscles="chest">
+        <img src="images/smith-machine-bench-press/0.jpg" alt="Smith Machine Bench Press" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Smith Machine Bench Press</span>
+      </a></li>
+      <li><a class="card" href="exercises/smith-machine-calf-raise.html" data-variant="smith-machine-calf-raise" data-search="smith machine calf raise" data-equipment="machine" data-muscles="calves">
+        <img src="images/smith-machine-calf-raise/0.jpg" alt="Smith Machine Calf Raise" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Smith Machine Calf Raise</span>
+      </a></li>
+      <li><a class="card" href="exercises/smith-machine-overhead-shoulder-press.html" data-variant="smith-machine-overhead-shoulder-press" data-search="smith machine overhead shoulder press" data-equipment="machine" data-muscles="shoulders">
+        <img src="images/smith-machine-overhead-shoulder-press/0.jpg" alt="Smith Machine Overhead Shoulder Press" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Smith Machine Overhead Shoulder Press</span>
+      </a></li>
+      <li><a class="card" href="exercises/spinal-stretch.html" data-variant="spinal-stretch" data-search="spinal stretch" data-equipment="unspecified" data-muscles="middle-back">
+        <img src="images/spinal-stretch/0.jpg" alt="Spinal Stretch" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Spinal Stretch</span>
+      </a></li>
+      <li><a class="card" href="exercises/split-squat-with-dumbbells.html" data-variant="split-squat-with-dumbbells" data-search="split squat with dumbbells" data-equipment="dumbbell" data-muscles="quadriceps">
+        <img src="images/split-squat-with-dumbbells/0.jpg" alt="Split Squat with Dumbbells" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Split Squat with Dumbbells</span>
+      </a></li>
+      <li><a class="card" href="exercises/split-squats.html" data-variant="split-squats" data-search="split squats" data-equipment="unspecified" data-muscles="hamstrings">
+        <img src="images/split-squats/0.jpg" alt="Split Squats" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Split Squats</span>
+      </a></li>
+      <li><a class="card" href="exercises/squats-with-bands.html" data-variant="squats-with-bands" data-search="squats - with bands" data-equipment="bands" data-muscles="quadriceps">
+        <img src="images/squats-with-bands/0.jpg" alt="Squats - With Bands" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Squats - With Bands</span>
+      </a></li>
+      <li><a class="card" href="exercises/standing-barbell-calf-raise.html" data-variant="standing-barbell-calf-raise" data-search="standing barbell calf raise" data-equipment="barbell" data-muscles="calves">
+        <img src="images/standing-barbell-calf-raise/0.jpg" alt="Standing Barbell Calf Raise" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Standing Barbell Calf Raise</span>
+      </a></li>
+      <li><a class="card" href="exercises/standing-biceps-cable-curl.html" data-variant="standing-biceps-cable-curl" data-search="standing biceps cable curl" data-equipment="cable" data-muscles="biceps">
+        <img src="images/standing-biceps-cable-curl/0.jpg" alt="Standing Biceps Cable Curl" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Standing Biceps Cable Curl</span>
+      </a></li>
+      <li><a class="card" href="exercises/cur-standing-cable-hip-abduction.html" data-variant="cur-standing-cable-hip-abduction" data-search="standing cable hip abduction" data-equipment="cable" data-muscles="abductors">
+        <img src="images/cur-standing-cable-hip-abduction/0.jpg" alt="Standing cable hip abduction" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Standing cable hip abduction</span>
+      </a></li>
+      <li><a class="card" href="exercises/standing-cable-wood-chop.html" data-variant="standing-cable-wood-chop" data-search="standing cable wood chop" data-equipment="cable" data-muscles="abdominals">
+        <img src="images/standing-cable-wood-chop/0.jpg" alt="Standing Cable Wood Chop" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Standing Cable Wood Chop</span>
+      </a></li>
+      <li><a class="card" href="exercises/cur-standing-calf-raise.html" data-variant="cur-standing-calf-raise" data-search="standing calf raise" data-equipment="machine" data-muscles="calves">
+        <img src="images/cur-standing-calf-raise/0.jpg" alt="Standing calf raise" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Standing calf raise</span>
+      </a></li>
+      <li><a class="card" href="exercises/standing-dumbbell-calf-raise.html" data-variant="standing-dumbbell-calf-raise" data-search="standing dumbbell calf raise" data-equipment="dumbbell" data-muscles="calves">
+        <img src="images/standing-dumbbell-calf-raise/0.jpg" alt="Standing Dumbbell Calf Raise" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Standing Dumbbell Calf Raise</span>
+      </a></li>
+      <li><a class="card" href="exercises/standing-dumbbell-press.html" data-variant="standing-dumbbell-press" data-search="standing dumbbell press" data-equipment="dumbbell" data-muscles="shoulders">
+        <img src="images/standing-dumbbell-press/0.jpg" alt="Standing Dumbbell Press" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Standing Dumbbell Press</span>
+      </a></li>
+      <li><a class="card" href="exercises/standing-dumbbell-triceps-extension.html" data-variant="standing-dumbbell-triceps-extension" data-search="standing dumbbell triceps extension" data-equipment="dumbbell" data-muscles="triceps">
+        <img src="images/standing-dumbbell-triceps-extension/0.jpg" alt="Standing Dumbbell Triceps Extension" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Standing Dumbbell Triceps Extension</span>
+      </a></li>
+      <li><a class="card" href="exercises/standing-hip-circles.html" data-variant="standing-hip-circles" data-search="standing hip circles" data-equipment="body-only" data-muscles="abductors">
+        <img src="images/standing-hip-circles/0.jpg" alt="Standing Hip Circles" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Standing Hip Circles</span>
+      </a></li>
+      <li><a class="card" href="exercises/standing-leg-curl.html" data-variant="standing-leg-curl" data-search="standing leg curl" data-equipment="machine" data-muscles="hamstrings">
+        <img src="images/standing-leg-curl/0.jpg" alt="Standing Leg Curl" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Standing Leg Curl</span>
+      </a></li>
+      <li><a class="card" href="exercises/standing-long-jump.html" data-variant="standing-long-jump" data-search="standing long jump" data-equipment="body-only" data-muscles="quadriceps">
+        <img src="images/standing-long-jump/0.jpg" alt="Standing Long Jump" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Standing Long Jump</span>
+      </a></li>
+      <li><a class="card" href="exercises/standing-military-press.html" data-variant="standing-military-press" data-search="standing military press" data-equipment="barbell" data-muscles="shoulders">
+        <img src="images/standing-military-press/0.jpg" alt="Standing Military Press" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Standing Military Press</span>
+      </a></li>
+      <li><a class="card" href="exercises/standing-soleus-and-achilles-stretch.html" data-variant="standing-soleus-and-achilles-stretch" data-search="standing soleus and achilles stretch" data-equipment="unspecified" data-muscles="calves">
+        <img src="images/standing-soleus-and-achilles-stretch/0.jpg" alt="Standing Soleus And Achilles Stretch" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Standing Soleus And Achilles Stretch</span>
+      </a></li>
+      <li><a class="card" href="exercises/stiff-legged-dumbbell-deadlift.html" data-variant="stiff-legged-dumbbell-deadlift" data-search="stiff-legged dumbbell deadlift" data-equipment="dumbbell" data-muscles="hamstrings">
+        <img src="images/stiff-legged-dumbbell-deadlift/0.jpg" alt="Stiff-Legged Dumbbell Deadlift" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Stiff-Legged Dumbbell Deadlift</span>
+      </a></li>
+      <li><a class="card" href="exercises/straight-arm-dumbbell-pullover.html" data-variant="straight-arm-dumbbell-pullover" data-search="straight-arm dumbbell pullover" data-equipment="dumbbell" data-muscles="chest">
+        <img src="images/straight-arm-dumbbell-pullover/0.jpg" alt="Straight-Arm Dumbbell Pullover" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Straight-Arm Dumbbell Pullover</span>
+      </a></li>
+      <li><a class="card" href="exercises/straight-arm-pulldown.html" data-variant="straight-arm-pulldown" data-search="straight-arm pulldown" data-equipment="cable" data-muscles="lats">
+        <img src="images/straight-arm-pulldown/0.jpg" alt="Straight-Arm Pulldown" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Straight-Arm Pulldown</span>
+      </a></li>
+      <li><a class="card" href="exercises/superman.html" data-variant="superman" data-search="superman" data-equipment="body-only" data-muscles="lower-back">
+        <img src="images/superman/0.jpg" alt="Superman" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Superman</span>
+      </a></li>
+      <li><a class="card" href="exercises/trail-running-walking.html" data-variant="trail-running-walking" data-search="trail running/walking" data-equipment="unspecified" data-muscles="quadriceps">
+        <img src="images/trail-running-walking/0.jpg" alt="Trail Running/Walking" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Trail Running/Walking</span>
+      </a></li>
+      <li><a class="card" href="exercises/trap-bar-deadlift.html" data-variant="trap-bar-deadlift" data-search="trap bar deadlift" data-equipment="other" data-muscles="quadriceps">
+        <img src="images/trap-bar-deadlift/0.jpg" alt="Trap Bar Deadlift" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Trap Bar Deadlift</span>
+      </a></li>
+      <li><a class="card" href="exercises/cur-triceps-pushdown.html" data-variant="cur-triceps-pushdown" data-search="triceps pushdown" data-equipment="cable" data-muscles="triceps">
+        <img src="images/cur-triceps-pushdown/0.jpg" alt="Triceps pushdown" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Triceps pushdown</span>
+      </a></li>
+      <li><a class="card" href="exercises/triceps-pushdown.html" data-variant="triceps-pushdown" data-search="triceps pushdown" data-equipment="cable" data-muscles="triceps">
+        <img src="images/triceps-pushdown/0.jpg" alt="Triceps Pushdown" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Triceps Pushdown</span>
+      </a></li>
+      <li><a class="card" href="exercises/triceps-pushdown-rope-attachment.html" data-variant="triceps-pushdown-rope-attachment" data-search="triceps pushdown - rope attachment" data-equipment="cable" data-muscles="triceps">
+        <img src="images/triceps-pushdown-rope-attachment/0.jpg" alt="Triceps Pushdown - Rope Attachment" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Triceps Pushdown - Rope Attachment</span>
+      </a></li>
+      <li><a class="card" href="exercises/two-arm-kettlebell-row.html" data-variant="two-arm-kettlebell-row" data-search="two-arm kettlebell row" data-equipment="kettlebell" data-muscles="middle-back">
+        <img src="images/two-arm-kettlebell-row/0.jpg" alt="Two-Arm Kettlebell Row" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Two-Arm Kettlebell Row</span>
+      </a></li>
+      <li><a class="card" href="exercises/underhand-cable-pulldowns.html" data-variant="underhand-cable-pulldowns" data-search="underhand cable pulldowns" data-equipment="cable" data-muscles="lats">
+        <img src="images/underhand-cable-pulldowns/0.jpg" alt="Underhand Cable Pulldowns" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Underhand Cable Pulldowns</span>
+      </a></li>
+      <li><a class="card" href="exercises/v-bar-pulldown.html" data-variant="v-bar-pulldown" data-search="v-bar pulldown" data-equipment="cable" data-muscles="lats">
+        <img src="images/v-bar-pulldown/0.jpg" alt="V-Bar Pulldown" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">V-Bar Pulldown</span>
+      </a></li>
+      <li><a class="card" href="exercises/weighted-pull-ups.html" data-variant="weighted-pull-ups" data-search="weighted pull ups" data-equipment="other" data-muscles="lats">
+        <img src="images/weighted-pull-ups/0.jpg" alt="Weighted Pull Ups" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Weighted Pull Ups</span>
+      </a></li>
+      <li><a class="card" href="exercises/wide-grip-barbell-bench-press.html" data-variant="wide-grip-barbell-bench-press" data-search="wide-grip barbell bench press" data-equipment="barbell" data-muscles="chest">
+        <img src="images/wide-grip-barbell-bench-press/0.jpg" alt="Wide-Grip Barbell Bench Press" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Wide-Grip Barbell Bench Press</span>
+      </a></li>
+      <li><a class="card" href="exercises/wide-grip-lat-pulldown.html" data-variant="wide-grip-lat-pulldown" data-search="wide-grip lat pulldown" data-equipment="cable" data-muscles="lats">
+        <img src="images/wide-grip-lat-pulldown/0.jpg" alt="Wide-Grip Lat Pulldown" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Wide-Grip Lat Pulldown</span>
+      </a></li>
+      <li><a class="card" href="exercises/cur-wide-grip-pulldown.html" data-variant="cur-wide-grip-pulldown" data-search="wide-grip pulldown" data-equipment="cable" data-muscles="lats">
+        <img src="images/cur-wide-grip-pulldown/0.jpg" alt="Wide-grip pulldown" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Wide-grip pulldown</span>
+      </a></li>
+      <li><a class="card" href="exercises/wind-sprints.html" data-variant="wind-sprints" data-search="wind sprints" data-equipment="body-only" data-muscles="abdominals">
+        <img src="images/wind-sprints/0.jpg" alt="Wind Sprints" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">Wind Sprints</span>
+      </a></li>
+      <li><a class="card" href="exercises/worlds-greatest-stretch.html" data-variant="worlds-greatest-stretch" data-search="world&#39;s greatest stretch" data-equipment="unspecified" data-muscles="hamstrings">
+        <img src="images/worlds-greatest-stretch/0.jpg" alt="World&#39;s Greatest Stretch" loading="lazy" decoding="async">
+        <span class="card-overlay" aria-hidden="true"></span>
+        <span class="card-name">World&#39;s Greatest Stretch</span>
+      </a></li>
+    </ul>
+    <footer class="provenance">
+      <p>Images and instructions sourced from yuhonas/free-exercise-db
+        (https://github.com/yuhonas/free-exercise-db), licensed under the Unlicense (public domain).</p>
+    </footer>
+  </main>
+  <script src="site.js" defer></script>
+</body>
+</html>

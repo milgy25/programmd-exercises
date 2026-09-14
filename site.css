@@ -1,0 +1,449 @@
+/* Exercise Glossary stylesheet — brand-plain, mobile-first. Self-hosted Instrument Serif for
+   headings only (see @font-face below); body text and UI chrome stay on the system font stack.
+   Three brand hexes: rust #B5502E, dark ink #0E0C0B, grey #6C6458, plus --cream (#F7F7F6, taken
+   verbatim from the Studio app's --paper token in src/document/document.css). The font is the
+   only external reference this sheet makes, and it points at a sibling file copied into this
+   same output tree on every build — still zero CDN, zero @import, zero third-party host.
+
+   A CSS url() resolves against THIS STYLESHEET's own location, not the document that links it —
+   that is why the single relative "fonts/..." path below works unchanged from both index.html
+   (same directory as this file) and exercises/*.html (one level down). Do not "fix" this into a
+   ../ variant; that would break it from index.html. Copied verbatim into
+   glossary-site/dist/site.css on every build. */
+
+:root {
+  --ink: #0E0C0B;
+  --grey: #6C6458;
+  --rust: #B5502E;
+  --cream: #F7F7F6;
+  --hairline: rgba(108, 100, 88, 0.22);
+}
+
+@font-face {
+  font-family: "Instrument Serif";
+  src: url("fonts/InstrumentSerif-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #ffffff;
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+}
+
+/* Detail page keeps the 42rem reading measure; the index runs much wider to fit the card grid. */
+.page {
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem;
+}
+
+.index {
+  max-width: 75rem;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem;
+}
+
+/* Sits above the full-bleed hero on a plain white background so it stays reachable and legible
+   regardless of how bright or dark the hero photo underneath it is. */
+.back {
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: 1rem 1rem 0;
+}
+
+a {
+  color: var(--rust);
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  text-decoration: underline;
+}
+
+h1,
+.hero-title,
+.card-name {
+  font-family: "Instrument Serif", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, serif;
+  font-weight: 400;
+}
+
+h1 {
+  font-size: 1.75rem;
+  margin: 0 0 1rem;
+  color: var(--ink);
+}
+
+.meta,
+.total,
+.provenance {
+  color: var(--grey);
+  font-size: 0.875rem;
+}
+
+/* Detail-page hero — full-bleed (runs to the container edge, outside .page's 42rem reading
+   measure), built from image index 0. Same ink-gradient device as the index cards. */
+.hero {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  color: var(--cream);
+  background: var(--ink);
+  margin: 1rem 0 1.5rem;
+}
+
+@media (min-width: 40rem) {
+  .hero {
+    aspect-ratio: 21 / 9;
+  }
+}
+
+.hero img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(14, 12, 11, 0.92) 0%,
+    rgba(14, 12, 11, 0.70) 38%,
+    rgba(14, 12, 11, 0) 72%
+  );
+}
+
+.hero-title {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  padding: 1.25rem 1.25rem 1.5rem;
+  font-size: 2rem;
+  color: var(--cream);
+}
+
+@media (min-width: 40rem) {
+  .hero-title {
+    font-size: 2.75rem;
+    padding: 2rem 2rem 2.5rem;
+  }
+}
+
+/* Non-interactive chips (D-11): plain spans, never links. Data rendered verbatim, lowercase,
+   per D-07 — equipment first, then primary muscles. */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0 0 1.5rem;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.65rem;
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+  font-size: 0.8125rem;
+  color: var(--grey);
+  background: #ffffff;
+}
+
+/* D-07/T-FMT-03: states plainly that a representative entry's photo belongs to a named sibling,
+   not to this exercise. Same bordered-chip treatment as .tag, but a block-level note rather than
+   an inline pill, since it carries a full sentence rather than a single value. */
+.reference-note {
+  margin: 0 0 1.5rem;
+  padding: 0.65rem 0.9rem;
+  border: 1px solid var(--hairline);
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--grey);
+  background: #ffffff;
+}
+
+/* D-08's no-fabrication rule: a disclosed instructions gap (currently only side-bridge) states
+   the gap in place of the numbered steps rather than showing nothing or inventing text. Same
+   bordered-note treatment as .reference-note. */
+.instructions-gap-note {
+  margin: 0 0 0.75rem;
+  padding: 0.65rem 0.9rem;
+  border: 1px solid var(--hairline);
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--grey);
+  background: #ffffff;
+}
+
+.images {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: 0 0 1.5rem;
+}
+
+.images img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid var(--hairline);
+}
+
+@media (min-width: 40rem) {
+  .images {
+    flex-direction: row;
+  }
+
+  .images img {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+}
+
+.instructions {
+  margin: 0 0 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.instructions li {
+  margin-bottom: 0.5rem;
+  color: var(--ink);
+}
+
+.instructions li::marker {
+  color: var(--rust);
+  font-weight: 600;
+}
+
+.index-header {
+  margin: 0 0 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.index-header h1 {
+  margin-bottom: 0.25rem;
+}
+
+/* Controls — search + facet checkboxes, sitting above the grid. Deliberately not sticky (D-12):
+   a sticky bar over a multi-row chip group eats too much of the mobile viewport, and the always-
+   stated result count already makes scrolling back up cheap. */
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin: 0 0 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.search-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  max-width: 24rem;
+}
+
+.search-field label {
+  font-size: 0.8125rem;
+  color: var(--grey);
+}
+
+.search-field input[type="search"] {
+  font: inherit;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--hairline);
+  border-radius: 0.25rem;
+  color: var(--ink);
+  background: #ffffff;
+}
+
+.search-field input[type="search"]:focus-visible {
+  outline: 2px solid var(--rust);
+  outline-offset: 1px;
+}
+
+.filter-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.filter-group legend {
+  font-size: 0.8125rem;
+  color: var(--grey);
+  padding: 0;
+  margin: 0 0.5rem 0 0;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.3rem 0.65rem;
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+  font-size: 0.8125rem;
+  color: var(--ink);
+  cursor: pointer;
+  background: #ffffff;
+}
+
+.chip input[type="checkbox"] {
+  accent-color: var(--rust);
+  margin: 0;
+}
+
+.chip:has(input:checked) {
+  border-color: var(--rust);
+  color: var(--rust);
+  background: rgba(181, 80, 46, 0.08);
+}
+
+.chip:focus-within {
+  outline: 2px solid var(--rust);
+  outline-offset: 1px;
+}
+
+.result-count {
+  margin: 0;
+  color: var(--grey);
+  font-size: 0.875rem;
+}
+
+.empty-state {
+  margin: 0 0 1.5rem;
+  padding: 1.5rem;
+  border: 1px dashed var(--hairline);
+  border-radius: 0.25rem;
+  color: var(--grey);
+  text-align: center;
+}
+
+.empty-state[hidden] {
+  display: none;
+}
+
+.empty-state button {
+  margin-top: 0.5rem;
+  font: inherit;
+  color: var(--rust);
+  background: none;
+  border: 1px solid var(--rust);
+  border-radius: 0.25rem;
+  padding: 0.4rem 0.9rem;
+  cursor: pointer;
+}
+
+.empty-state button:focus-visible {
+  outline: 2px solid var(--rust);
+  outline-offset: 1px;
+}
+
+/* Card grid — mobile-first: two columns fit at a 375px phone width, more as the viewport widens. */
+.index-grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr));
+  gap: 0.75rem;
+  margin: 0 0 1.5rem;
+  padding: 0;
+}
+
+@media (min-width: 60rem) {
+  .index-grid {
+    grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+    gap: 1rem;
+  }
+}
+
+.index-grid li[hidden] {
+  display: none;
+}
+
+.card {
+  position: relative;
+  display: block;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  border-radius: 0.25rem;
+  color: var(--cream);
+  background: var(--ink);
+}
+
+.card:hover .card-name,
+.card:focus-visible .card-name {
+  text-decoration: underline;
+}
+
+.card:focus-visible {
+  outline: 3px solid var(--rust);
+  outline-offset: 2px;
+}
+
+.card img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(14, 12, 11, 0.92) 0%,
+    rgba(14, 12, 11, 0.70) 38%,
+    rgba(14, 12, 11, 0) 72%
+  );
+}
+
+.card-name {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.6rem 0.75rem;
+  color: var(--cream);
+  font-size: 1.1rem;
+  line-height: 1.25;
+}
+
+footer.provenance {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--hairline);
+  color: var(--grey);
+}
+
+footer.provenance a {
+  color: var(--rust);
+}
