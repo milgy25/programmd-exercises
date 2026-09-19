@@ -247,6 +247,21 @@ h1 {
   margin-bottom: 0.25rem;
 }
 
+/* D-04: the explainer sits in the site's existing header, not a new section. `.index-explainer`
+   reads as body copy (inherits ink); `.index-attribution` uses the same grey register as
+   `.provenance` below the grid -- the right visual weight for a credit line, not a headline. */
+.index-explainer {
+  margin: 0.75rem 0 0;
+  max-width: 34rem;
+}
+
+.index-attribution {
+  margin: 0.35rem 0 0;
+  max-width: 34rem;
+  color: var(--grey);
+  font-size: 0.875rem;
+}
+
 /* Controls — search + facet checkboxes, sitting above the grid. Deliberately not sticky (D-12):
    a sticky bar over a multi-row chip group eats too much of the mobile viewport, and the always-
    stated result count already makes scrolling back up cheap. */
@@ -446,4 +461,32 @@ footer.provenance {
 
 footer.provenance a {
   color: var(--rust);
+}
+
+/* CTA — links exercise pages to the quiz */
+.cta {
+  margin: 48px 0 0;
+  padding: 24px;
+  border: 1px solid #D9D4D0;
+  border-radius: 8px;
+  text-align: center;
+}
+.cta p {
+  margin: 0 0 12px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #45403C;
+}
+.cta a {
+  display: inline-block;
+  padding: 10px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  background: #1B1917;
+  border-radius: 6px;
+  text-decoration: none;
+}
+.cta a:hover {
+  background: #45403C;
 }

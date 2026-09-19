@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://exercises.programmd.co/sitemap.xml
