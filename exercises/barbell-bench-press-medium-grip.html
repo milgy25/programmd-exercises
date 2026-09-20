@@ -31,38 +31,70 @@
 </head>
 <body>
   <header class="site-nav">
-    <div class="site-nav-inner">
-      <a class="site-nav-brand" href="https://programmd.co">Programmd.</a>
-      <nav aria-label="Site">
+    <nav class="site-nav-bar" aria-label="Main">
+      <div class="site-nav-links">
+        <a href="https://programmd.co/collections/programs">Programs</a>
+        <a href="https://programmd.co/pages/training">How it works</a>
+        <a href="https://programmd.co/pages/guides">Guides</a>
         <details class="site-nav-menu">
           <summary>Tools</summary>
-          <ul>
-          <li><a href="../index.html">Exercise glossary</a></li>
-          <li><a href="../tools/tdee.html">TDEE calculator</a></li>
-          <li><a href="../tools/macros.html">Macro calculator</a></li>
-          <li><a href="../tools/one-rep-max.html">One rep max calculator</a></li>
-          <li><a href="../tools/plates.html">Plate calculator</a></li>
-          <li><a href="../tools/rpe-rir.html">RPE and RIR chart</a></li>
-          <li><a href="../tools/days-quiz.html">Programs by training days</a></li>
+          <ul role="list">
+            <li><a href="../tools/tdee.html">TDEE calculator</a></li>
+            <li><a href="../tools/macros.html">Macro calculator</a></li>
+            <li><a href="../tools/one-rep-max.html">One rep max calculator</a></li>
+            <li><a href="../tools/plates.html">Plate calculator</a></li>
+            <li><a href="../tools/rpe-rir.html">RPE and RIR chart</a></li>
+            <li><a href="../tools/days-quiz.html">Programs by training days</a></li>
+            <li><a href="../index.html">Exercise glossary</a></li>
             <li class="site-nav-all"><a href="../tools/index.html">All tools</a></li>
           </ul>
         </details>
-        <a class="site-nav-cta" href="https://programmd.co/pages/quiz">Find your program</a>
-      </nav>
-    </div>
+        <a class="site-nav-gloss" href="../index.html">Exercises</a>
+        <a href="https://programmd.co/pages/about">About</a>
+      </div>
+      <a class="site-nav-mark" href="https://programmd.co/" aria-label="Programmd. home">
+        <img src="../brand/pm-logo-lockup-light.png" alt="Programmd." width="103" height="30" decoding="async">
+      </a>
+      <div class="site-nav-end">
+        <a class="site-nav-cta" href="https://programmd.co/pages/quiz">Find my program</a>
+      </div>
+      <details class="site-nav-m">
+        <summary aria-label="Menu">
+          <span class="site-nav-m-bars" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span>Menu</span>
+        </summary>
+        <div class="site-nav-m-panel">
+          <a href="https://programmd.co/collections/programs">Programs</a>
+          <a href="https://programmd.co/pages/training">How it works</a>
+          <a href="https://programmd.co/pages/guides">Guides</a>
+          <a href="../tools/index.html">Tools</a>
+          <a href="../index.html">Exercises</a>
+          <a href="https://programmd.co/pages/about">About</a>
+          <a href="https://programmd.co/pages/quiz">Find my program</a>
+        </div>
+      </details>
+    </nav>
   </header>
   <script>
   (function () {
-    var menu = document.querySelector('.site-nav-menu');
-    if (!menu) return;
-    document.addEventListener('click', function (event) {
-      if (menu.open && !menu.contains(event.target)) menu.open = false;
-    });
+    var open = function () { return document.querySelectorAll('.site-nav details[open]'); };
+    var outside = function (event) {
+      open().forEach(function (d) { if (!d.contains(event.target)) d.open = false; });
+    };
+    document.addEventListener('click', outside);
+    // focusin, so tabbing past the last link closes the panel rather than leaving it open over
+    // the page: at 375px it covered the search field that had focus. focusin rather than
+    // focusout because it never fires on a mouse click inside the panel.
+    document.addEventListener('focusin', outside);
+    // Escape hands focus back to the label only if focus was inside that disclosure. Without
+    // the test, Escape pressed anywhere on the page dragged focus up to Tools.
     document.addEventListener('keydown', function (event) {
-      if (event.key === 'Escape' && menu.open) {
-        menu.open = false;
-        menu.querySelector('summary').focus();
-      }
+      if (event.key !== 'Escape') return;
+      open().forEach(function (d) {
+        var inside = d.contains(document.activeElement);
+        d.open = false;
+        if (inside) d.querySelector('summary').focus();
+      });
     });
   })();
   </script>
@@ -80,7 +112,7 @@
     <div class="images">
       <img src="../images/barbell-bench-press-medium-grip/1.jpg" alt="Barbell Bench Press - Medium Grip — demonstration image 2">
     </div>
-    <ol class="instructions">
+    <ol class="instructions" role="list">
         <li>Lie back on a flat bench. Using a medium width grip (a grip that creates a 90-degree angle in the middle of the movement between the forearms and the upper arms), lift the bar from the rack and hold it straight over you with your arms locked. This will be your starting position.</li>
         <li>From the starting position, breathe in and begin coming down slowly until the bar touches your middle chest.</li>
         <li>After a brief pause, push the bar back to the starting position as you breathe out. Focus on pushing the bar using your chest muscles. Lock your arms and squeeze your chest in the contracted position at the top of the motion, hold for a second and then start coming down slowly again. Tip: Ideally, lowering the weight should take about twice as long as raising it.</li>
@@ -89,11 +121,11 @@
     </ol>
     <div class="cta">
       <p>This exercise appears in Programmd training programs. Take the quiz to find one for your gym.</p>
-      <a href="https://programmd.co/pages/quiz">Find your program</a>
+      <a href="https://programmd.co/pages/quiz">Find my program</a>
     </div>
 
-    <h2>Training tools</h2>
-    <ul class="tool-links">
+    <h2 class="section-label">Training tools</h2>
+    <ul class="tool-links" role="list">
       <li><a href="../tools/tdee.html">TDEE calculator</a></li>
       <li><a href="../tools/macros.html">Macro calculator</a></li>
       <li><a href="../tools/one-rep-max.html">One rep max calculator</a></li>

@@ -1,29 +1,79 @@
-/* Exercise Glossary stylesheet — brand-plain, mobile-first. Self-hosted Instrument Serif for
-   headings only (see @font-face below); body text and UI chrome stay on the system font stack.
-   Three brand hexes: rust #B5502E, dark ink #0E0C0B, grey #6C6458, plus --cream (#F7F7F6, taken
-   verbatim from the Studio app's --paper token in src/document/document.css). The font is the
-   only external reference this sheet makes, and it points at a sibling file copied into this
-   same output tree on every build — still zero CDN, zero @import, zero third-party host.
+/* exercises.programmd.co stylesheet. Mobile-first, no build step, no third-party host.
 
-   A CSS url() resolves against THIS STYLESHEET's own location, not the document that links it —
-   that is why the single relative "fonts/..." path below works unchanged from both index.html
-   (same directory as this file) and exercises/*.html (one level down). Do not "fix" this into a
-   ../ variant; that would break it from index.html. Copied verbatim into
-   glossary-site/dist/site.css on every build. */
+   20 Sep 2026: REBUILT ON THE STORE'S DESIGN SYSTEM. Miles, on the first version of the tools:
+   "keep it more in line with the design principles from the actual website". The first version
+   was white paper, a rust accent and Instrument Serif: coherent, and nothing like the shop it
+   is a subdomain of. A visitor who clicked Tools on programmd.co landed somewhere that looked
+   like a different company.
+
+   Every token below is the store's, copied from the theme rather than approximated:
+   snippets/mk-css.liquid for colour and the two faces, snippets/mk-adapt-css.liquid section 1
+   for the fluid scale (--gut, the h1/h2 ramps). The principles carried over with them:
+
+     1. INK IS THE GROUND, PAPER IS THE OBJECT. The store's pages are dark ink, and the things
+        it wants looked at sit on them as white sheets: the session page, the comparison table.
+        Here the calculator's ANSWER is the sheet. Inputs stay in a hairline card on the ink.
+     2. ONE FAMILY, TWO WIDTHS. Inter for reading, Inter Tight for headings and for labels. No
+        serif, no mono. The store dropped its mono on 30 Aug ("mono has become costume"); labels
+        are Inter Tight, uppercase, tracked, with tabular figures where numbers line up.
+     3. HEADLINES ARE TIGHT AND HEAVY, WITH ONE ITALIC WORD. 700, -0.02em to -0.03em, line-height
+        near 1. The emphasis is an <em> in the markup, never a colour.
+     4. TEAL IS THE ONLY ACCENT and it means "this is the action". #1C6478 filled with white text
+        on paper and in the header, #65ABC4 where it has to read on ink.
+     5. HAIRLINES, NOT BOXES. Lists are rows divided by 1px rules with a small teal index
+        (01, 02...), the store's most repeated device. Cards are a 1px outline, never a fill.
+     6. PILLS FOR ACTIONS, 12-14px RADII FOR SURFACES, SQUARE CORNERS FOR PAPER.
+
+   The fonts are self-hosted latin woff2 (141KB for all three, less than the one serif TTF they
+   replace weighed twice over). A CSS url() resolves against THIS STYLESHEET's own location, not
+   the document that links it, which is why the single relative "fonts/..." path works unchanged
+   from index.html, exercises/*.html and tools/*.html. Do not "fix" it into a ../ variant.
+   Copied verbatim into glossary-site/dist/site.css on every build. */
 
 :root {
-  --ink: #0E0C0B;
-  --grey: #6C6458;
-  --rust: #B5502E;
-  --cream: #F7F7F6;
-  --hairline: rgba(108, 100, 88, 0.22);
+  --ink: #16171C;
+  --ink-deep: #0F1013;
+  --paper: #ffffff;
+  --salt: #F3F5F6;
+  --acc: #1C6478;
+  --acc-lt: #65ABC4;
+  --acc-wash: #F1F6F7;
+  --mut: #454A52;
+  --mut-d: #9FAEB5;
+  --rule: #E2E6E9;
+  --rule-d: rgba(217, 228, 232, 0.16);
+  --on-ink: rgba(217, 228, 232, 0.86);
+  --on-ink-nav: rgba(217, 228, 232, 0.8);
+  --warn: #EDA993;
+  --label: "Inter Tight", system-ui, sans-serif;
+  --gut: clamp(20px, 4.815vw + 2.67px, 72px);
+  --h1: clamp(32px, 2.2vw + 22px, 54px);
+  --h2: clamp(24px, 1.1vw + 19px, 34px);
+  --measure: 44rem;
+  --wide: 1296px;
 }
 
 @font-face {
-  font-family: "Instrument Serif";
-  src: url("fonts/InstrumentSerif-Regular.ttf") format("truetype");
-  font-weight: 400;
+  font-family: "Inter";
+  src: url("fonts/Inter-Variable.woff2") format("woff2");
+  font-weight: 400 700;
   font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter Tight";
+  src: url("fonts/InterTight-Variable.woff2") format("woff2");
+  font-weight: 500 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter Tight";
+  src: url("fonts/InterTight-Italic-Variable.woff2") format("woff2");
+  font-weight: 500 800;
+  font-style: italic;
   font-display: swap;
 }
 
@@ -33,40 +83,21 @@
 
 html {
   font-size: 16px;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
   margin: 0;
   padding: 0;
-  background: #ffffff;
-  color: var(--ink);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-}
-
-/* Detail page keeps the 42rem reading measure; the index runs much wider to fit the card grid. */
-.page {
-  max-width: 42rem;
-  margin: 0 auto;
-  padding: 1.5rem 1rem 3rem;
-}
-
-.index {
-  max-width: 75rem;
-  margin: 0 auto;
-  padding: 1.5rem 1rem 3rem;
-}
-
-/* Sits above the full-bleed hero on a plain white background so it stays reachable and legible
-   regardless of how bright or dark the hero photo underneath it is. */
-.back {
-  max-width: 42rem;
-  margin: 0 auto;
-  padding: 1rem 1rem 0;
+  background: var(--ink);
+  color: var(--on-ink);
+  font-family: Inter, system-ui, sans-serif;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
 }
 
 a {
-  color: var(--rust);
+  color: var(--acc-lt);
   text-decoration: none;
 }
 
@@ -75,42 +106,751 @@ a:focus {
   text-decoration: underline;
 }
 
+:focus-visible {
+  outline: 2px solid var(--acc-lt);
+  outline-offset: 3px;
+}
+
 h1,
+h2,
+h3,
 .hero-title,
 .card-name {
-  font-family: "Instrument Serif", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
-    Arial, serif;
-  font-weight: 400;
+  font-family: "Inter Tight", system-ui, sans-serif;
+  color: #ffffff;
+}
+
+/* The one italic word. Inter Tight has a drawn italic and it is loaded, so this is a real
+   italic, not the browser slanting the roman. */
+h1 em,
+h2 em {
+  font-style: italic;
+  font-weight: inherit;
+}
+
+/* Balanced wrapping for anything set large: a headline or the quiz card's line should not leave
+   one word alone on its last line ("...matches you to / one."). Ignored where unsupported. */
+h1,
+h2,
+.cta p,
+.hero-title {
+  text-wrap: balance;
 }
 
 h1 {
-  font-size: 1.75rem;
-  margin: 0 0 1rem;
-  color: var(--ink);
+  font-size: var(--h1);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.02;
+  margin: 0;
 }
 
-.meta,
+/* The store's small tracked label: Inter Tight, uppercase, tabular. Used for the count beside a
+   headline, for "Other tools", and for anything that names a group rather than says something. */
+.section-label,
 .total,
-.provenance {
-  color: var(--grey);
-  font-size: 0.875rem;
+.meta {
+  font-family: var(--label);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+  color: var(--mut-d);
 }
 
-/* Detail-page hero — full-bleed (runs to the container edge, outside .page's 42rem reading
-   measure), built from image index 0. Same ink-gradient device as the index cards. */
+h2.section-label {
+  margin: 4.5rem 0 1rem;
+}
+
+/* ===== Site header =====
+   snippets/mk-nav.liquid from the store theme, in static HTML: links left, lockup centred,
+   quiz pill right, the same 1fr auto 1fr grid at the same type size. The markup comes from
+   scripts/lib/site-nav.ts and nowhere else. The two breakpoints (1180 and 940) are the store's,
+   and the store's were measured against the centred mark, not estimated. */
+
+.site-nav {
+  position: relative;
+  z-index: 40; /* the open panels have to sit over the exercise hero, which is positioned too */
+  background: var(--ink);
+  border-bottom: 1px solid rgba(217, 228, 232, 0.12);
+  color: var(--on-ink-nav);
+}
+
+.site-nav-bar {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 16px;
+  padding: 24px var(--gut);
+}
+
+.site-nav a {
+  color: inherit;
+}
+
+.site-nav-links {
+  display: flex;
+  align-items: center;
+  gap: clamp(14px, 1.8vw, 30px);
+  min-width: 0;
+  font-size: 13.5px;
+}
+
+.site-nav-links > a,
+.site-nav-menu > summary {
+  white-space: nowrap;
+}
+
+.site-nav-links > a:hover,
+.site-nav-links > a:focus,
+.site-nav-menu > summary:hover {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.site-nav-links > a[aria-current="page"],
+.site-nav-menu[data-current] > summary {
+  color: #ffffff;
+}
+
+.site-nav-mark {
+  display: block;
+  line-height: 0;
+}
+
+.site-nav-mark img {
+  display: block;
+  height: 30px;
+  width: auto;
+}
+
+.site-nav-end {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 18px;
+  min-width: 0;
+}
+
+.site-nav-cta {
+  padding: 9px 16px;
+  border-radius: 999px;
+  background: var(--acc);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.site-nav a.site-nav-cta {
+  color: #ffffff;
+}
+
+.site-nav-cta:hover,
+.site-nav-cta:focus-visible {
+  background: #237a92;
+  text-decoration: none;
+}
+
+/* The Tools dropdown. A <details>: [open] is the only state there is to style, and it opens by
+   click, tap or keyboard with JavaScript off. */
+.site-nav-menu {
+  position: relative;
+}
+
+.site-nav-menu > summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  list-style: none;
+  cursor: pointer;
+  user-select: none;
+}
+
+.site-nav-menu > summary::-webkit-details-marker,
+.site-nav-m > summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Chevron from two borders: no icon file, and it takes currentColor. */
+.site-nav-menu > summary::after {
+  content: "";
+  width: 5px;
+  height: 5px;
+  margin-top: -3px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg);
+}
+
+.site-nav-menu[open] > summary::after {
+  margin-top: 3px;
+  transform: rotate(-135deg);
+}
+
+.site-nav-menu[open] > summary,
+.site-nav-m[open] > summary {
+  color: #ffffff;
+}
+
+.site-nav-menu ul {
+  position: absolute;
+  left: -13px;
+  top: calc(100% + 14px);
+  z-index: 45;
+  display: grid;
+  min-width: 236px;
+  margin: 0;
+  padding: 7px;
+  list-style: none;
+  background: var(--ink);
+  border: 1px solid var(--rule-d);
+  color: var(--on-ink);
+}
+
+.site-nav-menu li a {
+  display: block;
+  padding: 9px 12px;
+  font-size: 13.5px;
+  white-space: nowrap;
+}
+
+.site-nav-menu li a:hover,
+.site-nav-menu li a:focus-visible {
+  background: rgba(217, 228, 232, 0.09);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.site-nav-menu li a[aria-current="page"] {
+  color: var(--acc-lt);
+}
+
+.site-nav-all {
+  margin-top: 6px;
+  border-top: 1px solid rgba(217, 228, 232, 0.14);
+}
+
+/* .site-nav-menu in front so this outranks ".site-nav-menu li a" above; without it the rule
+   lost and "All tools" rendered the same as the seven links over it. */
+.site-nav-menu .site-nav-all a {
+  padding-top: 12px;
+  font-size: 12.5px;
+  opacity: 0.82;
+}
+
+.site-nav-m {
+  display: none;
+}
+
+/* The Exercises tab is the first link to go, exactly as on the store: the dropdown lists the
+   glossary too, so hiding the tab makes nothing unreachable. */
+/* The selector is a.site-nav-gloss under .site-nav-links on purpose. The plain class loses on
+   specificity to the touch-target rule below (.site-nav-links > a { display: inline-flex }), and
+   then the tab never hides on a touch device: on the store that put "About" on top of the logo
+   on a tablet in landscape. Found there by measuring with a touch pointer. */
+@media (max-width: 1180px) {
+  .site-nav-links > a.site-nav-gloss {
+    display: none;
+  }
+}
+
+/* At 940 and below the link row would reach the centred mark, so it folds into the Menu. */
+@media (max-width: 940px) {
+  .site-nav-bar {
+    grid-template-columns: auto 1fr auto;
+    padding: 16px var(--gut);
+  }
+
+  .site-nav-links,
+  .site-nav-end {
+    display: none;
+  }
+
+  .site-nav-mark {
+    justify-self: start;
+  }
+
+  .site-nav-m {
+    display: block;
+    grid-column: 3;
+    justify-self: end;
+  }
+
+  .site-nav-m > summary {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    min-height: 44px;
+    padding: 0 2px;
+    list-style: none;
+    cursor: pointer;
+    font-family: var(--label);
+    font-size: 10.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .site-nav-m-bars {
+    display: grid;
+    gap: 3.5px;
+    width: 18px;
+  }
+
+  .site-nav-m-bars i {
+    display: block;
+    height: 1.5px;
+    background: currentColor;
+  }
+
+  .site-nav-m[open] .site-nav-m-bars i:nth-child(2) {
+    opacity: 0;
+  }
+
+  .site-nav-m-panel {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    z-index: 30;
+    display: grid;
+    padding: 6px var(--gut) 14px;
+    background: var(--ink);
+    border-bottom: 1px solid rgba(217, 228, 232, 0.12);
+  }
+
+  .site-nav-m-panel a {
+    display: flex;
+    align-items: center;
+    min-height: 48px;
+    font-size: 15px;
+    border-top: 1px solid rgba(217, 228, 232, 0.12);
+  }
+
+  .site-nav-m-panel a[aria-current="page"] {
+    color: #ffffff;
+  }
+}
+
+@media (max-width: 560px) {
+  .site-nav-bar {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+}
+
+@media (pointer: coarse) {
+  .seg button {
+    min-height: 40px;
+    padding: 0 16px;
+  }
+
+  .tool-panel .chip,
+  .quiz-step .chip {
+    min-height: 44px;
+    padding: 0 16px;
+  }
+
+  .tool-links a {
+    padding: 12px 18px;
+  }
+
+  .site-nav-links > a,
+  .site-nav-menu > summary {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+
+  .site-nav-menu li a {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+  }
+}
+
+/* ===== Page containers ===== */
+
+.index,
+.tool {
+  max-width: calc(var(--wide) + 2 * var(--gut));
+  margin: 0 auto;
+  padding: clamp(40px, 5vw, 72px) var(--gut) 72px;
+}
+
+/* An exercise page reads as an article, so it keeps a reading measure. */
+.page {
+  max-width: calc(var(--measure) + 2 * var(--gut));
+  margin: 0 auto;
+  padding: 8px var(--gut) 72px;
+}
+
+.back {
+  max-width: calc(var(--wide) + 2 * var(--gut));
+  margin: 0 auto;
+  padding: 6px var(--gut) 0;
+  font-size: 13px;
+}
+
+/* A 13px link is a 16px-tall target, under the 24px minimum, and this one is a standalone
+   control, not a link inside a sentence. The box grows; the type does not. */
+.back a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--mut-d);
+}
+
+.back a:hover,
+.back a:focus {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.provenance {
+  font-size: 0.8125rem;
+  color: var(--mut-d);
+}
+
+footer.provenance {
+  margin-top: 72px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule-d);
+}
+
+footer.provenance p {
+  margin: 0;
+  max-width: var(--measure);
+}
+
+footer.provenance a {
+  display: inline-block;
+  padding: 12px 0;
+  color: var(--on-ink);
+}
+
+footer.provenance a:hover {
+  color: #ffffff;
+}
+
+/* ===== The glossary index ===== */
+
+/* Headline left, count opposite it as a tracked label: the guides page's "The free stuff /
+   FOUR PLACES TO START" arrangement. */
+.index-header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  column-gap: 24px;
+  margin: 0 0 40px;
+}
+
+.index-header h1 {
+  grid-column: 1;
+}
+
+.index-header .total {
+  grid-column: 2;
+  margin: 0 0 6px;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.index-explainer,
+.index-attribution {
+  grid-column: 1 / -1;
+  max-width: 40rem;
+}
+
+.index-explainer {
+  margin: 20px 0 0;
+  font-size: 1.0625rem;
+}
+
+.index-attribution {
+  margin: 6px 0 0;
+  font-size: 0.8125rem;
+  color: var(--mut-d);
+}
+
+@media (max-width: 560px) {
+  .index-header {
+    grid-template-columns: 1fr;
+  }
+
+  .index-header .total {
+    grid-column: 1;
+    grid-row: 1;
+    margin: 0 0 12px;
+    text-align: left;
+  }
+}
+
+/* Controls. Not sticky (D-12): a sticky bar over a multi-row chip group eats too much of a
+   phone viewport, and the always-stated result count makes scrolling back up cheap.
+   color-scheme:dark so the browser's own pieces (the search clear button, a select's list)
+   are drawn for a dark surface rather than arriving as a white rectangle. */
+.controls {
+  color-scheme: dark;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin: 0 0 28px;
+  padding: 24px 0;
+  border-top: 1px solid var(--rule-d);
+  border-bottom: 1px solid var(--rule-d);
+}
+
+.search-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 26rem;
+}
+
+.search-field label,
+.filter-group legend,
+.field-label,
+.field > label,
+.opt-group legend {
+  font-family: var(--label);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mut-d);
+}
+
+.search-field input[type="search"],
+.field input[type="number"],
+.field input[type="text"],
+.field select {
+  font: inherit;
+  font-size: 1rem; /* 16px: below this iOS zooms the page when the field takes focus */
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid rgba(217, 228, 232, 0.22);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+}
+
+.search-field input[type="search"]::placeholder {
+  color: rgba(217, 228, 232, 0.45);
+}
+
+.search-field input[type="search"]:focus-visible,
+.field input:focus-visible,
+.field select:focus-visible {
+  outline: 2px solid var(--acc-lt);
+  outline-offset: 1px;
+  border-color: var(--acc-lt);
+}
+
+.filter-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.filter-group legend {
+  padding: 0;
+  margin: 0 0 10px;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 13px;
+  border: 1px solid rgba(217, 228, 232, 0.22);
+  border-radius: 999px;
+  font-size: 0.8125rem;
+  color: var(--on-ink);
+  cursor: pointer;
+}
+
+.chip input[type="checkbox"],
+.chip input[type="radio"] {
+  accent-color: var(--acc-lt);
+  margin: 0;
+}
+
+.chip:hover {
+  border-color: rgba(217, 228, 232, 0.45);
+}
+
+/* On a phone the index carries 28 filter chips above the grid, so every pixel of chip height is
+   multiplied by the seven rows they wrap to. Tighter here, still a 36px target with its gap. */
+@media (max-width: 560px) {
+  .controls {
+    gap: 14px;
+    padding: 18px 0;
+  }
+
+  .filter-group {
+    gap: 6px;
+  }
+
+  .filter-group .chip {
+    padding: 5px 11px;
+    font-size: 0.78rem;
+  }
+}
+
+.chip:has(input:checked) {
+  border-color: var(--acc-lt);
+  color: #ffffff;
+  background: rgba(101, 171, 196, 0.14);
+}
+
+.chip:focus-within {
+  outline: 2px solid var(--acc-lt);
+  outline-offset: 2px;
+}
+
+.result-count {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--mut-d);
+  font-variant-numeric: tabular-nums;
+}
+
+.empty-state {
+  margin: 0 0 24px;
+  padding: 40px 24px;
+  border: 1px dashed rgba(217, 228, 232, 0.28);
+  border-radius: 14px;
+  color: var(--mut-d);
+  text-align: center;
+}
+
+.empty-state[hidden] {
+  display: none;
+}
+
+.empty-state button {
+  margin-top: 12px;
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--ink);
+  background: var(--acc-lt);
+  border: 0;
+  border-radius: 999px;
+  padding: 10px 22px;
+  cursor: pointer;
+}
+
+/* Card grid. Two columns fit a 375px phone, more as the viewport widens. 12px radius and the
+   title set low over an ink gradient: the guides page's tiles. */
+.index-grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9.75rem, 1fr));
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+}
+
+@media (min-width: 60rem) {
+  .index-grid {
+    grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+    gap: 16px;
+  }
+}
+
+.index-grid li[hidden] {
+  display: none;
+}
+
+.card {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: 12px;
+  color: #ffffff;
+  background: #1f2128;
+}
+
+.card:hover,
+.card:focus {
+  text-decoration: none;
+}
+
+.card:focus-visible {
+  outline: 2px solid var(--acc-lt);
+  outline-offset: 3px;
+}
+
+.card img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.card:hover img {
+  transform: scale(1.03);
+}
+
+.card-overlay,
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(22, 23, 28, 0.94) 0%,
+    rgba(22, 23, 28, 0.62) 34%,
+    rgba(22, 23, 28, 0) 68%
+  );
+}
+
+.card-name {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 14px 16px 16px;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.18;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card img {
+    transition: none;
+  }
+
+  .card:hover img {
+    transform: none;
+  }
+}
+
+/* ===== An exercise page ===== */
+
 .hero {
   position: relative;
   width: 100%;
   aspect-ratio: 4 / 3;
   overflow: hidden;
-  color: var(--cream);
-  background: var(--ink);
-  margin: 1rem 0 1.5rem;
+  background: #1f2128;
+  margin: 16px 0 0;
 }
 
 @media (min-width: 40rem) {
   .hero {
     aspect-ratio: 21 / 9;
+    max-height: 72vh;
   }
 }
 
@@ -122,93 +862,69 @@ h1 {
   object-fit: cover;
 }
 
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(14, 12, 11, 0.92) 0%,
-    rgba(14, 12, 11, 0.70) 38%,
-    rgba(14, 12, 11, 0) 72%
-  );
-}
-
 .hero-title {
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
-  margin: 0;
-  padding: 1.25rem 1.25rem 1.5rem;
-  font-size: 2rem;
-  color: var(--cream);
-}
-
-@media (min-width: 40rem) {
-  .hero-title {
-    font-size: 2.75rem;
-    padding: 2rem 2rem 2.5rem;
-  }
+  max-width: calc(var(--wide) + 2 * var(--gut));
+  margin: 0 auto;
+  padding: 0 var(--gut) clamp(22px, 3vw, 44px);
+  font-size: clamp(30px, 3vw + 18px, 60px);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.02;
 }
 
 /* Non-interactive chips (D-11): plain spans, never links. Data rendered verbatim, lowercase,
-   per D-07 — equipment first, then primary muscles. */
+   per D-07: equipment first, then primary muscles. */
 .tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  margin: 0 0 1.5rem;
+  gap: 8px;
+  margin: 28px 0 32px;
 }
 
 .tag {
   display: inline-flex;
   align-items: center;
-  padding: 0.3rem 0.65rem;
-  border: 1px solid var(--hairline);
+  padding: 6px 12px;
+  border: 1px solid rgba(217, 228, 232, 0.22);
   border-radius: 999px;
   font-size: 0.8125rem;
-  color: var(--grey);
-  background: #ffffff;
+  color: var(--mut-d);
 }
 
-/* D-07/T-FMT-03: states plainly that a representative entry's photo belongs to a named sibling,
-   not to this exercise. Same bordered-chip treatment as .tag, but a block-level note rather than
-   an inline pill, since it carries a full sentence rather than a single value. */
-.reference-note {
-  margin: 0 0 1.5rem;
-  padding: 0.65rem 0.9rem;
-  border: 1px solid var(--hairline);
-  border-radius: 0.5rem;
+/* D-07/T-FMT-03 and D-08: the bordered notes that state plainly when a photo is borrowed from a
+   named sibling, or when the source data ships no instructions. Same treatment as .note. */
+.reference-note,
+.instructions-gap-note,
+.note {
+  margin: 0 0 24px;
+  padding: 14px 18px;
+  border: 1px solid var(--rule-d);
+  border-radius: 10px;
   font-size: 0.875rem;
-  color: var(--grey);
-  background: #ffffff;
+  color: var(--mut-d);
 }
 
-/* D-08's no-fabrication rule: a disclosed instructions gap (currently only side-bridge) states
-   the gap in place of the numbered steps rather than showing nothing or inventing text. Same
-   bordered-note treatment as .reference-note. */
-.instructions-gap-note {
-  margin: 0 0 0.75rem;
-  padding: 0.65rem 0.9rem;
-  border: 1px solid var(--hairline);
-  border-radius: 0.5rem;
-  font-size: 0.875rem;
-  color: var(--grey);
-  background: #ffffff;
+.reference-note strong {
+  color: var(--on-ink);
+  font-weight: 600;
 }
 
 .images {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
-  margin: 0 0 1.5rem;
+  gap: 12px;
+  margin: 0 0 40px;
 }
 
 .images img {
   max-width: 100%;
   height: auto;
   display: block;
-  border: 1px solid var(--hairline);
+  border-radius: 8px;
 }
 
 @media (min-width: 40rem) {
@@ -222,413 +938,209 @@ h1 {
   }
 }
 
+/* The store's numbered hairline list ("01 Sets and reps"): a small teal index in the label
+   face, the text beside it, a 1px rule between rows. The index is a CSS counter, so the markup
+   stays an ordinary <ol> of <li> and the checker's instruction count is unaffected. */
 .instructions {
-  margin: 0 0 1.5rem;
-  padding-left: 1.5rem;
+  margin: 0 0 8px;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+  border-bottom: 1px solid var(--rule-d);
 }
 
 .instructions li {
-  margin-bottom: 0.5rem;
-  color: var(--ink);
-}
-
-.instructions li::marker {
-  color: var(--rust);
-  font-weight: 600;
-}
-
-.index-header {
-  margin: 0 0 1.5rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--hairline);
-}
-
-.index-header h1 {
-  margin-bottom: 0.25rem;
-}
-
-/* D-04: the explainer sits in the site's existing header, not a new section. `.index-explainer`
-   reads as body copy (inherits ink); `.index-attribution` uses the same grey register as
-   `.provenance` below the grid -- the right visual weight for a credit line, not a headline. */
-.index-explainer {
-  margin: 0.75rem 0 0;
-  max-width: 34rem;
-}
-
-.index-attribution {
-  margin: 0.35rem 0 0;
-  max-width: 34rem;
-  color: var(--grey);
-  font-size: 0.875rem;
-}
-
-/* Controls — search + facet checkboxes, sitting above the grid. Deliberately not sticky (D-12):
-   a sticky bar over a multi-row chip group eats too much of the mobile viewport, and the always-
-   stated result count already makes scrolling back up cheap. */
-.controls {
-  display: flex;
-  flex-direction: column;
-  gap: 0.85rem;
-  margin: 0 0 1rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--hairline);
-}
-
-.search-field {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-  max-width: 24rem;
-}
-
-.search-field label {
-  font-size: 0.8125rem;
-  color: var(--grey);
-}
-
-.search-field input[type="search"] {
-  font: inherit;
-  padding: 0.5rem 0.75rem;
-  border: 1px solid var(--hairline);
-  border-radius: 0.25rem;
-  color: var(--ink);
-  background: #ffffff;
-}
-
-.search-field input[type="search"]:focus-visible {
-  outline: 2px solid var(--rust);
-  outline-offset: 1px;
-}
-
-.filter-group {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.5rem;
-  margin: 0;
-  padding: 0;
-  border: 0;
-}
-
-.filter-group legend {
-  font-size: 0.8125rem;
-  color: var(--grey);
-  padding: 0;
-  margin: 0 0.5rem 0 0;
-}
-
-.chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.375rem;
-  padding: 0.3rem 0.65rem;
-  border: 1px solid var(--hairline);
-  border-radius: 999px;
-  font-size: 0.8125rem;
-  color: var(--ink);
-  cursor: pointer;
-  background: #ffffff;
-}
-
-.chip input[type="checkbox"],
-.chip input[type="radio"] {
-  accent-color: var(--rust);
-  margin: 0;
-}
-
-.chip:has(input:checked) {
-  border-color: var(--rust);
-  color: var(--rust);
-  background: rgba(181, 80, 46, 0.08);
-}
-
-.chip:focus-within {
-  outline: 2px solid var(--rust);
-  outline-offset: 1px;
-}
-
-.result-count {
-  margin: 0;
-  color: var(--grey);
-  font-size: 0.875rem;
-}
-
-.empty-state {
-  margin: 0 0 1.5rem;
-  padding: 1.5rem;
-  border: 1px dashed var(--hairline);
-  border-radius: 0.25rem;
-  color: var(--grey);
-  text-align: center;
-}
-
-.empty-state[hidden] {
-  display: none;
-}
-
-.empty-state button {
-  margin-top: 0.5rem;
-  font: inherit;
-  color: var(--rust);
-  background: none;
-  border: 1px solid var(--rust);
-  border-radius: 0.25rem;
-  padding: 0.4rem 0.9rem;
-  cursor: pointer;
-}
-
-.empty-state button:focus-visible {
-  outline: 2px solid var(--rust);
-  outline-offset: 1px;
-}
-
-/* Card grid — mobile-first: two columns fit at a 375px phone width, more as the viewport widens. */
-.index-grid {
-  list-style: none;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr));
-  gap: 0.75rem;
-  margin: 0 0 1.5rem;
-  padding: 0;
+  grid-template-columns: 44px 1fr;
+  gap: 8px;
+  padding: 18px 0;
+  border-top: 1px solid var(--rule-d);
+  color: var(--on-ink);
 }
 
-@media (min-width: 60rem) {
-  .index-grid {
-    grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
-    gap: 1rem;
-  }
+.instructions li::before {
+  counter-increment: step;
+  content: counter(step, decimal-leading-zero);
+  padding-top: 4px;
+  font-family: var(--label);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+  color: var(--acc-lt);
 }
 
-.index-grid li[hidden] {
-  display: none;
-}
-
-.card {
-  position: relative;
-  display: block;
-  aspect-ratio: 3 / 2;
-  overflow: hidden;
-  border-radius: 0.25rem;
-  color: var(--cream);
-  background: var(--ink);
-}
-
-.card:hover .card-name,
-.card:focus-visible .card-name {
-  text-decoration: underline;
-}
-
-.card:focus-visible {
-  outline: 3px solid var(--rust);
-  outline-offset: 2px;
-}
-
-.card img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.card-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(14, 12, 11, 0.92) 0%,
-    rgba(14, 12, 11, 0.70) 38%,
-    rgba(14, 12, 11, 0) 72%
-  );
-}
-
-.card-name {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 0.6rem 0.75rem;
-  color: var(--cream);
-  font-size: 1.1rem;
-  line-height: 1.25;
-}
-
-footer.provenance {
-  margin-top: 2rem;
-  padding-top: 1rem;
-  border-top: 1px solid var(--hairline);
-  color: var(--grey);
-}
-
-footer.provenance a {
-  color: var(--rust);
-}
-
-/* CTA — links exercise pages and tool pages to the quiz.
-   Written against four hand-picked hexes (#D9D4D0, #45403C, #1B1917, #fff) that sat just off
-   the brand set, so the button read very slightly warmer-black than the hero and the cards it
-   shares a page with. Moved onto the tokens: nothing here is a new colour, and every px value
-   below is the exact rem equivalent of what it replaced (48px = 3rem at the 16px root this
-   sheet sets), so the block is unchanged in size and changed only in palette. */
+/* ===== The quiz card =====
+   The guides page's "Recommended" card: a hairline outline on the ink, the line on the left in
+   the heading face, the action opposite it. On ink the action is the light teal with ink text,
+   as it is there; the darker teal is for paper and for the header. */
 .cta {
-  margin: 3rem 0 0;
-  padding: 1.5rem;
-  border: 1px solid var(--hairline);
-  border-radius: 0.5rem;
-  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 20px 40px;
+  margin: 72px 0 0;
+  padding: clamp(24px, 3vw, 36px) clamp(22px, 3vw, 40px);
+  border: 1px solid var(--rule-d);
+  border-radius: 14px;
 }
+
 .cta p {
-  margin: 0 0 0.75rem;
-  font-size: 0.9375rem;
-  line-height: 1.5;
-  color: var(--grey);
+  margin: 0;
+  max-width: 36rem;
+  font-family: "Inter Tight", system-ui, sans-serif;
+  font-size: clamp(1.2rem, 0.6vw + 1rem, 1.5rem);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.22;
+  color: #ffffff;
 }
+
 .cta a {
   display: inline-block;
-  padding: 0.625rem 1.5rem;
-  font-size: 0.875rem;
+  padding: 15px 30px;
+  border-radius: 999px;
+  background: var(--acc-lt);
+  color: var(--ink);
+  font-size: 0.9375rem;
   font-weight: 600;
-  color: var(--cream);
-  background: var(--ink);
-  border-radius: 0.375rem;
+  white-space: nowrap;
   text-decoration: none;
 }
-/* Rust on hover rather than a lighter grey: it is the accent every other interactive element on
-   the site already moves to (links, active chips, the unit toggle), so the button now agrees
-   with them instead of fading toward the border colour. */
+
 .cta a:hover,
 .cta a:focus-visible {
-  background: var(--rust);
+  background: #ffffff;
   text-decoration: none;
+}
+
+@media (max-width: 640px) {
+  .cta {
+    grid-template-columns: 1fr;
+  }
+
+  .cta a {
+    justify-self: start;
+  }
 }
 
 /* ===== Tools =====
    Shared vocabulary for the calculator pages under tools/. One block here rather than a
    <style> island per tool: six pages that each invented their own input and table styling
-   would drift apart the first time one of them was edited. Same five tokens as everything
-   above, same hairline borders, same ink-panel device the hero and cards already use.
+   would drift apart the first time one of them was edited.
 
-   Tool pages link "../site.css" from one level down, exactly as exercises/*.html do. */
-
-.tool {
-  max-width: 42rem;
-  margin: 0 auto;
-  padding: 1.5rem 1rem 3rem;
-}
+   From 60rem the inputs and the answer sit side by side, inputs left and the sheet right, the
+   store's "What is on the page" arrangement. It is done with explicit grid placement on the two
+   blocks rather than a wrapper element, so the six hand-written pages need no markup change:
+   everything else spans both columns and flows beneath. An error message that sits between the
+   two in the DOM is auto-placed onto the next free row, under both. */
 
 .tool-header {
-  margin: 0 0 1.5rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--hairline);
-}
-
-.tool-header h1 {
-  margin: 0 0 0.5rem;
-  font-size: 2rem;
+  margin: 0 0 clamp(32px, 4vw, 56px);
 }
 
 .tool-lede {
-  margin: 0;
-  color: var(--grey);
-  max-width: 34rem;
+  margin: 20px 0 0;
+  max-width: 40rem;
+  font-size: 1.0625rem;
+  color: var(--on-ink);
 }
 
-/* Section headings inside a tool take the same serif as h1. The rule at the top of this sheet
-   names h1/.hero-title/.card-name individually, so a tool's h2 has to opt in here. */
-.tool h2 {
-  font-family: "Instrument Serif", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
-    Arial, serif;
-  font-weight: 400;
-  font-size: 1.4rem;
-  margin: 2rem 0 0.75rem;
+.tool > h2:not(.section-label) {
+  margin: clamp(56px, 6vw, 88px) 0 18px;
+  max-width: 48rem;
+  font-size: var(--h2);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.06;
 }
 
 .tool h3 {
-  font-size: 0.9375rem;
+  margin: 28px 0 8px;
+  font-size: 1.125rem;
   font-weight: 600;
-  margin: 1.25rem 0 0.4rem;
+  letter-spacing: -0.01em;
 }
 
-/* A heading inside the answer panel has to be an h2 so the document never skips a level, but it
-   labels a table inside a panel rather than opening a section, so it keeps the smaller scale. */
-.tool .result h2 {
-  font-family: inherit;
-  font-size: 0.9375rem;
-  font-weight: 600;
-  margin: 1.25rem 0 0.4rem;
+.tool > p {
+  max-width: var(--measure);
+  margin: 0 0 16px;
 }
 
-/* The input panel: cream, to sit apart from the white page without going dark — the dark
-   treatment is reserved for the answer. */
 .tool-panel {
-  background: var(--cream);
-  border: 1px solid var(--hairline);
-  border-radius: 0.5rem;
-  padding: 1.25rem;
-  margin: 0 0 1.25rem;
+  color-scheme: dark;
+  margin: 0 0 20px;
+  padding: clamp(20px, 2.4vw, 32px);
+  border: 1px solid var(--rule-d);
+  border-radius: 14px;
+}
+
+@media (min-width: 60rem) {
+  .tool {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    column-gap: clamp(28px, 3.4vw, 56px);
+  }
+
+  .tool > * {
+    grid-column: 1 / -1;
+  }
+
+  .tool > .tool-panel {
+    grid-column: 1;
+    grid-row: 2;
+    align-self: start;
+    margin-bottom: 0;
+  }
+
+  /* NOT position:sticky. It was, so the answer would stay in view beside a tall set of inputs,
+     on the assumption that a grid item sticks only within its own row. It does not: it stayed
+     pinned to the top of the viewport for the whole length of the page, and at the bottom it
+     was sitting on top of the quiz card's button (elementFromPoint on "Find my program" returned
+     a cell of the result table). A full-page screenshot cannot show this, because it never
+     scrolls. Found by scrolling each page in steps and hit-testing what follows. */
+  .tool > .result {
+    grid-column: 2;
+    grid-row: 2;
+    align-self: start;
+    margin-bottom: 0;
+  }
 }
 
 .field {
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
-  margin: 0 0 1rem;
+  gap: 8px;
+  margin: 0 0 22px;
 }
 
 .field:last-child {
   margin-bottom: 0;
 }
 
-.field-label,
-.field > label {
-  font-size: 0.8125rem;
-  color: var(--grey);
-}
-
-/* Label on the left, unit toggle on the right, on one line. */
 .field-head {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.5rem;
+  gap: 12px;
 }
 
-.field input[type="number"],
-.field input[type="text"],
-.field select {
-  font: inherit;
-  width: 100%;
-  padding: 0.55rem 0.7rem;
-  border: 1px solid var(--hairline);
-  border-radius: 0.25rem;
-  background: #ffffff;
-  color: var(--ink);
-}
-
-.field input:focus-visible,
-.field select:focus-visible {
-  outline: 2px solid var(--rust);
-  outline-offset: 1px;
-}
-
-/* Range inputs (the RPE and reps-in-reserve sliders) otherwise paint in the browser's own
-   accent, which lands as system blue on a page whose every other control is rust. accent-color
-   is the whole fix and keeps the native control, which is the right trade for a slider that has
-   to stay keyboard-reachable and draggable on a phone. */
+/* A native range input is 16px tall, so on a phone the whole control was a 16px target. The box
+   is given height; the browser keeps the track and thumb centred in it, so nothing moves. */
 .tool input[type="range"] {
   width: 100%;
-  accent-color: var(--rust);
+  height: 32px;
+  accent-color: var(--acc-lt);
 }
 
-.tool input[type="range"]:focus-visible {
-  outline: 2px solid var(--rust);
-  outline-offset: 0.25rem;
+@media (pointer: coarse) {
+  .tool input[type="range"] {
+    height: 44px;
+  }
 }
 
-/* Two inputs side by side (feet + inches, weight + reps). */
 .field-row {
   display: flex;
-  gap: 0.75rem;
+  gap: 12px;
 }
 
 .field-row > * {
@@ -636,97 +1148,110 @@ footer.provenance a {
   min-width: 0;
 }
 
-/* Segmented unit toggle. Buttons, not a select: two options that swap the unit on the number
-   already typed should be one tap, and aria-pressed carries the state for a screen reader. */
+/* Unit toggle. Buttons, not a select: two options that convert the number already typed should
+   be one tap, and aria-pressed carries the state for a screen reader. */
 .seg {
   display: inline-flex;
-  border: 1px solid var(--hairline);
+  padding: 3px;
+  border: 1px solid rgba(217, 228, 232, 0.22);
   border-radius: 999px;
-  overflow: hidden;
-  background: #ffffff;
 }
 
 .seg button {
   font: inherit;
-  font-size: 0.8125rem;
-  padding: 0.25rem 0.7rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 5px 13px;
   border: 0;
+  border-radius: 999px;
   background: none;
-  color: var(--grey);
+  color: var(--mut-d);
   cursor: pointer;
 }
 
+.seg button:hover {
+  color: #ffffff;
+}
+
 .seg button[aria-pressed="true"] {
-  background: var(--rust);
-  color: var(--cream);
+  background: var(--acc-lt);
+  color: var(--ink);
+  font-weight: 600;
 }
 
-.seg button:focus-visible {
-  outline: 2px solid var(--rust);
-  outline-offset: -2px;
-}
-
-/* Chip-style radio and checkbox groups, matching the index's filter chips. */
 .opt-group {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  margin: 0;
+  gap: 8px;
+  margin: 0 0 22px;
   padding: 0;
   border: 0;
 }
 
-.opt-group legend {
-  font-size: 0.8125rem;
-  color: var(--grey);
-  padding: 0;
-  margin: 0 0 0.5rem;
+.opt-group:last-child,
+.field > .opt-group {
+  margin-bottom: 0;
 }
 
-/* The answer panel: same ink as the hero and the index cards. */
+.opt-group legend {
+  padding: 0;
+  margin: 0 0 10px;
+}
+
+/* THE ANSWER IS A SHEET OF PAPER. White, square-cornered, ink type, tabular figures, with the
+   thin frame line the store draws round its session page. It is the brand's signature object
+   (the printed page) and it makes the result the brightest thing on the screen. The frame is
+   two box-shadows, an ink gap then a line, so it costs no wrapper element. */
 .result {
-  background: var(--ink);
-  color: var(--cream);
-  border-radius: 0.5rem;
-  padding: 1.25rem;
-  margin: 0 0 1.25rem;
+  margin: 8px 8px 28px;
+  padding: clamp(22px, 2.6vw, 36px);
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: 0 0 0 7px var(--ink), 0 0 0 8px rgba(255, 255, 255, 0.42);
 }
 
 .result[hidden] {
   display: none;
 }
 
+.result a {
+  color: var(--acc);
+}
+
 .result-label {
   margin: 0;
-  font-size: 0.8125rem;
-  color: rgba(247, 247, 246, 0.68);
+  font-family: var(--label);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mut);
 }
 
 .result-primary {
-  font-family: "Instrument Serif", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
-    Arial, serif;
-  font-weight: 400;
-  font-size: 2.75rem;
-  line-height: 1.05;
-  margin: 0.15rem 0 0;
-  color: var(--cream);
+  margin: 6px 0 0;
+  font-family: "Inter Tight", system-ui, sans-serif;
+  font-size: clamp(2.4rem, 2.2vw + 1.6rem, 3.5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
 }
 
 .result-note {
-  margin: 0.75rem 0 0;
+  margin: 14px 0 0;
   font-size: 0.875rem;
-  color: rgba(247, 247, 246, 0.68);
-}
-
-.result-note[hidden] {
-  display: none;
+  color: var(--mut);
 }
 
 .result-grid {
   display: grid;
-  gap: 1rem;
   grid-template-columns: 1fr;
-  margin: 1rem 0 0;
+  gap: 18px;
+  margin: 26px 0 0;
+  padding-top: 22px;
+  border-top: 1px solid var(--rule);
 }
 
 @media (min-width: 30rem) {
@@ -736,71 +1261,146 @@ footer.provenance a {
 }
 
 .result-grid .result-primary {
-  font-size: 1.85rem;
+  font-size: 1.875rem;
 }
 
+.result-grid .result-note {
+  margin-top: 6px;
+  font-size: 0.8125rem;
+}
+
+/* A heading inside the sheet names a group of figures; it is a label, not a headline. */
+.tool .result h2 {
+  margin: 28px 0 4px;
+  font-family: var(--label);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mut);
+}
+
+/* Tables are paper too, wherever they are: the comparison table on the store's homepage is a
+   white sheet laid on the ink. Inside .result the sheet is already there, so the table drops
+   its own ground and sits flush. */
 .tool-table {
   width: 100%;
+  max-width: 56rem;
+  margin: 8px 0 24px;
   border-collapse: collapse;
+  background: var(--paper);
+  color: var(--ink);
   font-size: 0.9375rem;
 }
 
 .tool-table th,
 .tool-table td {
   text-align: left;
-  padding: 0.55rem 0.5rem;
-  border-bottom: 1px solid var(--hairline);
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+
+.tool-table tbody tr:last-child td {
+  border-bottom: 0;
 }
 
 .tool-table th {
-  font-size: 0.8125rem;
-  font-weight: 600;
-  color: var(--grey);
+  font-family: var(--label);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mut);
+  border-bottom-color: var(--ink);
 }
 
-/* Figures line up column-wise whatever their digit count. */
 .tool-table td.num,
 .tool-table th.num {
   text-align: right;
   font-variant-numeric: tabular-nums;
+  white-space: nowrap;
 }
 
+/* At 320px a three-column table did not fit: 20px of padding a side is 120px before any
+   content, and a nowrap header such as "REPS IN RESERVE" set the column's minimum on its own.
+   Measured: the table ran to 347, 326 and 352px on tdee, plates and rpe-rir. Tighter cells and a
+   header that may wrap; the figures themselves stay on one line. */
+@media (max-width: 480px) {
+  .tool-table {
+    font-size: 0.875rem;
+  }
+
+  .tool-table th,
+  .tool-table td {
+    padding: 12px 10px;
+  }
+
+  .tool-table th.num,
+  .tool-table th {
+    white-space: normal;
+    letter-spacing: 0.08em;
+  }
+}
+
+/* The highlighted row is the store's "Programmd" column: pale teal ground, teal type. */
 .tool-table tr.is-highlight td {
-  background: rgba(181, 80, 46, 0.08);
-  color: var(--ink);
+  background: var(--acc-wash);
+  color: var(--acc);
   font-weight: 600;
 }
 
-/* The same table dropped onto the ink panel. */
-.result .tool-table th,
-.result .tool-table td {
-  border-bottom-color: rgba(247, 247, 246, 0.18);
+.result .tool-table {
+  margin: 8px 0 0;
+  background: none;
 }
 
-.result .tool-table th {
-  color: rgba(247, 247, 246, 0.68);
+.result .tool-table th,
+.result .tool-table td {
+  padding-left: 0;
+  padding-right: 12px;
+}
+
+.result .tool-table td.num,
+.result .tool-table th.num {
+  padding-right: 0;
+  padding-left: 12px;
 }
 
 .result .tool-table tr.is-highlight td {
-  background: rgba(181, 80, 46, 0.35);
-  color: var(--cream);
+  box-shadow: -12px 0 0 var(--acc-wash), 12px 0 0 var(--acc-wash);
 }
 
-/* Bordered aside, same treatment as .reference-note on a detail page. */
-.note {
-  margin: 1rem 0 0;
-  padding: 0.65rem 0.9rem;
-  border: 1px solid var(--hairline);
-  border-radius: 0.5rem;
-  font-size: 0.875rem;
-  color: var(--grey);
-  background: #ffffff;
+.tool > .note,
+.tool > div.note {
+  max-width: var(--measure);
+}
+
+/* Whatever follows the inputs-and-answer row needs air above it. The two blocks in that row
+   drop their own bottom margin at 60rem so their top edges line up, which left the first thing
+   under them touching the input card. */
+.tool > .tool-panel + .note,
+.tool > .result + .note,
+.tool > .result + div.note,
+.tool > .tool-panel ~ .tool-error {
+  margin-top: 28px;
+}
+
+.tool-panel .note {
+  margin: 10px 0 0;
+  padding: 10px 14px;
+  font-size: 0.8125rem;
+}
+
+.result .note {
+  border-color: var(--rule);
+  color: var(--mut);
 }
 
 .tool-error {
-  margin: 0.75rem 0 0;
+  margin: 14px 0 0;
   font-size: 0.875rem;
-  color: var(--rust);
+  color: var(--warn);
 }
 
 .tool-error[hidden] {
@@ -812,16 +1412,17 @@ footer.provenance a {
 .barbell {
   display: flex;
   align-items: center;
-  gap: 0.25rem;
-  padding: 0.75rem 0;
+  gap: 4px;
+  margin-top: 8px;
+  padding: 18px 0 6px;
   overflow-x: auto;
 }
 
 .barbell-sleeve {
   flex: 0 0 auto;
-  height: 0.5rem;
-  width: 1.5rem;
-  background: rgba(247, 247, 246, 0.55);
+  height: 9px;
+  width: 28px;
+  background: #AEB9BE;
   border-radius: 1px;
 }
 
@@ -830,263 +1431,144 @@ footer.provenance a {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 1.75rem;
-  border-radius: 2px;
-  background: var(--rust);
-  color: var(--cream);
+  width: 30px;
+  border-radius: 3px;
+  background: var(--acc);
+  color: #ffffff;
+  font-family: var(--label);
   font-size: 0.75rem;
+  font-weight: 600;
   font-variant-numeric: tabular-nums;
 }
 
 .plate-list {
-  margin: 0.5rem 0 0;
+  margin: 18px 0 0;
   padding: 0;
   list-style: none;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem;
+  gap: 6px;
 }
 
 .plate-list li {
-  padding: 0.25rem 0.6rem;
-  border: 1px solid rgba(247, 247, 246, 0.28);
+  padding: 5px 12px;
+  border: 1px solid var(--rule);
   border-radius: 999px;
+  font-family: var(--label);
   font-size: 0.8125rem;
   font-variant-numeric: tabular-nums;
+  color: var(--ink);
 }
 
-/* Mini-quiz: one question per fieldset, answers as chips. */
+/* Mini-quiz: one question per fieldset, answers as chips. A question is a sentence, so its
+   legend is set as text, not as a tracked label. */
 .quiz-step {
-  margin: 0 0 1.25rem;
+  margin: 0 0 26px;
   padding: 0;
   border: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.quiz-step:last-child {
+  margin-bottom: 0;
 }
 
 .quiz-step legend {
+  padding: 0;
+  margin: 0 0 12px;
   font-size: 0.9375rem;
   font-weight: 600;
-  color: var(--ink);
-  padding: 0;
-  margin: 0 0 0.5rem;
+  color: #ffffff;
 }
 
+/* Matches are the numbered hairline list again, on paper. */
 .match-list {
-  margin: 1rem 0 0;
+  margin: 22px 0 0;
   padding: 0;
   list-style: none;
+  counter-reset: match;
+  border-bottom: 1px solid var(--rule);
 }
 
 .match-list li {
-  padding: 0.75rem 0;
-  border-top: 1px solid rgba(247, 247, 246, 0.18);
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  column-gap: 4px;
+  padding: 16px 0;
+  border-top: 1px solid var(--rule);
+}
+
+.match-list li::before {
+  counter-increment: match;
+  content: counter(match, decimal-leading-zero);
+  grid-row: 1 / span 2;
+  padding-top: 5px;
+  font-family: var(--label);
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--acc);
 }
 
 .match-list a {
-  color: var(--cream);
-  font-size: 1.05rem;
-  text-decoration: underline;
+  font-family: "Inter Tight", system-ui, sans-serif;
+  font-size: 1.1875rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+  color: var(--ink);
+}
+
+.match-list a:hover,
+.match-list a:focus {
+  color: var(--acc);
+  text-decoration: none;
 }
 
 .match-meta {
-  margin: 0.15rem 0 0;
+  grid-column: 2;
+  margin: 4px 0 0;
   font-size: 0.8125rem;
-  color: rgba(247, 247, 246, 0.68);
+  color: var(--mut);
 }
 
-/* Cross-links between the tools, sitting above the footer. */
+/* Links between the tools, as hairline pills. */
 .tool-links {
-  margin: 2rem 0 0;
+  margin: 0;
   padding: 0;
   list-style: none;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 8px;
 }
 
 .tool-links a {
   display: inline-block;
-  padding: 0.3rem 0.7rem;
-  border: 1px solid var(--hairline);
+  padding: 8px 16px;
+  border: 1px solid rgba(217, 228, 232, 0.22);
   border-radius: 999px;
   font-size: 0.8125rem;
+  color: var(--on-ink);
 }
 
-/* ===== Site header =====
-   One header on every page: the index, the exercise pages, the calculators and the tools hub.
-   Until it existed the site had no menu at all, only a back arrow, so a calculator could be
-   reached from a row of pills under the exercise grid and from nowhere else. The markup comes
-   from scripts/lib/site-nav.ts and nowhere else; this block only styles it.
-
-   The dropdown is a <details> element. It opens by click, tap or keyboard with JavaScript off,
-   which is why nothing here depends on :hover to reveal the menu: a hover-only menu does not
-   exist on a phone. */
-
-.site-nav {
-  position: relative;
-  z-index: 20; /* the open menu has to sit over the exercise hero, which is positioned too */
-  background: #ffffff;
-  border-bottom: 1px solid var(--hairline);
-}
-
-.site-nav-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
-  max-width: 75rem;
-  margin: 0 auto;
-  padding: 0.6rem 1rem;
-}
-
-.site-nav-brand {
-  font-family: "Instrument Serif", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
-    Arial, serif;
-  font-size: 1.4rem;
-  line-height: 1;
-  color: var(--ink);
-}
-
-.site-nav-brand:hover,
-.site-nav-brand:focus {
-  text-decoration: none;
-  color: var(--rust);
-}
-
-.site-nav nav {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.site-nav-menu summary {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.45rem 0.7rem;
-  border: 1px solid var(--hairline);
-  border-radius: 0.375rem;
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--ink);
-  cursor: pointer;
-  list-style: none;
-  user-select: none;
-}
-
-.site-nav-menu summary::-webkit-details-marker {
-  display: none;
-}
-
-/* Chevron drawn from two borders, so the header needs no icon file and no icon font. */
-.site-nav-menu summary::after {
-  content: "";
-  width: 0.4rem;
-  height: 0.4rem;
-  margin-top: -0.2rem;
-  border-right: 1.5px solid currentColor;
-  border-bottom: 1.5px solid currentColor;
-  transform: rotate(45deg);
-}
-
-.site-nav-menu[open] summary {
-  border-color: var(--rust);
-  color: var(--rust);
-}
-
-.site-nav-menu[open] summary::after {
-  margin-top: 0.2rem;
-  transform: rotate(-135deg);
-}
-
-.site-nav-menu summary:focus-visible {
-  outline: 2px solid var(--rust);
-  outline-offset: 1px;
-}
-
-/* On a phone the panel hangs off the header itself and runs gutter to gutter, because a panel
-   anchored to the button would run off the right edge of a 375px screen. From 40rem up it is
-   anchored to the button instead and takes a fixed width. */
-.site-nav-menu ul {
-  position: absolute;
-  top: 100%;
-  left: 1rem;
-  right: 1rem;
-  margin: 0.25rem 0 0;
-  padding: 0.4rem;
-  list-style: none;
-  background: #ffffff;
-  border: 1px solid var(--hairline);
-  border-radius: 0.5rem;
-}
-
-@media (min-width: 40rem) {
-  .site-nav-menu {
-    position: relative;
-  }
-
-  .site-nav-menu ul {
-    left: auto;
-    right: 0;
-    width: 17rem;
-  }
-}
-
-.site-nav-menu li a {
-  display: block;
-  padding: 0.55rem 0.65rem;
-  border-radius: 0.35rem;
-  font-size: 0.9375rem;
-  color: var(--ink);
-}
-
-.site-nav-menu li a:hover,
-.site-nav-menu li a:focus {
-  background: var(--cream);
+.tool-links a:hover,
+.tool-links a:focus-visible {
+  border-color: var(--acc-lt);
+  color: #ffffff;
   text-decoration: none;
 }
 
-.site-nav-menu li a[aria-current="page"] {
-  color: var(--rust);
-}
-
-.site-nav-all {
-  margin-top: 0.4rem;
-  padding-top: 0.4rem;
-  border-top: 1px solid var(--hairline);
-}
-
-.site-nav-all a {
-  font-size: 0.875rem;
-  color: var(--grey);
-}
-
-.site-nav-cta {
-  padding: 0.45rem 0.8rem;
-  border: 1px solid var(--ink);
-  border-radius: 0.375rem;
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--cream);
-  background: var(--ink);
-  white-space: nowrap;
-}
-
-.site-nav-cta:hover,
-.site-nav-cta:focus-visible {
-  background: var(--rust);
-  border-color: var(--rust);
-  text-decoration: none;
-}
-
-/* The tools hub: one bordered cream panel per tool, the same surface the calculators use for
-   their input panel. Title in the heading serif, one grey line under it. */
+/* The tools hub: a hairline card per tool with the store's small teal index above the title.
+   Outline only, no fill, as the guides page's "Recommended" card is. */
 .tool-hub {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 0.75rem;
+  gap: 14px;
   margin: 0;
   padding: 0;
   list-style: none;
+  counter-reset: hub;
 }
 
 @media (min-width: 40rem) {
@@ -1095,43 +1577,106 @@ footer.provenance a {
   }
 }
 
+@media (min-width: 72rem) {
+  .tool-hub {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* The glossary is the first tool and the largest, so it takes the full row, the way the guides
+   page leads with one wide "Recommended" card above its tiles. It also leaves the six
+   calculators as an even 3 x 2 instead of seven cards with one stranded on a row of its own. */
+.tool-hub li:first-child {
+  grid-column: 1 / -1;
+}
+
+@media (min-width: 40rem) {
+  .tool-hub li:first-child {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+    column-gap: 40px;
+    align-items: baseline;
+    padding-top: 32px;
+    padding-bottom: 34px;
+  }
+
+  .tool-hub li:first-child::before {
+    grid-row: 1 / span 2;
+    margin-bottom: 0;
+  }
+
+  .tool-hub li:first-child a {
+    font-size: 1.75rem;
+  }
+
+  .tool-hub li:first-child p {
+    grid-column: 2;
+    max-width: 40rem;
+    font-size: 1rem;
+  }
+}
+
 .tool-hub li {
   position: relative;
-  padding: 1.1rem 1.25rem;
-  background: var(--cream);
-  border: 1px solid var(--hairline);
-  border-radius: 0.5rem;
+  padding: 26px 28px 28px;
+  border: 1px solid var(--rule-d);
+  border-radius: 14px;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.tool-hub li::before {
+  counter-increment: hub;
+  content: counter(hub, decimal-leading-zero);
+  display: block;
+  margin-bottom: 40px;
+  font-family: var(--label);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+  color: var(--acc-lt);
 }
 
 .tool-hub li:hover,
 .tool-hub li:focus-within {
-  border-color: var(--rust);
+  border-color: var(--acc-lt);
+  background: rgba(255, 255, 255, 0.025);
 }
 
 .tool-hub a {
-  font-family: "Instrument Serif", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
-    Arial, serif;
-  font-size: 1.35rem;
-  line-height: 1.2;
-  color: var(--ink);
+  font-family: "Inter Tight", system-ui, sans-serif;
+  font-size: 1.375rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+  color: #ffffff;
 }
 
-/* Stretches the link over the whole panel, so the panel is the click target and the markup
-   stays one ordinary link with no wrapper element around the text. */
+/* Stretches the link over the whole card, so the card is the click target and the markup stays
+   one ordinary link with no wrapper element around the text. */
 .tool-hub a::after {
   content: "";
   position: absolute;
   inset: 0;
+  border-radius: 14px;
 }
 
 .tool-hub a:hover,
 .tool-hub a:focus {
   text-decoration: none;
-  color: var(--rust);
+}
+
+.tool-hub a:focus-visible {
+  outline: none;
+}
+
+.tool-hub a:focus-visible::after {
+  outline: 2px solid var(--acc-lt);
+  outline-offset: 3px;
 }
 
 .tool-hub p {
-  margin: 0.35rem 0 0;
-  font-size: 0.875rem;
-  color: var(--grey);
+  margin: 10px 0 0;
+  font-size: 0.9375rem;
+  color: var(--mut-d);
 }
