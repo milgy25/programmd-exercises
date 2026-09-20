@@ -30,6 +30,42 @@
   </script>
 </head>
 <body>
+  <header class="site-nav">
+    <div class="site-nav-inner">
+      <a class="site-nav-brand" href="https://programmd.co">Programmd.</a>
+      <nav aria-label="Site">
+        <details class="site-nav-menu">
+          <summary>Tools</summary>
+          <ul>
+          <li><a href="../index.html">Exercise glossary</a></li>
+          <li><a href="../tools/tdee.html">TDEE calculator</a></li>
+          <li><a href="../tools/macros.html">Macro calculator</a></li>
+          <li><a href="../tools/one-rep-max.html">One rep max calculator</a></li>
+          <li><a href="../tools/plates.html">Plate calculator</a></li>
+          <li><a href="../tools/rpe-rir.html">RPE and RIR chart</a></li>
+          <li><a href="../tools/days-quiz.html">Programs by training days</a></li>
+            <li class="site-nav-all"><a href="../tools/index.html">All tools</a></li>
+          </ul>
+        </details>
+        <a class="site-nav-cta" href="https://programmd.co/pages/quiz">Find your program</a>
+      </nav>
+    </div>
+  </header>
+  <script>
+  (function () {
+    var menu = document.querySelector('.site-nav-menu');
+    if (!menu) return;
+    document.addEventListener('click', function (event) {
+      if (menu.open && !menu.contains(event.target)) menu.open = false;
+    });
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && menu.open) {
+        menu.open = false;
+        menu.querySelector('summary').focus();
+      }
+    });
+  })();
+  </script>
   <p class="back"><a href="../index.html">&larr; Back to index</a></p>
   <div class="hero" data-movement="row">
     <img src="../images/inverted-row/0.jpg" alt="Inverted Row — demonstration image 1">
@@ -55,6 +91,16 @@
       <p>This exercise appears in Programmd training programs. Take the quiz to find one for your gym.</p>
       <a href="https://programmd.co/pages/quiz">Find your program</a>
     </div>
+
+    <h2>Training tools</h2>
+    <ul class="tool-links">
+      <li><a href="../tools/tdee.html">TDEE calculator</a></li>
+      <li><a href="../tools/macros.html">Macro calculator</a></li>
+      <li><a href="../tools/one-rep-max.html">One rep max calculator</a></li>
+      <li><a href="../tools/plates.html">Plate calculator</a></li>
+      <li><a href="../tools/rpe-rir.html">RPE and RIR chart</a></li>
+      <li><a href="../tools/days-quiz.html">Programs by training days</a></li>
+    </ul>
   </main>
 </body>
 </html>

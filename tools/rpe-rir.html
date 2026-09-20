@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RPE Chart and Reps in Reserve Table: RPE to RIR | Programmd</title>
+  <meta name="description" content="Convert RPE to RIR with a full reps in reserve chart from RPE 6 to 10. Move the slider to see what each point on the RPE scale means for a working set.">
+  <link rel="canonical" href="https://exercises.programmd.co/tools/rpe-rir.html">
+  <meta property="og:title" content="RPE Chart and Reps in Reserve Table: RPE to RIR | Programmd">
+  <meta property="og:description" content="Convert RPE to RIR with a full reps in reserve chart from RPE 6 to 10. Move the slider to see what each point on the RPE scale means for a working set.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://exercises.programmd.co/tools/rpe-rir.html">
+  <link rel="stylesheet" href="../site.css">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "RPE to RIR chart",
+  "description": "Convert RPE to RIR with a full reps in reserve chart from RPE 6 to 10. Move the slider to see what each point on the RPE scale means for a working set.",
+  "url": "https://exercises.programmd.co/tools/rpe-rir.html",
+  "applicationCategory": "HealthApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "publisher": { "@type": "Organization", "name": "Programmd" }
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Exercise Glossary",
+      "item": "https://exercises.programmd.co/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "RPE to RIR Chart",
+      "item": "https://exercises.programmd.co/tools/rpe-rir.html"
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <header class="site-nav">
+    <div class="site-nav-inner">
+      <a class="site-nav-brand" href="https://programmd.co">Programmd.</a>
+      <nav aria-label="Site">
+        <details class="site-nav-menu">
+          <summary>Tools</summary>
+          <ul>
+          <li><a href="../index.html">Exercise glossary</a></li>
+          <li><a href="../tools/tdee.html">TDEE calculator</a></li>
+          <li><a href="../tools/macros.html">Macro calculator</a></li>
+          <li><a href="../tools/one-rep-max.html">One rep max calculator</a></li>
+          <li><a href="../tools/plates.html">Plate calculator</a></li>
+          <li><a href="../tools/rpe-rir.html" aria-current="page">RPE and RIR chart</a></li>
+          <li><a href="../tools/days-quiz.html">Programs by training days</a></li>
+            <li class="site-nav-all"><a href="../tools/index.html">All tools</a></li>
+          </ul>
+        </details>
+        <a class="site-nav-cta" href="https://programmd.co/pages/quiz">Find your program</a>
+      </nav>
+    </div>
+  </header>
+  <script>
+  (function () {
+    var menu = document.querySelector('.site-nav-menu');
+    if (!menu) return;
+    document.addEventListener('click', function (event) {
+      if (menu.open && !menu.contains(event.target)) menu.open = false;
+    });
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && menu.open) {
+        menu.open = false;
+        menu.querySelector('summary').focus();
+      }
+    });
+  })();
+  </script>
+  <p class="back"><a href="index.html">&larr; All tools</a></p>
+  <main class="tool">
+    <header class="tool-header">
+      <h1>RPE chart and RPE to RIR converter</h1>
+      <p class="tool-lede">Move either slider to convert an RPE into reps in reserve. The chart below covers RPE 6 to 10 in half point steps and stays on the page as a reference.</p>
+    </header>
+
+    <div class="tool-panel">
+      <div class="field">
+        <div class="field-head">
+          <label for="rpe">RPE</label>
+          <span class="field-label" id="rpe-value">RPE 8</span>
+        </div>
+        <div class="field-row">
+          <input type="range" id="rpe" min="6" max="10" step="0.5" value="8">
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="field-head">
+          <label for="rir">Reps in reserve</label>
+          <span class="field-label" id="rir-value">2 RIR</span>
+        </div>
+        <div class="field-row">
+          <input type="range" id="rir" min="0" max="4" step="0.5" value="2">
+        </div>
+      </div>
+
+      <p class="tool-error" id="tool-error" hidden></p>
+    </div>
+
+    <section class="result" id="result" aria-live="polite">
+      <p class="result-label">Selected effort</p>
+      <p class="result-primary" id="result-primary">RPE 8 = 2 RIR</p>
+      <p class="result-note" id="result-desc">Two reps were left at the end of the set. Bar speed dropped on the last rep and technique was unchanged.</p>
+    </section>
+
+    <h2>RPE chart: RPE to RIR</h2>
+    <table class="tool-table" id="rpe-table">
+      <thead>
+        <tr>
+          <th class="num" scope="col">RPE</th>
+          <th class="num" scope="col">Reps in reserve</th>
+          <th scope="col">What the set felt like</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr data-rpe="10">
+          <td class="num">10</td>
+          <td class="num">0</td>
+          <td>The last rep was the last one available at that load.</td>
+        </tr>
+        <tr data-rpe="9.5">
+          <td class="num">9.5</td>
+          <td class="num">0 to 1</td>
+          <td>The last rep was slow and another one was doubtful.</td>
+        </tr>
+        <tr data-rpe="9">
+          <td class="num">9</td>
+          <td class="num">1</td>
+          <td>One rep left, with a clear slowdown at the end.</td>
+        </tr>
+        <tr data-rpe="8.5">
+          <td class="num">8.5</td>
+          <td class="num">1 to 2</td>
+          <td>One rep left for certain, a second one uncertain.</td>
+        </tr>
+        <tr data-rpe="8">
+          <td class="num">8</td>
+          <td class="num">2</td>
+          <td>Two reps left, and speed dropped on the last rep.</td>
+        </tr>
+        <tr data-rpe="7.5">
+          <td class="num">7.5</td>
+          <td class="num">2 to 3</td>
+          <td>Two reps left, possibly three, with speed still steady.</td>
+        </tr>
+        <tr data-rpe="7">
+          <td class="num">7</td>
+          <td class="num">3</td>
+          <td>Three reps left and the bar was still moving well.</td>
+        </tr>
+        <tr data-rpe="6.5">
+          <td class="num">6.5</td>
+          <td class="num">3 to 4</td>
+          <td>Three or four reps left, at an even speed throughout.</td>
+        </tr>
+        <tr data-rpe="6">
+          <td class="num">6</td>
+          <td class="num">4</td>
+          <td>Four reps left, every rep fast and controlled.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="note">Programmd programs prescribe effort as RIR. Most working sets sit at 2-3 RIR. The program prints the target and the lifter picks a load that meets it.</p>
+
+    <h2>What RPE and RIR are, and how they differ</h2>
+    <p>RPE stands for rating of perceived exertion. On the lifting version of the scale it runs from 6 to 10 and describes how close a set came to failure. RIR stands for reps in reserve: the number of reps still available when the set was stopped.</p>
+    <p>RPE and RIR measure the same thing from opposite ends. RPE counts effort up, RIR counts remaining reps down. Across this range, RIR is 10 minus the RPE. RPE 8 and 2 RIR describe the same set.</p>
+    <p>RIR is easier to answer in the moment because it asks for a count rather than a rating. RPE appears more often in printed programs and coaching notes, so most lifters end up reading both.</p>
+
+    <h2>Reading the RPE scale in weightlifting</h2>
+    <p>Judge the set on the last rep rather than on how the first few felt. Two signals carry most of the information: bar speed, and whether position held. A rep that slows sharply and starts to shift form puts the set at 9 or 10.</p>
+    <p>The rating is an estimate, and it is most accurate close to failure. At three or four reps in reserve lifters commonly over-rate the effort, so a set called RPE 7 often had a rep or two more in it than that.</p>
+
+    <h2>How a reps in reserve chart gets used in a program</h2>
+    <p>Programmd programs print the effort on every working set as an RIR number. You pick the weight that lands on it.</p>
+    <p>The same page still works when the load has to come down, or when it goes up. The chart is there to translate the number if a coach or a video gives you an RPE instead.</p>
+
+    <div class="cta">
+      <p>Programs with an effort target on every working set.</p>
+      <a href="https://programmd.co/pages/quiz">Find your program</a>
+    </div>
+
+    <h2>Other tools</h2>
+    <ul class="tool-links">
+      <li><a href="tdee.html">TDEE calculator</a></li>
+      <li><a href="one-rep-max.html">One rep max calculator</a></li>
+      <li><a href="plates.html">Plate calculator</a></li>
+      <li><a href="macros.html">Macro calculator</a></li>
+      <li><a href="days-quiz.html">Programs by training days</a></li>
+    </ul>
+
+    <footer class="provenance">
+      <p><a href="../index.html">Exercise glossary</a> &middot; <a href="https://programmd.co">programmd.co</a></p>
+    </footer>
+  </main>
+  <script>
+  (function () {
+    var LEVELS = [
+      {
+        rpe: 10,
+        rir: "0 RIR",
+        desc: "The final rep was as slow as the set allowed and no further rep was available. Form held, but there was nothing left at that load."
+      },
+      {
+        rpe: 9.5,
+        rir: "0 to 1 RIR",
+        desc: "Another rep may have been there and it would have been slow. Bar speed on the last rep was close to a stall."
+      },
+      {
+        rpe: 9,
+        rir: "1 RIR",
+        desc: "One more rep was available. The last rep slowed noticeably and position held through it."
+      },
+      {
+        rpe: 8.5,
+        rir: "1 to 2 RIR",
+        desc: "One more rep was certain and a second one was doubtful. The last rep slowed without stalling."
+      },
+      {
+        rpe: 8,
+        rir: "2 RIR",
+        desc: "Two reps were left at the end of the set. Bar speed dropped on the last rep and technique was unchanged."
+      },
+      {
+        rpe: 7.5,
+        rir: "2 to 3 RIR",
+        desc: "Two reps were left with a possible third. The bar moved at a steady speed through the last rep."
+      },
+      {
+        rpe: 7,
+        rir: "3 RIR",
+        desc: "Three reps were left. The bar was still moving near full speed and the set was stopped well short of a missed rep."
+      },
+      {
+        rpe: 6.5,
+        rir: "3 to 4 RIR",
+        desc: "Three or four reps were left. Speed was even across the set and the load stayed under control from first rep to last."
+      },
+      {
+        rpe: 6,
+        rir: "4 RIR",
+        desc: "Four reps were left. Every rep moved fast and the set finished well before any slowdown."
+      }
+    ];
+
+    var byRpe = {};
+    for (var i = 0; i < LEVELS.length; i++) {
+      byRpe[LEVELS[i].rpe.toFixed(1)] = LEVELS[i];
+    }
+
+    var rpeInput = document.getElementById("rpe");
+    var rirInput = document.getElementById("rir");
+    var rpeOut = document.getElementById("rpe-value");
+    var rirOut = document.getElementById("rir-value");
+    var result = document.getElementById("result");
+    var primary = document.getElementById("result-primary");
+    var descOut = document.getElementById("result-desc");
+    var error = document.getElementById("tool-error");
+    var rows = document.querySelectorAll("#rpe-table tbody tr");
+
+    function fmt(n) {
+      return String(Math.round(n * 10) / 10);
+    }
+
+    function snap(n) {
+      return Math.round(n * 2) / 2;
+    }
+
+    function clearRows() {
+      for (var r = 0; r < rows.length; r++) {
+        rows[r].classList.remove("is-highlight");
+      }
+    }
+
+    function fail(message) {
+      error.textContent = message;
+      error.hidden = false;
+      result.hidden = true;
+      primary.textContent = "";
+      descOut.textContent = "";
+      clearRows();
+    }
+
+    function render(source) {
+      var rpe;
+
+      if (source === "rir") {
+        var rir = parseFloat(rirInput.value);
+        if (!isFinite(rir) || rir < 0 || rir > 4) {
+          fail("Pick a value between 0 and 4 reps in reserve.");
+          return;
+        }
+        rpe = 10 - snap(rir);
+      } else {
+        rpe = parseFloat(rpeInput.value);
+        if (!isFinite(rpe)) {
+          fail("Pick an RPE between 6 and 10.");
+          return;
+        }
+        rpe = snap(rpe);
+      }
+
+      if (rpe < 6 || rpe > 10) {
+        fail("Pick an RPE between 6 and 10.");
+        return;
+      }
+
+      var level = byRpe[rpe.toFixed(1)];
+      if (!level) {
+        fail("Pick an RPE between 6 and 10 in half point steps.");
+        return;
+      }
+
+      rpeInput.value = fmt(rpe);
+      rirInput.value = fmt(10 - rpe);
+
+      error.hidden = true;
+      error.textContent = "";
+      result.hidden = false;
+
+      rpeOut.textContent = "RPE " + fmt(rpe);
+      rirOut.textContent = level.rir;
+      primary.textContent = "RPE " + fmt(rpe) + " = " + level.rir;
+      descOut.textContent = level.desc;
+
+      clearRows();
+      for (var r = 0; r < rows.length; r++) {
+        if (rows[r].getAttribute("data-rpe") === fmt(rpe)) {
+          rows[r].classList.add("is-highlight");
+        }
+      }
+    }
+
+    rpeInput.addEventListener("input", function () { render("rpe"); });
+    rpeInput.addEventListener("change", function () { render("rpe"); });
+    rirInput.addEventListener("input", function () { render("rir"); });
+    rirInput.addEventListener("change", function () { render("rir"); });
+
+    render("rpe");
+  })();
+  </script>
+</body>
+</html>

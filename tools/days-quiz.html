@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Workout Split Quiz: How Many Days a Week Should I Work Out?</title>
+  <meta name="description" content="Workout split quiz. Pick your training days and see the programs built for that count. 40+ pre-written programs from two days a week to six.">
+  <link rel="canonical" href="https://exercises.programmd.co/tools/days-quiz.html">
+  <meta property="og:title" content="Workout Split Quiz: How Many Days a Week Should I Work Out?">
+  <meta property="og:description" content="Workout split quiz. Pick your training days and see the programs built for that count. 40+ pre-written programs from two days a week to six.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://exercises.programmd.co/tools/days-quiz.html">
+  <link rel="stylesheet" href="../site.css">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Workout Split Quiz",
+  "description": "Workout split quiz. Pick your training days and see the programs built for that count. 40+ pre-written programs from two days a week to six.",
+  "url": "https://exercises.programmd.co/tools/days-quiz.html",
+  "applicationCategory": "HealthApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "publisher": { "@type": "Organization", "name": "Programmd" }
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Exercise Glossary",
+      "item": "https://exercises.programmd.co/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Workout Split Quiz",
+      "item": "https://exercises.programmd.co/tools/days-quiz.html"
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <header class="site-nav">
+    <div class="site-nav-inner">
+      <a class="site-nav-brand" href="https://programmd.co">Programmd.</a>
+      <nav aria-label="Site">
+        <details class="site-nav-menu">
+          <summary>Tools</summary>
+          <ul>
+          <li><a href="../index.html">Exercise glossary</a></li>
+          <li><a href="../tools/tdee.html">TDEE calculator</a></li>
+          <li><a href="../tools/macros.html">Macro calculator</a></li>
+          <li><a href="../tools/one-rep-max.html">One rep max calculator</a></li>
+          <li><a href="../tools/plates.html">Plate calculator</a></li>
+          <li><a href="../tools/rpe-rir.html">RPE and RIR chart</a></li>
+          <li><a href="../tools/days-quiz.html" aria-current="page">Programs by training days</a></li>
+            <li class="site-nav-all"><a href="../tools/index.html">All tools</a></li>
+          </ul>
+        </details>
+        <a class="site-nav-cta" href="https://programmd.co/pages/quiz">Find your program</a>
+      </nav>
+    </div>
+  </header>
+  <script>
+  (function () {
+    var menu = document.querySelector('.site-nav-menu');
+    if (!menu) return;
+    document.addEventListener('click', function (event) {
+      if (menu.open && !menu.contains(event.target)) menu.open = false;
+    });
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && menu.open) {
+        menu.open = false;
+        menu.querySelector('summary').focus();
+      }
+    });
+  })();
+  </script>
+  <p class="back"><a href="index.html">&larr; All tools</a></p>
+  <main class="tool">
+    <header class="tool-header">
+      <h1>Workout split quiz: programs by training days</h1>
+      <p class="tool-lede">This asks how many days a week you already have and shows the programs built for that count. It does not tell you how often to train.</p>
+    </header>
+
+    <div class="tool-panel">
+      <form id="quiz">
+        <fieldset class="quiz-step">
+          <legend>How many days a week can you reliably train?</legend>
+          <label class="chip" for="days-2"><input type="radio" name="days" id="days-2" value="2"> 2</label>
+          <label class="chip" for="days-3"><input type="radio" name="days" id="days-3" value="3" checked> 3</label>
+          <label class="chip" for="days-4"><input type="radio" name="days" id="days-4" value="4"> 4</label>
+          <label class="chip" for="days-5"><input type="radio" name="days" id="days-5" value="5"> 5</label>
+          <label class="chip" for="days-6"><input type="radio" name="days" id="days-6" value="6"> 6</label>
+        </fieldset>
+
+        <fieldset class="quiz-step">
+          <legend>How long is each session?</legend>
+          <label class="chip" for="mins-30"><input type="radio" name="mins" id="mins-30" value="30"> 30 min</label>
+          <label class="chip" for="mins-45"><input type="radio" name="mins" id="mins-45" value="45" checked> 45 min</label>
+          <label class="chip" for="mins-60"><input type="radio" name="mins" id="mins-60" value="60"> 60 min</label>
+          <label class="chip" for="mins-75"><input type="radio" name="mins" id="mins-75" value="75"> 75+ min</label>
+        </fieldset>
+
+        <fieldset class="quiz-step">
+          <legend>What are you training for?</legend>
+          <label class="chip" for="goal-muscle"><input type="radio" name="goal" id="goal-muscle" value="build_muscle" checked> Build muscle</label>
+          <label class="chip" for="goal-fat"><input type="radio" name="goal" id="goal-fat" value="lose_fat"> Lose fat</label>
+          <label class="chip" for="goal-general"><input type="radio" name="goal" id="goal-general" value="general"> General fitness</label>
+          <label class="chip" for="goal-strong"><input type="radio" name="goal" id="goal-strong" value="get_strong"> Strength</label>
+        </fieldset>
+
+        <fieldset class="quiz-step">
+          <legend>How long have you been training?</legend>
+          <label class="chip" for="exp-never"><input type="radio" name="exp" id="exp-never" value="never"> New to it</label>
+          <label class="chip" for="exp-under1"><input type="radio" name="exp" id="exp-under1" value="under1"> Under a year</label>
+          <label class="chip" for="exp-1-3"><input type="radio" name="exp" id="exp-1-3" value="1_3" checked> 1 to 3 years</label>
+          <label class="chip" for="exp-3plus"><input type="radio" name="exp" id="exp-3plus" value="3plus"> 3+ years</label>
+        </fieldset>
+      </form>
+    </div>
+
+    <p class="tool-error" id="error" hidden>Answer all four questions to see the matches.</p>
+
+    <div class="result" id="result" aria-live="polite">
+      <p class="result-label" id="resultLabel">Programs built for 3 days a week</p>
+      <p class="result-primary" id="resultPrimary">3 programs</p>
+      <ul class="match-list" id="matchList">
+        <li><a href="https://programmd.co/products/three-day-ppl">Three Day PPL: 12-Week Push Pull Legs</a><p class="match-meta">3 days a week. Full gym.</p></li>
+        <li><a href="https://programmd.co/products/dumbbell-only">Dumbbell Only: 12-Week Training</a><p class="match-meta">3 days a week. Dumbbells and a bench.</p></li>
+        <li><a href="https://programmd.co/products/strong-at-home">Strong at Home: 12-Week Home Strength</a><p class="match-meta">3 days a week. Dumbbells, bench and a band.</p></li>
+      </ul>
+      <p class="result-note" id="minsNote" hidden>Quick Work is the catalogue's thirty-minute program. It runs four days a week.</p>
+      <p class="result-note">These are pre-written programs. The full quiz on the store covers the whole catalogue and matches across equipment, injuries and age as well, which this page does not ask about.</p>
+    </div>
+
+    <h2>How many days a week should I work out?</h2>
+    <p>The catalogue runs from two days a week to six, across 40+ programs. Pick the count you can repeat for the full length of the program, which is eight to twelve weeks depending on the program. Every count covers the whole body across the week. The work is divided differently, and more or less of it lands in each session. Each count runs a full program. A two day week is not a cut-down version of a four day one.</p>
+    <p>Session length is a separate question from the count. A 30 minute session and a 75 minute session at the same day count carry different amounts of work, which is why the quiz above asks for both.</p>
+
+    <h2>What each day count gets built into</h2>
+    <p>The day count decides how the week is divided. This is what the programs at each count do.</p>
+    <table class="tool-table">
+      <thead>
+        <tr>
+          <th class="num">Days</th>
+          <th>How the week is laid out</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="num">2</td>
+          <td>Two full body sessions. Each one covers a push, a pull and a lower body pattern, with more sets per session than a split day carries.</td>
+        </tr>
+        <tr>
+          <td class="num">3</td>
+          <td>Full body three times, or a three way split such as push, pull and legs. The catalogue runs both, and most of the equipment specific programs sit here.</td>
+        </tr>
+        <tr>
+          <td class="num">4</td>
+          <td>Upper and lower, twice each. Two sessions bias the top half, two bias the bottom. Some four day programs use a four way split instead.</td>
+        </tr>
+        <tr>
+          <td class="num">5</td>
+          <td>A split. Patterns or body parts get their own day, so each session is narrower and the sets for one area are concentrated in one place.</td>
+        </tr>
+        <tr>
+          <td class="num">6</td>
+          <td>A split run twice over the week. Each pattern comes around every third or fourth day, with less work per session than a three day full body week.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>What the programs print</h2>
+    <p class="note">Every session is written out in full: exercises, sets, reps, rest and an effort target given as reps in reserve. The weight column is left blank. You pick the load that hits the effort target, and no program here tells you what to lift.</p>
+
+    <div class="cta">
+      <p>40+ pre-written programs, across every day count from two to six.</p>
+      <a href="https://programmd.co/pages/quiz">Find your program</a>
+    </div>
+
+    <h2>Other tools</h2>
+    <ul class="tool-links">
+      <li><a href="tdee.html">TDEE calculator</a></li>
+      <li><a href="one-rep-max.html">One rep max calculator</a></li>
+      <li><a href="plates.html">Plate calculator</a></li>
+      <li><a href="rpe-rir.html">RPE and RIR chart</a></li>
+      <li><a href="macros.html">Macro calculator</a></li>
+    </ul>
+
+    <footer class="provenance">
+      <p><a href="../index.html">Exercise glossary</a> &middot; <a href="https://programmd.co">programmd.co</a></p>
+    </footer>
+  </main>
+  <script>
+  (function () {
+    var PROGRAMS = [
+      { days: 2, handle: "bare-bones", title: "Bare Bones: 12-Week Minimal Training", kit: "Full gym", goals: [], good: [], bad: [] },
+      { days: 2, handle: "out-of-the-ring", title: "Out of the Ring: 10-Week Strength for Boxers", kit: "Full gym", goals: [], good: [], bad: [] },
+      { days: 2, handle: "off-the-bike", title: "Off the Bike: 12-Week Strength for Cyclists", kit: "Full gym", goals: [], good: [], bad: [] },
+      { days: 3, handle: "runway", title: "Runway: 10-Week Beginner Program", kit: "Full gym", goals: [], good: ["never", "under1"], bad: ["1_3", "3plus"] },
+      { days: 3, handle: "day-one", title: "Day One: 12-Week Beginner Program", kit: "Full gym", goals: [], good: ["never", "under1"], bad: ["1_3", "3plus"] },
+      { days: 3, handle: "three-day-ppl", title: "Three Day PPL: 12-Week Push Pull Legs", kit: "Full gym", goals: ["build_muscle"], good: ["1_3", "3plus"], bad: ["never"] },
+      { days: 3, handle: "dumbbell-only", title: "Dumbbell Only: 12-Week Training", kit: "Dumbbells and a bench", goals: ["build_muscle", "general"], good: [], bad: [] },
+      { days: 3, handle: "strong-at-home", title: "Strong at Home: 12-Week Home Strength", kit: "Dumbbells, bench and a band", goals: ["build_muscle", "get_strong"], good: [], bad: [] },
+      { days: 3, handle: "bodyweight", title: "Bodyweight: 10-Week Training", kit: "No equipment", goals: ["general"], good: [], bad: [] },
+      { days: 3, handle: "machines", title: "Machines: 12-Week Training", kit: "Machines and cables", goals: [], good: [], bad: [] },
+      { days: 3, handle: "kettlebell", title: "Kettlebell: 10-Week Training", kit: "Kettlebells", goals: [], good: [], bad: [] },
+      { days: 3, handle: "tension", title: "Tension: 8-Week Bands", kit: "Resistance bands", goals: [], good: [], bad: [] },
+      { days: 3, handle: "forty-plus", title: "Forty Plus: 12-Week Strength", kit: "Full gym", goals: [], good: [], bad: [] },
+      { days: 3, handle: "vibrance", title: "Vibrance: 12-Week Women's Strength", kit: "Full gym", goals: [], good: [], bad: [] },
+      { days: 3, handle: "sixty-plus", title: "Sixty Plus: 10-Week Strength", kit: "Full gym", goals: [], good: [], bad: [] },
+      { days: 4, handle: "overload", title: "Overload: 12-Week Hypertrophy", kit: "Full gym", goals: ["build_muscle"], good: ["3plus"], bad: ["never", "under1"] },
+      { days: 4, handle: "lean-season", title: "Lean Season: 12-Week Muscle Gain", kit: "Full gym", goals: ["build_muscle"], good: ["1_3"], bad: ["3plus", "never"] },
+      { days: 4, handle: "groundwork", title: "Groundwork: 12-Week Women's Strength", kit: "Full gym", goals: ["build_muscle", "general"], good: [], bad: [] },
+      { days: 4, handle: "garage", title: "Garage: 12-Week Home Gym", kit: "Home rack and barbell", goals: ["build_muscle", "general"], good: [], bad: [] },
+      { days: 4, handle: "three-lifts", title: "Three Lifts: 12-Week Strength", kit: "Home rack and barbell", goals: ["get_strong"], good: ["1_3", "3plus"], bad: ["never"] },
+      { days: 4, handle: "max-effort", title: "Max Effort: 12-Week Conjugate", kit: "Full gym", goals: ["get_strong"], good: ["3plus"], bad: ["never", "under1"] },
+      { days: 4, handle: "recomp", title: "Recomp: 12-Week Body Recomposition", kit: "Full gym", goals: ["lose_fat"], good: [], bad: [] },
+      { days: 4, handle: "the-cut", title: "The Cut: 12-Week Fat Loss", kit: "Dumbbells and a bench", goals: ["lose_fat"], good: [], bad: [] },
+      { days: 4, handle: "quick-work", title: "Quick Work: 10-Week Short Sessions", kit: "Full gym", goals: [], good: [], bad: [] },
+      { days: 5, handle: "split-week", title: "Split Week: 12-Week Bro Split", kit: "Full gym", goals: ["build_muscle"], good: ["1_3", "3plus"], bad: ["never"] },
+      { days: 5, handle: "engine", title: "Engine: 10-Week Strength & Conditioning", kit: "Full gym", goals: ["general", "lose_fat"], good: [], bad: [] },
+      { days: 6, handle: "push-pull-legs", title: "Push Pull Legs: 12-Week Hypertrophy", kit: "Full gym", goals: ["build_muscle"], good: ["1_3", "3plus"], bad: ["never"] }
+    ];
+
+    var form = document.getElementById("quiz");
+    var errorBox = document.getElementById("error");
+    var result = document.getElementById("result");
+    var resultLabel = document.getElementById("resultLabel");
+    var resultPrimary = document.getElementById("resultPrimary");
+    var matchList = document.getElementById("matchList");
+    var minsNote = document.getElementById("minsNote");
+
+    function picked(name) {
+      var el = form.querySelector('input[name="' + name + '"]:checked');
+      return el ? el.value : "";
+    }
+
+    function scoreOf(program, goal, exp, mins) {
+      var score = 0;
+      if (goal && program.goals.indexOf(goal) > -1) { score += 3; }
+      if (exp && program.good.indexOf(exp) > -1) { score += 3; }
+      if (exp && program.bad.indexOf(exp) > -1) { score -= 6; }
+      if (mins === 30 && program.handle === "quick-work") { score += 4; }
+      return score;
+    }
+
+    function rank(days, mins, goal, exp) {
+      var out = [];
+      var i;
+      for (var tier = 0; days - tier >= 2; tier++) {
+        var wanted = days - tier;
+        for (i = 0; i < PROGRAMS.length; i++) {
+          if (PROGRAMS[i].days !== wanted) { continue; }
+          var score = scoreOf(PROGRAMS[i], goal, exp, mins);
+          if (score < 0) { continue; }
+          out.push({ p: PROGRAMS[i], score: score, tier: tier, order: i });
+        }
+        if (out.length >= 2) { break; }
+      }
+      if (!out.length) {
+        for (i = 0; i < PROGRAMS.length; i++) {
+          if (PROGRAMS[i].days > days) { continue; }
+          out.push({
+            p: PROGRAMS[i],
+            score: scoreOf(PROGRAMS[i], goal, exp, mins),
+            tier: days - PROGRAMS[i].days,
+            order: i
+          });
+        }
+      }
+      out.sort(function (a, b) {
+        if (a.tier !== b.tier) { return a.tier - b.tier; }
+        if (b.score !== a.score) { return b.score - a.score; }
+        return a.order - b.order;
+      });
+      return out.slice(0, 3);
+    }
+
+    function render() {
+      var daysRaw = picked("days");
+      var minsRaw = picked("mins");
+      var goal = picked("goal");
+      var exp = picked("exp");
+      var days = parseInt(daysRaw, 10);
+      var mins = parseInt(minsRaw, 10);
+
+      if (!daysRaw || !minsRaw || !goal || !exp || isNaN(days) || isNaN(mins) || days < 2 || days > 6) {
+        errorBox.hidden = false;
+        result.hidden = true;
+        matchList.textContent = "";
+        minsNote.hidden = true;
+        resultLabel.textContent = "";
+        resultPrimary.textContent = "";
+        return;
+      }
+
+      errorBox.hidden = true;
+      result.hidden = false;
+
+      var picks = rank(days, mins, goal, exp);
+      var widened = false;
+      var anyAtCount = false;
+      var hasQuickWork = false;
+      matchList.textContent = "";
+
+      for (var i = 0; i < picks.length; i++) {
+        var p = picks[i].p;
+        if (picks[i].tier > 0) { widened = true; }
+        if (p.days === days) { anyAtCount = true; }
+        if (p.handle === "quick-work") { hasQuickWork = true; }
+        var li = document.createElement("li");
+        var a = document.createElement("a");
+        a.href = "https://programmd.co/products/" + p.handle;
+        a.textContent = p.title;
+        var meta = document.createElement("p");
+        meta.className = "match-meta";
+        meta.textContent = p.days + " days a week. " + p.kit + ".";
+        li.appendChild(a);
+        li.appendChild(meta);
+        matchList.appendChild(li);
+      }
+
+      if (!anyAtCount) {
+        resultLabel.textContent = "No " + days + " day program matched your answers. The closest below it:";
+      } else if (widened) {
+        resultLabel.textContent = "Programs built for " + days + " days a week, plus the closest below it";
+      } else {
+        resultLabel.textContent = "Programs built for " + days + " days a week";
+      }
+      resultPrimary.textContent = picks.length + (picks.length === 1 ? " program" : " programs");
+      minsNote.hidden = !(mins === 30 && days >= 4 && !hasQuickWork);
+    }
+
+    form.addEventListener("input", render);
+    form.addEventListener("change", render);
+    render();
+  })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>1RM Calculator: One Rep Max and Max Bench Calculator | Programmd</title>
+  <meta name="description" content="A one rep max calculator. Enter a weight and the reps you completed and the 1RM calculator estimates your max with the Epley formula. Works as a max bench calculator too.">
+  <link rel="canonical" href="https://exercises.programmd.co/tools/one-rep-max.html">
+  <meta property="og:title" content="1RM Calculator: One Rep Max and Max Bench Calculator | Programmd">
+  <meta property="og:description" content="A one rep max calculator. Enter a weight and the reps you completed and the 1RM calculator estimates your max with the Epley formula. Works as a max bench calculator too.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://exercises.programmd.co/tools/one-rep-max.html">
+  <link rel="stylesheet" href="../site.css">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "One Rep Max Calculator",
+  "description": "A one rep max calculator. Enter a weight and the reps you completed and the 1RM calculator estimates your max with the Epley formula. Works as a max bench calculator too.",
+  "url": "https://exercises.programmd.co/tools/one-rep-max.html",
+  "applicationCategory": "HealthApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "publisher": { "@type": "Organization", "name": "Programmd" }
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Exercise Glossary",
+      "item": "https://exercises.programmd.co/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "1RM Calculator",
+      "item": "https://exercises.programmd.co/tools/one-rep-max.html"
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <header class="site-nav">
+    <div class="site-nav-inner">
+      <a class="site-nav-brand" href="https://programmd.co">Programmd.</a>
+      <nav aria-label="Site">
+        <details class="site-nav-menu">
+          <summary>Tools</summary>
+          <ul>
+          <li><a href="../index.html">Exercise glossary</a></li>
+          <li><a href="../tools/tdee.html">TDEE calculator</a></li>
+          <li><a href="../tools/macros.html">Macro calculator</a></li>
+          <li><a href="../tools/one-rep-max.html" aria-current="page">One rep max calculator</a></li>
+          <li><a href="../tools/plates.html">Plate calculator</a></li>
+          <li><a href="../tools/rpe-rir.html">RPE and RIR chart</a></li>
+          <li><a href="../tools/days-quiz.html">Programs by training days</a></li>
+            <li class="site-nav-all"><a href="../tools/index.html">All tools</a></li>
+          </ul>
+        </details>
+        <a class="site-nav-cta" href="https://programmd.co/pages/quiz">Find your program</a>
+      </nav>
+    </div>
+  </header>
+  <script>
+  (function () {
+    var menu = document.querySelector('.site-nav-menu');
+    if (!menu) return;
+    document.addEventListener('click', function (event) {
+      if (menu.open && !menu.contains(event.target)) menu.open = false;
+    });
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && menu.open) {
+        menu.open = false;
+        menu.querySelector('summary').focus();
+      }
+    });
+  })();
+  </script>
+  <p class="back"><a href="index.html">&larr; All tools</a></p>
+  <main class="tool">
+    <header class="tool-header">
+      <h1>One rep max calculator</h1>
+      <p class="tool-lede">Enter a weight you lifted and the number of reps you completed. This 1RM calculator estimates the heaviest load you could move for a single rep, using the Epley formula, and prints training percentages of that number.</p>
+    </header>
+
+    <div class="tool-panel">
+      <div class="field">
+        <div class="field-head">
+          <label class="field-label" for="weight">Weight lifted</label>
+          <div class="seg" id="unit-toggle" role="group" aria-label="Weight unit">
+            <button type="button" data-unit="kg" aria-pressed="true">kg</button>
+            <button type="button" data-unit="lb" aria-pressed="false">lb</button>
+          </div>
+        </div>
+        <input type="number" id="weight" inputmode="decimal" step="0.5" min="0" value="100">
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="reps">Reps completed (2 to 15)</label>
+        <input type="number" id="reps" inputmode="numeric" step="1" min="2" max="15" value="5">
+      </div>
+    </div>
+
+    <p class="tool-error" id="tool-error" aria-live="polite" hidden></p>
+
+    <section class="result" id="result" aria-live="polite">
+      <p class="result-label">Estimated one rep max</p>
+      <p class="result-primary" id="one-rm">116.7 kg</p>
+      <p class="result-note" id="result-note">Epley estimate from 100 kg for 5 reps.</p>
+
+      <table class="tool-table">
+        <thead>
+          <tr>
+            <th class="num">Percent</th>
+            <th class="num">Load (<span id="load-unit">kg</span>)</th>
+            <th>Reps at this load</th>
+          </tr>
+        </thead>
+        <tbody id="pct-body">
+          <tr data-pct="100">
+            <td class="num">100%</td>
+            <td class="num" data-load></td>
+            <td>1 rep</td>
+          </tr>
+          <tr data-pct="95">
+            <td class="num">95%</td>
+            <td class="num" data-load></td>
+            <td>2 reps</td>
+          </tr>
+          <tr data-pct="90">
+            <td class="num">90%</td>
+            <td class="num" data-load></td>
+            <td>4 reps</td>
+          </tr>
+          <tr class="is-highlight" data-pct="85">
+            <td class="num">85%</td>
+            <td class="num" data-load></td>
+            <td>5 reps</td>
+          </tr>
+          <tr class="is-highlight" data-pct="80">
+            <td class="num">80%</td>
+            <td class="num" data-load></td>
+            <td>8 reps</td>
+          </tr>
+          <tr class="is-highlight" data-pct="75">
+            <td class="num">75%</td>
+            <td class="num" data-load></td>
+            <td>10 reps</td>
+          </tr>
+          <tr class="is-highlight" data-pct="70">
+            <td class="num">70%</td>
+            <td class="num" data-load></td>
+            <td>12 reps</td>
+          </tr>
+          <tr data-pct="65">
+            <td class="num">65%</td>
+            <td class="num" data-load></td>
+            <td>15 reps</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <h2>What the percentages are for</h2>
+    <p>The 70 to 85% band covers most working sets. Lower percentages carry more reps, higher percentages fewer.</p>
+    <p>A program does not print a weight, because the right load changes with the week, the lift and the day. Each working set carries an effort target written as reps in reserve, and you pick the load that lands on it.</p>
+    <div class="note">The table is arithmetic on one number. Sleep, the sets before it and the time you had to warm up all move what a given percentage feels like on the day. If 80% goes up faster than the rep target asks for, the load was light for that session.</div>
+
+    <h2>Using this as a max bench calculator</h2>
+    <p>The formula reads a weight and a rep count, so the same arithmetic covers bench press, squat, deadlift and overhead press. The formula is more accurate on some lifts than others. Bench press and overhead press tend to estimate close, because the set ends when the bar stops moving. Squat and deadlift sets in the 10 to 15 rep range tend to read high, since those sets often end on breathing or grip rather than on the muscle that was being loaded.</p>
+
+    <h2>Epley is one formula of several</h2>
+    <p>This page uses Epley: 1RM = weight x (1 + reps / 30). Brzycki, Lombardi and Wathan are other common ones, and they return different numbers from the same set. All of them estimate from a formula.</p>
+    <p>The estimate loses accuracy the further the rep count sits from 1. A set of 3 to 5 reps taken close to failure produces the tightest figure. At 12 to 15 reps the answer depends on conditioning and pain tolerance as much as on strength, which is why the calculator stops at 15.</p>
+
+    <div class="cta">
+      <p>Programs with effort targets printed on every working set.</p>
+      <a href="https://programmd.co/pages/quiz">Find your program</a>
+    </div>
+
+    <h2>Other tools</h2>
+    <ul class="tool-links">
+      <li><a href="tdee.html">TDEE calculator</a></li>
+      <li><a href="plates.html">Plate calculator</a></li>
+      <li><a href="rpe-rir.html">RPE and RIR chart</a></li>
+      <li><a href="macros.html">Macro calculator</a></li>
+      <li><a href="days-quiz.html">Programs by training days</a></li>
+    </ul>
+
+    <footer class="provenance">
+      <p><a href="../index.html">Exercise glossary</a> &middot; <a href="https://programmd.co">programmd.co</a></p>
+    </footer>
+  </main>
+  <script>
+  (function () {
+    var LB_PER_KG = 2.2046226218;
+    var weightEl = document.getElementById('weight');
+    var repsEl = document.getElementById('reps');
+    var toggle = document.getElementById('unit-toggle');
+    var unitBtns = toggle.querySelectorAll('button');
+    var result = document.getElementById('result');
+    var primary = document.getElementById('one-rm');
+    var note = document.getElementById('result-note');
+    var loadUnit = document.getElementById('load-unit');
+    var error = document.getElementById('tool-error');
+    var rows = document.getElementById('pct-body').querySelectorAll('tr');
+    var unit = 'kg';
+
+    function fmt(n) {
+      var r = Math.round(n * 10) / 10;
+      return r === Math.round(r) ? String(Math.round(r)) : r.toFixed(1);
+    }
+
+    function fail(message) {
+      error.textContent = message;
+      error.hidden = false;
+      result.hidden = true;
+    }
+
+    function calculate() {
+      var w = parseFloat(weightEl.value);
+      var r = parseFloat(repsEl.value);
+
+      if (!isFinite(w) || w <= 0) {
+        fail('Enter a weight above zero.');
+        return;
+      }
+      if (w > 2000) {
+        fail('Enter a weight under 2000.');
+        return;
+      }
+      if (!isFinite(r) || r <= 0) {
+        fail('Enter the reps you completed, from 2 to 15.');
+        return;
+      }
+      if (r === 1) {
+        fail('One rep is already a max. No estimate needed.');
+        return;
+      }
+      if (r > 15) {
+        fail('Above 15 reps the estimate is unreliable. Enter a set of 15 reps or fewer.');
+        return;
+      }
+      if (r < 2 || r !== Math.round(r)) {
+        fail('Enter a whole number of reps, from 2 to 15.');
+        return;
+      }
+
+      var max = w * (1 + r / 30);
+      error.hidden = true;
+      result.hidden = false;
+      primary.textContent = fmt(max) + ' ' + unit;
+      note.textContent = 'Epley estimate from ' + fmt(w) + ' ' + unit + ' for ' + r + ' reps.';
+      loadUnit.textContent = unit;
+
+      for (var i = 0; i < rows.length; i++) {
+        var pct = parseFloat(rows[i].getAttribute('data-pct'));
+        var cell = rows[i].querySelector('[data-load]');
+        if (cell) {
+          cell.textContent = fmt(max * pct / 100);
+        }
+      }
+    }
+
+    function setUnit(next) {
+      if (next !== 'kg' && next !== 'lb') {
+        return;
+      }
+      if (next !== unit) {
+        var v = parseFloat(weightEl.value);
+        if (isFinite(v) && v > 0) {
+          weightEl.value = fmt(next === 'lb' ? v * LB_PER_KG : v / LB_PER_KG);
+        }
+        unit = next;
+      }
+      for (var i = 0; i < unitBtns.length; i++) {
+        unitBtns[i].setAttribute('aria-pressed', unitBtns[i].getAttribute('data-unit') === unit ? 'true' : 'false');
+      }
+      calculate();
+    }
+
+    for (var i = 0; i < unitBtns.length; i++) {
+      unitBtns[i].addEventListener('click', function () {
+        setUnit(this.getAttribute('data-unit'));
+      });
+    }
+
+    weightEl.addEventListener('input', calculate);
+    weightEl.addEventListener('change', calculate);
+    repsEl.addEventListener('input', calculate);
+    repsEl.addEventListener('change', calculate);
+
+    calculate();
+  })();
+  </script>
+</body>
+</html>

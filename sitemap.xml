@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://exercises.programmd.co/</loc></url>
+  <url><loc>https://exercises.programmd.co/tools/</loc></url>
+  <url><loc>https://exercises.programmd.co/tools/days-quiz.html</loc></url>
+  <url><loc>https://exercises.programmd.co/tools/macros.html</loc></url>
+  <url><loc>https://exercises.programmd.co/tools/one-rep-max.html</loc></url>
+  <url><loc>https://exercises.programmd.co/tools/plates.html</loc></url>
+  <url><loc>https://exercises.programmd.co/tools/rpe-rir.html</loc></url>
+  <url><loc>https://exercises.programmd.co/tools/tdee.html</loc></url>
   <url><loc>https://exercises.programmd.co/exercises/90-90-hamstring.html</loc></url>
   <url><loc>https://exercises.programmd.co/exercises/adductor-groin.html</loc></url>
   <url><loc>https://exercises.programmd.co/exercises/alternating-floor-press.html</loc></url>

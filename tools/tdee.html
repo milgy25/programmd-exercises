@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TDEE Calculator: How Many Calories Should I Eat? | Programmd</title>
+  <meta name="description" content="Free TDEE calculator and daily calorie calculator. Enter sex, age, height, weight and activity level to see how many calories you should eat to maintain, cut or gain.">
+  <link rel="canonical" href="https://exercises.programmd.co/tools/tdee.html">
+  <meta property="og:title" content="TDEE Calculator: How Many Calories Should I Eat? | Programmd">
+  <meta property="og:description" content="Free TDEE calculator and daily calorie calculator. Enter sex, age, height, weight and activity level to see how many calories you should eat to maintain, cut or gain.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://exercises.programmd.co/tools/tdee.html">
+  <link rel="stylesheet" href="../site.css">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "TDEE Calculator",
+  "description": "Free TDEE calculator and daily calorie calculator. Enter sex, age, height, weight and activity level to see how many calories you should eat to maintain, cut or gain.",
+  "url": "https://exercises.programmd.co/tools/tdee.html",
+  "applicationCategory": "HealthApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "publisher": { "@type": "Organization", "name": "Programmd" }
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Exercise Glossary",
+      "item": "https://exercises.programmd.co/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "TDEE Calculator",
+      "item": "https://exercises.programmd.co/tools/tdee.html"
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <header class="site-nav">
+    <div class="site-nav-inner">
+      <a class="site-nav-brand" href="https://programmd.co">Programmd.</a>
+      <nav aria-label="Site">
+        <details class="site-nav-menu">
+          <summary>Tools</summary>
+          <ul>
+          <li><a href="../index.html">Exercise glossary</a></li>
+          <li><a href="../tools/tdee.html" aria-current="page">TDEE calculator</a></li>
+          <li><a href="../tools/macros.html">Macro calculator</a></li>
+          <li><a href="../tools/one-rep-max.html">One rep max calculator</a></li>
+          <li><a href="../tools/plates.html">Plate calculator</a></li>
+          <li><a href="../tools/rpe-rir.html">RPE and RIR chart</a></li>
+          <li><a href="../tools/days-quiz.html">Programs by training days</a></li>
+            <li class="site-nav-all"><a href="../tools/index.html">All tools</a></li>
+          </ul>
+        </details>
+        <a class="site-nav-cta" href="https://programmd.co/pages/quiz">Find your program</a>
+      </nav>
+    </div>
+  </header>
+  <script>
+  (function () {
+    var menu = document.querySelector('.site-nav-menu');
+    if (!menu) return;
+    document.addEventListener('click', function (event) {
+      if (menu.open && !menu.contains(event.target)) menu.open = false;
+    });
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && menu.open) {
+        menu.open = false;
+        menu.querySelector('summary').focus();
+      }
+    });
+  })();
+  </script>
+  <p class="back"><a href="index.html">&larr; All tools</a></p>
+  <main class="tool">
+    <header class="tool-header">
+      <h1>TDEE and calorie calculator</h1>
+      <p class="tool-lede">Your TDEE is the total energy you burn in a day, resting and moving. Fill in the five fields and the number updates as you type.</p>
+    </header>
+
+    <div class="tool-panel" id="calcPanel">
+      <div class="field">
+        <fieldset class="opt-group">
+          <legend>Sex</legend>
+          <label class="chip"><input type="radio" name="sex" value="male" checked> Male</label>
+          <label class="chip"><input type="radio" name="sex" value="female"> Female</label>
+        </fieldset>
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="age">Age in years</label>
+        <input type="number" id="age" value="30" min="14" max="100" step="1" inputmode="numeric">
+      </div>
+
+      <div class="field">
+        <div class="field-head">
+          <span class="field-label">Height</span>
+          <div class="seg" role="group" aria-label="Height unit">
+            <button type="button" id="htCm" aria-pressed="true">cm</button>
+            <button type="button" id="htFt" aria-pressed="false">ft and in</button>
+          </div>
+        </div>
+        <div id="heightMetric">
+          <label class="field-label" for="heightCm">Centimetres</label>
+          <input type="number" id="heightCm" value="178" min="120" max="250" step="1" inputmode="numeric">
+        </div>
+        <div id="heightImperial" hidden>
+          <div class="field-row">
+            <div>
+              <label class="field-label" for="heightFt">Feet</label>
+              <input type="number" id="heightFt" value="5" min="3" max="8" step="1" inputmode="numeric">
+            </div>
+            <div>
+              <label class="field-label" for="heightIn">Inches</label>
+              <input type="number" id="heightIn" value="10" min="0" max="11" step="1" inputmode="numeric">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="field-head">
+          <label class="field-label" for="weight">Bodyweight</label>
+          <div class="seg" role="group" aria-label="Weight unit">
+            <button type="button" id="wtKg" aria-pressed="true">kg</button>
+            <button type="button" id="wtLb" aria-pressed="false">lb</button>
+          </div>
+        </div>
+        <input type="number" id="weight" value="80" min="30" max="300" step="0.1" inputmode="decimal">
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="activity">Activity level</label>
+        <select id="activity">
+          <option value="1.2">Sedentary. Desk work, little walking, no training.</option>
+          <option value="1.375">Light. Training 1 to 3 days a week.</option>
+          <option value="1.55" selected>Moderate. Training 3 to 5 days a week.</option>
+          <option value="1.725">Heavy. Training 6 or 7 days a week, or a physical job.</option>
+          <option value="1.9">Athlete. Two sessions a day, or a physical job plus training.</option>
+        </select>
+      </div>
+
+      <p class="tool-error" id="toolError" hidden></p>
+    </div>
+
+    <div class="result" id="result" aria-live="polite">
+      <p class="result-label">Daily calories to maintain</p>
+      <p class="result-primary" id="tdeeOut"></p>
+      <p class="result-note">BMR <span id="bmrOut"></span> calories. BMR is what your body uses over 24 hours at rest, before any walking, work or training is counted.</p>
+
+      <h2>Daily calories by direction</h2>
+      <table class="tool-table">
+        <thead>
+          <tr>
+            <th scope="col">Direction</th>
+            <th scope="col" class="num">Calories a day</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Aggressive deficit</td>
+            <td class="num" id="cut500"></td>
+          </tr>
+          <tr>
+            <td>Moderate deficit</td>
+            <td class="num" id="cut300"></td>
+          </tr>
+          <tr class="is-highlight">
+            <td>Maintain</td>
+            <td class="num" id="maintain"></td>
+          </tr>
+          <tr>
+            <td>Moderate surplus</td>
+            <td class="num" id="gain200"></td>
+          </tr>
+          <tr>
+            <td>Aggressive surplus</td>
+            <td class="num" id="gain400"></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="result-note">Protein <span id="proteinOut"></span> a day. The range is 1.6 g to 2.2 g per kg of bodyweight, so it tracks your weight rather than your calorie target.</p>
+    </div>
+
+    <p class="note">These figures are an estimate from a formula, not a measurement. Two people at the same height, weight, age and activity level can sit a few hundred calories apart.</p>
+
+    <h2>What to do with the number</h2>
+    <p>Pick a direction and hold it for the length of your program. Weigh yourself in the same conditions a few times a week and read the average, not a single morning. Two or three weeks of those averages tell you whether the estimate was close. If the average is not moving the way the direction you picked says it should, shift the daily figure by 100 to 200 calories and hold that for another two weeks.</p>
+
+    <h2>How many calories should I eat?</h2>
+    <p>Your bodyweight, height, age, sex and weekly movement all feed the number, which is why a figure from an article rarely fits. A 90 kg man on his feet all day burns several hundred calories more than a 60 kg woman at a desk, and neither of them is served by the same target. The calorie calculator above puts your own figures through the Mifflin-St Jeor equation, then multiplies the result by an activity factor.</p>
+    <p>Eat under the maintenance figure to lose weight, over it to gain, at it to hold your weight while you train. A deficit of 300 to 500 calories and a surplus of 200 to 400 are the usual working ranges, and both of them are in the table above.</p>
+
+    <h2>Activity levels and what they mean</h2>
+    <p>The multiplier covers everything outside your resting metabolism: walking, work, training and fidgeting. Pick the line that describes your week as it actually runs.</p>
+    <table class="tool-table">
+      <thead>
+        <tr>
+          <th scope="col">Level</th>
+          <th scope="col">Week</th>
+          <th scope="col" class="num">Multiplier</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Sedentary</td>
+          <td>Desk work, little walking, no training</td>
+          <td class="num">1.2</td>
+        </tr>
+        <tr>
+          <td>Light</td>
+          <td>Training 1 to 3 days a week</td>
+          <td class="num">1.375</td>
+        </tr>
+        <tr>
+          <td>Moderate</td>
+          <td>Training 3 to 5 days a week</td>
+          <td class="num">1.55</td>
+        </tr>
+        <tr>
+          <td>Heavy</td>
+          <td>Training 6 or 7 days a week, or a physical job</td>
+          <td class="num">1.725</td>
+        </tr>
+        <tr>
+          <td>Athlete</td>
+          <td>Two sessions a day, or a physical job plus training</td>
+          <td class="num">1.9</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>The formula</h2>
+    <p>BMR comes from the Mifflin-St Jeor equation, published in 1990. For men it is 10 times weight in kg, plus 6.25 times height in cm, minus 5 times age in years, plus 5. For women the last term is minus 161 instead of plus 5. TDEE is that figure multiplied by the activity level.</p>
+    <p>The calculator sets a daily intake. It does not set the loads you lift: Programmd programs print an effort target as reps in reserve and leave the weight column blank, because the load that leaves you two reps short changes week to week.</p>
+
+    <div class="cta">
+      <p>A program gives you the training side. Find one matched to your goal.</p>
+      <a href="https://programmd.co/pages/quiz">Find your program</a>
+    </div>
+
+    <h2>Other tools</h2>
+    <ul class="tool-links">
+      <li><a href="one-rep-max.html">One rep max calculator</a></li>
+      <li><a href="plates.html">Plate calculator</a></li>
+      <li><a href="rpe-rir.html">RPE and RIR chart</a></li>
+      <li><a href="macros.html">Macro calculator</a></li>
+      <li><a href="days-quiz.html">Programs by training days</a></li>
+    </ul>
+
+    <footer class="provenance">
+      <p><a href="../index.html">Exercise glossary</a> &middot; <a href="https://programmd.co">programmd.co</a></p>
+    </footer>
+  </main>
+  <script>
+  (function () {
+    'use strict';
+
+    var LB_PER_KG = 2.2046226218;
+    var CM_PER_IN = 2.54;
+
+    var heightUnit = 'cm';
+    var weightUnit = 'kg';
+
+    function el(id) {
+      return document.getElementById(id);
+    }
+
+    var panel = el('calcPanel');
+    var ageInput = el('age');
+    var heightCm = el('heightCm');
+    var heightFt = el('heightFt');
+    var heightIn = el('heightIn');
+    var metricBox = el('heightMetric');
+    var imperialBox = el('heightImperial');
+    var weightInput = el('weight');
+    var activity = el('activity');
+
+    var htCm = el('htCm');
+    var htFt = el('htFt');
+    var wtKg = el('wtKg');
+    var wtLb = el('wtLb');
+
+    var errorBox = el('toolError');
+    var resultBox = el('result');
+    var tdeeOut = el('tdeeOut');
+    var bmrOut = el('bmrOut');
+    var proteinOut = el('proteinOut');
+    var cut500 = el('cut500');
+    var cut300 = el('cut300');
+    var maintain = el('maintain');
+    var gain200 = el('gain200');
+    var gain400 = el('gain400');
+
+    function num(input) {
+      if (!input || input.value.trim() === '') {
+        return NaN;
+      }
+      var v = Number(input.value);
+      return isFinite(v) ? v : NaN;
+    }
+
+    function inches() {
+      if (heightIn.value.trim() === '') {
+        return 0;
+      }
+      var v = Number(heightIn.value);
+      return isFinite(v) ? v : NaN;
+    }
+
+    function whole(n) {
+      return Math.round(n).toLocaleString('en-US');
+    }
+
+    function trim1(n) {
+      return String(Math.round(n * 10) / 10);
+    }
+
+    function heightInCm() {
+      if (heightUnit === 'cm') {
+        return num(heightCm);
+      }
+      var f = num(heightFt);
+      var i = inches();
+      if (!isFinite(f) || !isFinite(i)) {
+        return NaN;
+      }
+      return (f * 12 + i) * CM_PER_IN;
+    }
+
+    function weightInKg() {
+      var w = num(weightInput);
+      if (!isFinite(w)) {
+        return NaN;
+      }
+      return weightUnit === 'kg' ? w : w / LB_PER_KG;
+    }
+
+    function problem() {
+      var age = num(ageInput);
+      if (!isFinite(age) || age < 14 || age > 100) {
+        return 'Enter an age between 14 and 100 years.';
+      }
+      if (heightUnit === 'in') {
+        var i = inches();
+        if (!isFinite(i) || i < 0 || i >= 12) {
+          return 'Enter inches as a number from 0 to 11.';
+        }
+      }
+      var cm = heightInCm();
+      if (!isFinite(cm) || cm < 120 || cm > 250) {
+        return heightUnit === 'cm'
+          ? 'Enter a height between 120 cm and 250 cm.'
+          : 'Enter a height between 4 ft 0 in and 8 ft 2 in.';
+      }
+      var kg = weightInKg();
+      if (!isFinite(kg) || kg < 30 || kg > 300) {
+        return weightUnit === 'kg'
+          ? 'Enter a bodyweight between 30 kg and 300 kg.'
+          : 'Enter a bodyweight between 67 lb and 660 lb.';
+      }
+      return '';
+    }
+
+    function calculate() {
+      var msg = problem();
+      if (msg !== '') {
+        errorBox.textContent = msg;
+        errorBox.hidden = false;
+        resultBox.hidden = true;
+        return;
+      }
+
+      errorBox.textContent = '';
+      errorBox.hidden = true;
+      resultBox.hidden = false;
+
+      var picked = document.querySelector('input[name="sex"]:checked');
+      var male = !picked || picked.value === 'male';
+      var kg = weightInKg();
+      var cm = heightInCm();
+      var age = num(ageInput);
+      var factor = Number(activity.value);
+      if (!isFinite(factor) || factor <= 0) {
+        factor = 1.55;
+      }
+
+      var bmr = 10 * kg + 6.25 * cm - 5 * age + (male ? 5 : -161);
+      var tdee = bmr * factor;
+
+      tdeeOut.textContent = whole(tdee) + ' calories';
+      bmrOut.textContent = whole(bmr);
+      // A deficit that lands under 1,000 calories a day is not a figure to print as a target, and
+      // clamping it at zero prints a worse one, so the row shows a dash instead of a number.
+      cut500.textContent = tdee - 500 < 1000 ? '--' : whole(tdee - 500);
+      cut300.textContent = tdee - 300 < 1000 ? '--' : whole(tdee - 300);
+      maintain.textContent = whole(tdee);
+      gain200.textContent = whole(tdee + 200);
+      gain400.textContent = whole(tdee + 400);
+      proteinOut.textContent = whole(kg * 1.6) + ' g to ' + whole(kg * 2.2) + ' g';
+    }
+
+    function setHeightUnit(unit) {
+      if (unit === heightUnit) {
+        return;
+      }
+      if (unit === 'in') {
+        var cm = num(heightCm);
+        if (isFinite(cm) && cm > 0) {
+          var total = cm / CM_PER_IN;
+          var f = Math.floor(total / 12);
+          var i = Math.round(total - f * 12);
+          if (i === 12) {
+            f = f + 1;
+            i = 0;
+          }
+          heightFt.value = String(f);
+          heightIn.value = String(i);
+        } else {
+          heightFt.value = '';
+          heightIn.value = '';
+        }
+      } else {
+        var ft = num(heightFt);
+        var inch = inches();
+        if (isFinite(ft) && isFinite(inch)) {
+          heightCm.value = String(Math.round((ft * 12 + inch) * CM_PER_IN));
+        } else {
+          heightCm.value = '';
+        }
+      }
+      heightUnit = unit;
+      metricBox.hidden = unit !== 'cm';
+      imperialBox.hidden = unit !== 'in';
+      htCm.setAttribute('aria-pressed', unit === 'cm' ? 'true' : 'false');
+      htFt.setAttribute('aria-pressed', unit === 'in' ? 'true' : 'false');
+      calculate();
+    }
+
+    function setWeightUnit(unit) {
+      if (unit === weightUnit) {
+        return;
+      }
+      // The converted figure is rounded to one decimal before it goes back in the field, and the
+      // range check then reads that rounded value, so an entry sitting on either limit can round
+      // itself outside the range. Clamping into the window the field is about to declare keeps a
+      // valid weight valid across a unit switch.
+      var lo = unit === 'kg' ? 30 : 67;
+      var hi = unit === 'kg' ? 300 : 660;
+      var wasLo = unit === 'kg' ? 67 : 30;
+      var wasHi = unit === 'kg' ? 660 : 300;
+      var v = num(weightInput);
+      if (isFinite(v) && v > 0) {
+        var converted = unit === 'lb' ? v * LB_PER_KG : v / LB_PER_KG;
+        if (v >= wasLo && v <= wasHi) {
+          converted = Math.min(Math.max(converted, lo), hi);
+        }
+        weightInput.value = trim1(converted);
+      }
+      weightUnit = unit;
+      weightInput.min = String(lo);
+      weightInput.max = String(hi);
+      wtKg.setAttribute('aria-pressed', unit === 'kg' ? 'true' : 'false');
+      wtLb.setAttribute('aria-pressed', unit === 'lb' ? 'true' : 'false');
+      calculate();
+    }
+
+    panel.addEventListener('input', calculate);
+    panel.addEventListener('change', calculate);
+
+    htCm.addEventListener('click', function () {
+      setHeightUnit('cm');
+    });
+    htFt.addEventListener('click', function () {
+      setHeightUnit('in');
+    });
+    wtKg.addEventListener('click', function () {
+      setWeightUnit('kg');
+    });
+    wtLb.addEventListener('click', function () {
+      setWeightUnit('lb');
+    });
+
+    calculate();
+  })();
+  </script>
+</body>
+</html>

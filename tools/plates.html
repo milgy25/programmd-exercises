@@ -1,0 +1,501 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Barbell Plate Calculator: What Plates to Load | Programmd</title>
+  <meta name="description" content="Barbell plate calculator. Enter a target and a bar weight, see what plates to load per side in kg or lb, and the closest loadable weight when the target will not fit.">
+  <link rel="canonical" href="https://exercises.programmd.co/tools/plates.html">
+  <meta property="og:title" content="Barbell Plate Calculator: What Plates to Load | Programmd">
+  <meta property="og:description" content="Barbell plate calculator. Enter a target and a bar weight, see what plates to load per side in kg or lb, and the closest loadable weight when the target will not fit.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://exercises.programmd.co/tools/plates.html">
+  <link rel="stylesheet" href="../site.css">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Plate calculator",
+  "description": "Barbell plate calculator. Enter a target and a bar weight, see what plates to load per side in kg or lb, and the closest loadable weight when the target will not fit.",
+  "url": "https://exercises.programmd.co/tools/plates.html",
+  "applicationCategory": "HealthApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "publisher": { "@type": "Organization", "name": "Programmd" }
+}
+  </script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Exercise Glossary",
+      "item": "https://exercises.programmd.co/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Plate Calculator",
+      "item": "https://exercises.programmd.co/tools/plates.html"
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <header class="site-nav">
+    <div class="site-nav-inner">
+      <a class="site-nav-brand" href="https://programmd.co">Programmd.</a>
+      <nav aria-label="Site">
+        <details class="site-nav-menu">
+          <summary>Tools</summary>
+          <ul>
+          <li><a href="../index.html">Exercise glossary</a></li>
+          <li><a href="../tools/tdee.html">TDEE calculator</a></li>
+          <li><a href="../tools/macros.html">Macro calculator</a></li>
+          <li><a href="../tools/one-rep-max.html">One rep max calculator</a></li>
+          <li><a href="../tools/plates.html" aria-current="page">Plate calculator</a></li>
+          <li><a href="../tools/rpe-rir.html">RPE and RIR chart</a></li>
+          <li><a href="../tools/days-quiz.html">Programs by training days</a></li>
+            <li class="site-nav-all"><a href="../tools/index.html">All tools</a></li>
+          </ul>
+        </details>
+        <a class="site-nav-cta" href="https://programmd.co/pages/quiz">Find your program</a>
+      </nav>
+    </div>
+  </header>
+  <script>
+  (function () {
+    var menu = document.querySelector('.site-nav-menu');
+    if (!menu) return;
+    document.addEventListener('click', function (event) {
+      if (menu.open && !menu.contains(event.target)) menu.open = false;
+    });
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && menu.open) {
+        menu.open = false;
+        menu.querySelector('summary').focus();
+      }
+    });
+  })();
+  </script>
+  <p class="back"><a href="index.html">&larr; All tools</a></p>
+  <main class="tool">
+    <header class="tool-header">
+      <h1>Barbell plate calculator</h1>
+      <p class="tool-lede">Enter a target weight and the bar you are lifting on. This works out what plates to load on each side, and gives the closest loadable weight when the target does not come out even.</p>
+    </header>
+
+    <div class="tool-panel" id="panel">
+      <div class="field">
+        <div class="field-head">
+          <label class="field-label" for="target">Target weight, bar included</label>
+          <div class="seg" id="unit-toggle" role="group" aria-label="Weight unit">
+            <button type="button" data-unit="kg" aria-pressed="true">kg</button>
+            <button type="button" data-unit="lb" aria-pressed="false">lb</button>
+          </div>
+        </div>
+        <input type="number" id="target" value="100" min="1" max="1000" step="2.5" inputmode="decimal">
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="bar">Bar weight (<span id="bar-unit">kg</span>)</label>
+        <input type="number" id="bar" value="20" min="1" max="100" step="0.5" inputmode="decimal">
+        <p class="note">Standard Olympic bar: 20 kg or 45 lb. Women's Olympic bar: 15 kg or 35 lb.</p>
+      </div>
+
+      <div class="field">
+        <div id="plates-kg">
+          <fieldset class="opt-group">
+            <legend>Plates you have (kg, per pair)</legend>
+            <label class="chip" for="kg-25"><input type="checkbox" id="kg-25" value="25" checked> 25</label>
+            <label class="chip" for="kg-20"><input type="checkbox" id="kg-20" value="20" checked> 20</label>
+            <label class="chip" for="kg-15"><input type="checkbox" id="kg-15" value="15" checked> 15</label>
+            <label class="chip" for="kg-10"><input type="checkbox" id="kg-10" value="10" checked> 10</label>
+            <label class="chip" for="kg-5"><input type="checkbox" id="kg-5" value="5" checked> 5</label>
+            <label class="chip" for="kg-2-5"><input type="checkbox" id="kg-2-5" value="2.5" checked> 2.5</label>
+            <label class="chip" for="kg-1-25"><input type="checkbox" id="kg-1-25" value="1.25" checked> 1.25</label>
+          </fieldset>
+        </div>
+        <div id="plates-lb" hidden>
+          <fieldset class="opt-group">
+            <legend>Plates you have (lb, per pair)</legend>
+            <label class="chip" for="lb-45"><input type="checkbox" id="lb-45" value="45" checked> 45</label>
+            <label class="chip" for="lb-35"><input type="checkbox" id="lb-35" value="35" checked> 35</label>
+            <label class="chip" for="lb-25"><input type="checkbox" id="lb-25" value="25" checked> 25</label>
+            <label class="chip" for="lb-10"><input type="checkbox" id="lb-10" value="10" checked> 10</label>
+            <label class="chip" for="lb-5"><input type="checkbox" id="lb-5" value="5" checked> 5</label>
+            <label class="chip" for="lb-2-5"><input type="checkbox" id="lb-2-5" value="2.5" checked> 2.5</label>
+          </fieldset>
+        </div>
+      </div>
+
+      <p class="tool-error" id="error" role="alert" hidden></p>
+    </div>
+
+    <section class="result" id="result" aria-live="polite">
+      <p class="result-label">Loaded total</p>
+      <p class="result-primary" id="total">100 kg</p>
+      <p class="result-note" id="total-note"></p>
+      <ul class="plate-list" id="plate-list"></ul>
+      <p class="result-note" id="per-side"></p>
+      <div class="barbell" id="barbell" role="img" aria-label="Bar with no plates"></div>
+      <p class="result-note">The diagram shows one side of the bar, inside to out. The other side takes the same plates.</p>
+    </section>
+
+    <h2>What plates to load on a barbell</h2>
+    <p>The bar counts towards the total. A standard Olympic bar is 20 kg or 45 lb, so a 100 kg target is 80 kg of plates plus the bar.</p>
+    <p>Plates go on in pairs, one per side, so each side carries half the plate weight. Those 80 kg of plates are 40 kg per side.</p>
+    <p>The heaviest plates go on first, closest to the middle of the bar, and lighter plates sit outside them. That keeps the load tight against the collars, and it makes the bar readable at a glance from the side.</p>
+
+    <h2>Common bar weights</h2>
+    <table class="tool-table">
+      <thead>
+        <tr>
+          <th>Bar</th>
+          <th class="num">kg</th>
+          <th class="num">lb</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Standard Olympic bar</td>
+          <td class="num">20</td>
+          <td class="num">45</td>
+        </tr>
+        <tr>
+          <td>Women's Olympic bar</td>
+          <td class="num">15</td>
+          <td class="num">35</td>
+        </tr>
+        <tr>
+          <td>Technique or training bar</td>
+          <td class="num">10</td>
+          <td class="num">22</td>
+        </tr>
+        <tr>
+          <td>EZ curl bar</td>
+          <td class="num">7 to 10</td>
+          <td class="num">15 to 22</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="note">Specialty bars vary by maker. Safety squat, trap and cambered bars run from about 25 kg to 35 kg, and a few go past that. Weigh the one in your gym once and type that number into the bar field.</p>
+
+    <h2>When the exact weight will not load</h2>
+    <p>A plate set is not continuous. With a full kg set the smallest pair is 2 x 1.25 kg, so every loadable weight is the bar plus a multiple of 2.5 kg. A 101 kg target does not exist on a 20 kg bar.</p>
+    <p>When the target cannot be built from the plates you ticked, the answer above shows the closest loadable weight below it, states the gap, and names the next loadable weight above. Untick the plates your gym does not have and the answer changes with them.</p>
+    <p>The arithmetic is exact for the plates you ticked and the bar weight you entered.</p>
+    <p class="note">Programmd programs print sets, reps, rest and an effort target in reps in reserve. The weight column is left blank, so you choose the load and this works out the plates for it.</p>
+
+    <div class="cta">
+      <p>40+ programs with the sets, reps and rest already decided.</p>
+      <a href="https://programmd.co/pages/quiz">Find your program</a>
+    </div>
+
+    <h2>Other tools</h2>
+    <ul class="tool-links">
+      <li><a href="tdee.html">TDEE calculator</a></li>
+      <li><a href="one-rep-max.html">One rep max calculator</a></li>
+      <li><a href="rpe-rir.html">RPE and RIR chart</a></li>
+      <li><a href="macros.html">Macro calculator</a></li>
+      <li><a href="days-quiz.html">Programs by training days</a></li>
+    </ul>
+
+    <footer class="provenance">
+      <p><a href="../index.html">Exercise glossary</a> &middot; <a href="https://programmd.co">programmd.co</a></p>
+    </footer>
+  </main>
+  <script>
+  (function () {
+    var SETS = {
+      kg: [25, 20, 15, 10, 5, 2.5, 1.25],
+      lb: [45, 35, 25, 10, 5, 2.5]
+    };
+    var LIMITS = {
+      kg: { target: 1000, bar: 100, targetStep: 2.5, barStep: 0.5 },
+      lb: { target: 2205, bar: 220, targetStep: 5, barStep: 1 }
+    };
+    var BAR_SWAP = { '20>lb': 45, '15>lb': 35, '45>kg': 20, '35>kg': 15 };
+    var LB_PER_KG = 2.20462262;
+
+    var panel = document.getElementById('panel');
+    var targetInput = document.getElementById('target');
+    var barInput = document.getElementById('bar');
+    var barUnit = document.getElementById('bar-unit');
+    var toggle = document.getElementById('unit-toggle');
+    var wraps = { kg: document.getElementById('plates-kg'), lb: document.getElementById('plates-lb') };
+    var errorEl = document.getElementById('error');
+    var resultEl = document.getElementById('result');
+    var totalEl = document.getElementById('total');
+    var totalNote = document.getElementById('total-note');
+    var listEl = document.getElementById('plate-list');
+    var perSideEl = document.getElementById('per-side');
+    var barbellEl = document.getElementById('barbell');
+
+    var unit = 'kg';
+
+    /* Totals, bar weights and gaps: two decimals, matching the precision the inputs accept
+       and the step fmtPlate prints at, so the total, the gap and the target reconcile.
+       Trailing zeros come off. */
+    function fmt(n) {
+      if (typeof n !== 'number' || !isFinite(n)) return '0';
+      var r = Math.round(n * 100) / 100;
+      if (Math.round(r) === r) return String(Math.round(r));
+      return String(r).replace(/0+$/, '').replace(/\.$/, '');
+    }
+
+    /* Plate denominations and the per-side sum of them: 1.25 kg is a real plate, so these
+       need two decimals. Trailing zeros come off either way. */
+    function fmtPlate(n) {
+      if (typeof n !== 'number' || !isFinite(n)) return '0';
+      var r = Math.round(n * 100) / 100;
+      if (Math.round(r) === r) return String(Math.round(r));
+      return String(r).replace(/0+$/, '').replace(/\.$/, '');
+    }
+
+    function gcd(a, b) {
+      while (b) { var t = a % b; a = b; b = t; }
+      return a;
+    }
+
+    function activePlates() {
+      var boxes = wraps[unit].querySelectorAll('input[type="checkbox"]');
+      var out = [];
+      for (var i = 0; i < boxes.length; i++) {
+        if (boxes[i].checked) out.push(parseFloat(boxes[i].value));
+      }
+      out.sort(function (a, b) { return b - a; });
+      return out;
+    }
+
+    function plateHeight(w) {
+      var set = SETS[unit];
+      var hi = set[0];
+      var lo = set[set.length - 1];
+      if (hi === lo) return 5;
+      var h = 2 + ((w - lo) / (hi - lo)) * 3;
+      return Math.round(h * 100) / 100;
+    }
+
+    function fail(message) {
+      errorEl.textContent = message;
+      errorEl.hidden = false;
+      resultEl.hidden = true;
+      totalEl.textContent = '';
+      totalNote.textContent = '';
+      perSideEl.textContent = '';
+      listEl.innerHTML = '';
+      barbellEl.innerHTML = '';
+      barbellEl.setAttribute('aria-label', 'No load');
+    }
+
+    function drawBar(seq) {
+      barbellEl.innerHTML = '';
+      var sleeve = document.createElement('div');
+      sleeve.className = 'barbell-sleeve';
+      sleeve.setAttribute('aria-hidden', 'true');
+      barbellEl.appendChild(sleeve);
+      for (var i = 0; i < seq.length; i++) {
+        var plate = document.createElement('div');
+        plate.className = 'plate';
+        plate.setAttribute('aria-hidden', 'true');
+        plate.style.height = plateHeight(seq[i]) + 'rem';
+        plate.textContent = fmtPlate(seq[i]);
+        barbellEl.appendChild(plate);
+      }
+      var words = seq.length
+        ? 'One side of the bar, inside to out: ' + seq.map(function (w) { return fmtPlate(w) + ' ' + unit; }).join(', ') + '.'
+        : 'One side of the bar, no plates.';
+      barbellEl.setAttribute('aria-label', words);
+    }
+
+    function drawList(seq) {
+      listEl.innerHTML = '';
+      for (var i = 0; i < seq.length; i++) {
+        var li = document.createElement('li');
+        li.textContent = fmtPlate(seq[i]) + ' ' + unit;
+        listEl.appendChild(li);
+      }
+    }
+
+    function summarise(seq) {
+      if (!seq.length) return '';
+      var parts = [];
+      var current = seq[0];
+      var count = 0;
+      for (var i = 0; i < seq.length; i++) {
+        if (seq[i] === current) {
+          count++;
+        } else {
+          parts.push(count + ' x ' + fmtPlate(current));
+          current = seq[i];
+          count = 1;
+        }
+      }
+      parts.push(count + ' x ' + fmtPlate(current));
+      return parts.join(', ');
+    }
+
+    function calc() {
+      var limits = LIMITS[unit];
+      var target = parseFloat(targetInput.value);
+      var bar = parseFloat(barInput.value);
+      var plates = activePlates();
+
+      if (!isFinite(target) || target <= 0) {
+        return fail('Enter a target weight above zero.');
+      }
+      if (target > limits.target) {
+        return fail('Enter a target weight of ' + limits.target + ' ' + unit + ' or less.');
+      }
+      if (!isFinite(bar) || bar <= 0) {
+        return fail('Enter a bar weight above zero.');
+      }
+      if (bar > limits.bar) {
+        return fail('Enter a bar weight of ' + limits.bar + ' ' + unit + ' or less.');
+      }
+      if (!plates.length) {
+        return fail('Tick at least one plate size.');
+      }
+      if (target < bar - 0.005) {
+        return fail('The bar alone weighs ' + fmt(bar) + ' ' + unit + ', which is over the target. Raise the target or use a lighter bar.');
+      }
+
+      errorEl.hidden = true;
+      errorEl.textContent = '';
+      resultEl.hidden = false;
+
+      var perSide = (target - bar) / 2;
+
+      if (perSide < 0.005) {
+        totalEl.textContent = fmt(bar) + ' ' + unit;
+        totalNote.textContent = 'That is the empty bar. No plates go on.';
+        drawList([]);
+        perSideEl.textContent = 'Per side: nothing.';
+        drawBar([]);
+        return;
+      }
+
+      var cents = plates.map(function (p) { return Math.round(p * 100); });
+      var step = cents[0];
+      for (var c = 1; c < cents.length; c++) step = gcd(step, cents[c]);
+      var units = cents.map(function (v) { return v / step; });
+      var biggest = units[0];
+      var wanted = Math.round(perSide * 100);
+      var top = Math.floor(wanted / step);
+      var ceiling = top + biggest;
+
+      var from = new Array(ceiling + 1);
+      from[0] = -1;
+      for (var i = 1; i <= ceiling; i++) {
+        from[i] = -2;
+        for (var j = 0; j < units.length; j++) {
+          if (units[j] <= i && from[i - units[j]] !== -2) { from[i] = j; break; }
+        }
+      }
+
+      var below = 0;
+      for (var b = top; b >= 0; b--) {
+        if (from[b] !== -2) { below = b; break; }
+      }
+
+      var above = -1;
+      for (var a = top + 1; a <= ceiling; a++) {
+        if (from[a] !== -2) { above = a; break; }
+      }
+
+      var seq = [];
+      var walk = below;
+      while (walk > 0) {
+        var pick = from[walk];
+        seq.push(plates[pick]);
+        walk -= units[pick];
+      }
+      seq.sort(function (x, y) { return y - x; });
+
+      var sideLoad = (below * step) / 100;
+      var loaded = bar + sideLoad * 2;
+      var gap = target - loaded;
+
+      totalEl.textContent = fmt(loaded) + ' ' + unit;
+
+      if (gap < 0.005) {
+        totalNote.textContent = 'The target loads exactly on a ' + fmt(bar) + ' ' + unit + ' bar.';
+      } else {
+        var note = 'A target of ' + fmt(target) + ' ' + unit + ' will not load with these plates. This is the closest below it, ' +
+          fmt(gap) + ' ' + unit + ' under.';
+        if (above > -1) {
+          var aboveTotal = bar + ((above * step) / 100) * 2;
+          note += ' The closest loadable weight above it is ' + fmt(aboveTotal) + ' ' + unit + '.';
+        }
+        totalNote.textContent = note;
+      }
+
+      drawList(seq);
+      var summary = summarise(seq);
+      perSideEl.textContent = seq.length
+        ? 'Per side: ' + summary + '. That is ' + fmtPlate(sideLoad) + ' ' + unit + ' on each sleeve.'
+        : 'Per side: nothing. The smallest pair you ticked already goes over the target.';
+      drawBar(seq);
+    }
+
+    function convert(value, to) {
+      if (!isFinite(value)) return null;
+      if (to === 'lb') return Math.round(value * LB_PER_KG);
+      return Math.round((value / LB_PER_KG) * 2) / 2;
+    }
+
+    function setUnit(next) {
+      if (next === unit || !SETS[next]) return;
+
+      var target = parseFloat(targetInput.value);
+      var bar = parseFloat(barInput.value);
+
+      var newTarget = convert(target, next);
+      if (newTarget !== null) targetInput.value = String(newTarget);
+
+      var swap = BAR_SWAP[fmt(bar) + '>' + next];
+      if (isFinite(bar) && swap) {
+        barInput.value = String(swap);
+      } else {
+        var newBar = convert(bar, next);
+        if (newBar !== null) barInput.value = String(newBar);
+      }
+
+      unit = next;
+
+      var limits = LIMITS[unit];
+      targetInput.max = String(limits.target);
+      targetInput.step = String(limits.targetStep);
+      barInput.max = String(limits.bar);
+      barInput.step = String(limits.barStep);
+      barUnit.textContent = unit;
+
+      wraps.kg.hidden = unit !== 'kg';
+      wraps.lb.hidden = unit !== 'lb';
+
+      var buttons = toggle.querySelectorAll('button');
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].setAttribute('aria-pressed', buttons[i].getAttribute('data-unit') === unit ? 'true' : 'false');
+      }
+
+      calc();
+    }
+
+    toggle.addEventListener('click', function (event) {
+      var button = event.target.closest('button[data-unit]');
+      if (button) setUnit(button.getAttribute('data-unit'));
+    });
+
+    panel.addEventListener('input', calc);
+    panel.addEventListener('change', calc);
+
+    calc();
+  })();
+  </script>
+</body>
+</html>
